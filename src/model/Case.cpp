@@ -13,19 +13,19 @@ Case::~Case()
 
 Case::Case(const Case& other)
 {
-    //copy ctor
+     this->player = other.player;
 }
 
 Case& Case::operator=(const Case& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
+
     return *this;
 }
 
 
-void Case::setPlayer(Player* player){
-    this->player = player ;
+void Case::setPlayer(Player& player){
+    this->player = &player ;
 }
 
 std::string Case::str() const {

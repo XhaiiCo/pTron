@@ -6,10 +6,17 @@
 int main()
 {
 
-
     Playground playground ;
 
     std::cout << playground.str() << std::endl ;
+
+    std::cout << "pg2" << std::endl ;
+
+    Playground pg2 = playground;
+
+    std::cout << pg2.str() << std::endl ;
+
+
 
 
 //    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
