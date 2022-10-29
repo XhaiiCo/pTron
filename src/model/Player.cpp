@@ -21,3 +21,8 @@ Player& Player::operator=(const Player& rhs)
     //assignment operator
     return *this;
 }
+
+
+std::string Player::str() const {
+    return "test player str" ;
+}

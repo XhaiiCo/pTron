@@ -1,10 +1,16 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "Player.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Magenta);
+
+    Player p ;
+    std::cout << p.str() << std::endl ;
 
     while (window.isOpen())
     {
