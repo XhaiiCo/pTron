@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include/model" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include/model" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -37,7 +39,13 @@
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
 		</Linker>
+		<Unit filename="include/model/Case.h" />
+		<Unit filename="include/model/Player.h" />
+		<Unit filename="include/model/Playground.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/model/Case.cpp" />
+		<Unit filename="src/model/Player.cpp" />
+		<Unit filename="src/model/Playground.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
