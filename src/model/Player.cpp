@@ -24,5 +24,5 @@ Player& Player::operator=(const Player& rhs)
 
 
 std::string Player::str() const {
-    return "test player str" ;
+    return "P" ;
 }

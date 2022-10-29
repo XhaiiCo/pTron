@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Player.h"
+#include "Case.h"
 
 int main()
 {
@@ -9,8 +10,14 @@ int main()
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Magenta);
 
-    Player p ;
-    std::cout << p.str() << std::endl ;
+    Player* p ;
+    Case c ;
+    std::cout << c.str() << std::endl ;
+    c.setPlayer(p) ;
+    std::cout << c.str() << std::endl ;
+
+    delete p ;
+
 
     while (window.isOpen())
     {

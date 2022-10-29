@@ -431,18 +431,20 @@
 1667039008 ./include/model/Player.h
 	"string"
 
-1667039105 source:/home/david/Documents/GitHub/pTron/main.cpp
+1667040705 source:/home/david/Documents/GitHub/pTron/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Player.h"
+	"Case.h"
 
 1667039008 /home/david/Documents/GitHub/pTron/include/model/Player.h
 	"string"
 
-1667039232 source:/home/david/Documents/GitHub/pTron/src/model/Case.cpp
+1667040608 source:/home/david/Documents/GitHub/pTron/src/model/Case.cpp
 	"Case.h"
 
-1667039249 /home/david/Documents/GitHub/pTron/include/model/Case.h
+1667040555 /home/david/Documents/GitHub/pTron/include/model/Case.h
+	"Player.h"
 
 1667039038 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
 	"Player.h"
