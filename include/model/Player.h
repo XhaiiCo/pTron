@@ -1,7 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+
 #include "string"
-#include <SFML/Graphics.hpp>
+
 
 class Player
 {
@@ -13,16 +14,24 @@ class Player
         int dirY = 0;
 
     public:
-        Player(std::string = "UNDEFINED");
+        Player(std::string = "UNDEFINED", int x = 0, int y = 0);
         virtual ~Player();
         Player(const Player& other);
         Player& operator=(const Player& other);
 
+        int getX() { return this->x ;}
         void setX(int value){
+            if(value < 0) return ;
+            //if(value > Playground::NB_COLUMN) return
+
             this->x = value;
         }
 
+        int getY() { return this->y ;}
         void setY(int value){
+            if(value < 0) return ;
+            //if(value > Playground::NB_LINE) return
+
             this->y = value ;
         }
 

@@ -1,10 +1,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include "Playground.h"
 
-Player::Player(std::string name): name(name)
+Player::Player(std::string name, int x, int y): name(name), x(x), y(y)
 {
-    //ctor
+    this->dirX = 0 ;
+    this->dirY = 0 ;
 }
 
 Player::~Player()
@@ -15,6 +17,10 @@ Player::~Player()
 Player::Player(const Player& other)
 {
     this->name = other.name ;
+    this->x = other.x ;
+    this->y = other.y ;
+    this->dirX = other.dirX ;
+    this->dirY = other.dirY ;
 }
 
 Player& Player::operator=(const Player& rhs)
@@ -22,6 +28,11 @@ Player& Player::operator=(const Player& rhs)
     if (this == &rhs) return *this; // handle self assignment
 
     this->name = rhs.name ;
+    this->x = rhs.x ;
+    this->y = rhs.y ;
+    this->dirX = rhs.dirX ;
+    this->dirY = rhs.dirY ;
+
     return *this;
 }
 
@@ -44,11 +55,17 @@ bool Player::changeDirection(const int dirX, const int dirY){
 
     this->dirX = dirX ;
     this->dirY = dirY ;
-    return true ;
 
+    return true ;
 }
 
 void Player::movePlayer(){
     this->x += dirX ;
+
+    if(this->x >= Playground::NB_COLUMN) this->x = 0 ;
+    if(this->x < 0) this->x = Playground::NB_LINE -1 ;
+
     this->y += dirY ;
+    if(this->y >= Playground::NB_COLUMN) this->y = 0 ;
+    if(this->y < 0) this->y = Playground::NB_COLUMN -1 ;
 }
