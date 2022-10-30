@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+
 #include "string"
-#include <SFML/Graphics.hpp>
 
 class Player
 {
@@ -13,18 +13,16 @@ class Player
         int dirY = 0;
 
     public:
-        Player(std::string = "UNDEFINED");
+        Player(std::string = "UNDEFINED", int x = 0, int y = 0);
         virtual ~Player();
         Player(const Player& other);
         Player& operator=(const Player& other);
 
-        void setX(int value){
-            this->x = value;
-        }
+        int getX() { return this->x ;}
+        void setX(int value) ;
 
-        void setY(int value){
-            this->y = value ;
-        }
+        int getY() { return this->y ;}
+        void setY(int value) ;
 
         bool changeDirection(const int dirX, const int dirY) ;
         void movePlayer() ;
