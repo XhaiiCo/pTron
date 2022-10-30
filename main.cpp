@@ -17,11 +17,11 @@ int main()
     Player p2("J", 3, 5) ;
     p1.setColor(255, 0, 0) ;
     p2.setColor(85, 255, 0) ;
+    bool player1Lost = false ;
+    bool player2Lost = false ;
 
     Playground playground(p1, p2);
     playground.movePlayers() ;
-
-    std::cout << playground.str() << std::endl ;
 
     //Test p1
     playground.changeDirectionPlayer1(1, 0) ;
@@ -72,7 +72,6 @@ int main()
 //                window.close();
 //            }
         }
-        playground.movePlayers() ;
 
         if (Keyboard::isKeyPressed(Keyboard::Up)) playground.changeDirectionPlayer1(0, -1);
         if (Keyboard::isKeyPressed(Keyboard::Down)) playground.changeDirectionPlayer1(0, 1);
@@ -84,9 +83,23 @@ int main()
         if (Keyboard::isKeyPressed(Keyboard::Q)) playground.changeDirectionPlayer2(-1, 0);
         if (Keyboard::isKeyPressed(Keyboard::D)) playground.changeDirectionPlayer2(1, 0);
 
+        playground.movePlayers() ;
+
+
+        player1Lost = playground.isPlayer1HasLost() ;
+        player2Lost = playground.isPlayer2HasLost() ;
+
+        if(player1Lost || player2Lost) window.close() ;
+
+        playground.displayplayers() ;
+
         game.drawGame() ;
         window.clear();
         window.draw(game.getSprite()); // affiche le nouveau sprite
         window.display();
     }
+
+    if(player1Lost && player2Lost) std::cout << "Match draw" << std::endl ;
+    else if(player2Lost) std::cout << "Player 1 won" << std::endl ;
+    else if(player1Lost) std::cout << "Player 2 won" << std::endl ;
 }

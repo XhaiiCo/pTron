@@ -122,8 +122,20 @@ bool Playground::changeDirectionPlayer2(int dirX, int dirY){
 //Moves the player one square forward according to his direction
 void Playground::movePlayers(){
     this->player1.movePlayer() ;
-    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
-
     this->player2.movePlayer() ;
+}
+
+bool Playground::isPlayer1HasLost(){
+    if(this->cases[this->player1.getY()][this->player1.getX()]->getPlayer() != nullptr) return true ;
+    return false ;
+}
+
+bool Playground::isPlayer2HasLost(){
+    if(this->cases[this->player2.getY()][this->player2.getX()]->getPlayer() != nullptr) return true ;
+    return false ;
+}
+
+void Playground::displayplayers(){
+    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
     this->cases[this->player2.getY()][this->player2.getX()]->setPlayer(&player2) ;
 }

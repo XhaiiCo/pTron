@@ -34,6 +34,10 @@ class Playground
         bool changeDirectionPlayer1(int dirX, int dirY) ;
         bool changeDirectionPlayer2(int dirX, int dirY) ;
         void movePlayers() ;
+        void displayplayers() ;
+
+        bool isPlayer1HasLost() ;
+        bool isPlayer2HasLost() ;
 
         std::string str() const ;
 };
