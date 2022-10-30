@@ -2,14 +2,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-Game::Game(int width, int height): width(width), height(height)
-{
-    init();
-}
 
-Game::Game(int width, int height, Playground playground): width(width), height(height), playground(playground)
+Game::Game(int width, int height, Playground* playground): width(width), height(height), playground(playground)
 {
-    init();
 }
 
 Game::~Game()
@@ -17,7 +12,7 @@ Game::~Game()
     //dtor
 }
 
-void Game::init() {
+void Game::drawGame()  {
     // Créée une image sur laquelle on peut dessiner
     this->t.create(this->width, this->height);
     this->t.setSmooth(true);
@@ -25,17 +20,7 @@ void Game::init() {
     this->sprite.setTexture(this->t.getTexture());
     // Sinon ça affiche des trucs chelou
     this->t.clear();
-
-    // Affichage des point
-//    c.setPosition(100, 100);
-//    c.setFillColor(Color::White);
-//    this->t.draw(c);
-//
-//    c.setPosition(200, 200);
-//    c.setFillColor(Color::Yellow);
-//    this->t.draw(c);
-
-    std::vector<std::vector<Case*>> Cases = this->playground.getCases() ;
+    std::vector<std::vector<Case*>> Cases = this->playground->getCases() ;
 
     for(int i = 0 ; i < Cases.size() ; i++){
         for(int j = 0 ; j < Cases[i].size() ; j++){

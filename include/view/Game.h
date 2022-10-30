@@ -10,7 +10,7 @@ class Game
 {
     //CONSTANT
     public:
-        inline const static int CIRCLE_RADIUS = 10 ;
+        inline const static int CIRCLE_RADIUS = 6 ;
     private:
         int width;
         int height;
@@ -18,14 +18,14 @@ class Game
         RenderTexture t;
         CircleShape c = CircleShape(CIRCLE_RADIUS);
 
-        Playground playground ;
+        Playground* playground ;
 
     public:
-        Game(int width = 500, int height = 500);
-        Game(int width, int height, Playground);
+        Game(int width, int height, Playground*);
         virtual ~Game();
-        void init();
         Sprite getSprite();
+
+        void drawGame() ;
 };
 
 #endif // GAME_H

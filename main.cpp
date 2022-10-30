@@ -24,18 +24,12 @@ int main()
 
     //Test p1
     playground.changeDirectionPlayer1(1, 0) ;
-    playground.changeDirectionPlayer2(-1,0) ;
-    playground.movePlayers() ;
-    playground.changeDirectionPlayer1(0, -1) ;
-    playground.movePlayers() ;
-    playground.movePlayers() ;
-    playground.movePlayers() ;
-    std::cout << playground.str() << std::endl ;
+    playground.changeDirectionPlayer2(0,1) ;
 
-    // La window
+    // The window
     RenderWindow window(VideoMode(W, H), "The Tron Game!");
-    window.setFramerateLimit(60);
-    Game game(W, H, playground);
+    window.setFramerateLimit(9);
+    Game game(W, H, &playground);
     Menu menu(W, H);
 
     while (window.isOpen())
@@ -43,42 +37,44 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if(event.type == sf::Event::KeyReleased)
-            {
-                if(event.key.code == sf::Keyboard::Up)
-                {
-                    menu.MoveUp();
-                }
-                else if(event.key.code == sf::Keyboard::Down)
-                {
-                    menu.MoveDown();
-                }
-                else if(event.key.code == sf::Keyboard::Return)
-                {
-                    int pressedItem = menu.GetPressedItem();
-
-                    if(pressedItem == 0)
-                    {
-                        std::cout << "Play button has been pressed" << std::endl;
-                    }
-                    else if(pressedItem == 1)
-                    {
-                        std::cout << "Option button has been pressed" << std::endl;
-                    }
-                    else
-                    {
-                        window.close();
-                    }
-                }
-            }
-            else if(event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-
-            window.clear();
-            window.draw(game.getSprite()); // affiche le nouveau sprite
-            window.display();
+            if(event.type == Event::Closed) window.close() ;
+//            if(event.type == sf::Event::KeyReleased)
+//            {
+//                if(event.key.code == sf::Keyboard::Up)
+//                {
+//                    menu.MoveUp();
+//                }
+//                else if(event.key.code == sf::Keyboard::Down)
+//                {
+//                    menu.MoveDown();
+//                }
+//                else if(event.key.code == sf::Keyboard::Return)
+//                {
+//                    int pressedItem = menu.GetPressedItem();
+//
+//                    if(pressedItem == 0)
+//                    {
+//                        std::cout << "Play button has been pressed" << std::endl;
+//                    }
+//                    else if(pressedItem == 1)
+//                    {
+//                        std::cout << "Option button has been pressed" << std::endl;
+//                    }
+//                    else
+//                    {
+//                        window.close();
+//                    }
+//                }
+//            }
+//            else if(event.type == sf::Event::Closed)
+//            {
+//                window.close();
+//            }
         }
+        playground.movePlayers() ;
+        game.drawGame() ;
+        window.clear();
+        window.draw(game.getSprite()); // affiche le nouveau sprite
+        window.display();
     }
 }
