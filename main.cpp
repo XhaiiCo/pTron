@@ -55,7 +55,26 @@ int main()
 //
 //                    if(pressedItem == 0)
 //                    {
-//                        std::cout << "Play button has been pressed" << std::endl;
+//                        RenderWindow play(VideoMode(W, H), "Play Option");
+//                        window.close();
+//
+//                        while(play.isOpen())
+//                        {
+//                            play.clear();
+//                            play.display();
+//
+//
+//                            sf::Event event1;
+//                            while (play.pollEvent(event1))
+//                            {
+//
+//                                if(event1.type == sf::Event::Closed)
+//                                {
+//                                    play.close();
+//                                }
+//                            }
+//
+//                        }
 //                    }
 //                    else if(pressedItem == 1)
 //                    {
