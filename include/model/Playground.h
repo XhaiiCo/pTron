@@ -24,6 +24,8 @@ class Playground
         void init() ;
         void createCase() ;
 
+        void movePlayer(int x, int y) ;
+
         std::string str() const ;
 };
 

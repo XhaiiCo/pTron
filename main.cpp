@@ -12,9 +12,7 @@ int main()
     Playground playground(p1, p2);
     p1 = Player("test") ;
 
-    std::cout << playground.str() << std::endl ;
-
-
+    //std::cout << playground.str() << std::endl ;
 
 //    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 //    sf::CircleShape shape(100.f);
