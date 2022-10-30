@@ -7,10 +7,9 @@ class Player
 {
     private:
         std::string name ;
-        sf::Color color;
 
     public:
-        Player(std::string = "UNDEFINED", sf::Color = sf::Color::White);
+        Player(std::string = "UNDEFINED");
         virtual ~Player();
         Player(const Player& other);
         Player& operator=(const Player& other);

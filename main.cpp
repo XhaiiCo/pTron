@@ -6,8 +6,8 @@
 
 int main()
 {
-    Player p1("David", sf::Color::Yellow) ;
-    Player p2("Jésurémie", sf::Color::White) ;
+    Player p1("David") ;
+    Player p2("Jésurémie") ;
 
     Playground playground(p1, p2);
     p1 = Player("test") ;
