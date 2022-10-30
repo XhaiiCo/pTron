@@ -3,33 +3,36 @@
 
 #include "Playground.h"
 #include "Player.h"
+#include "Game.h"
+
+using namespace sf;
 
 int main()
 {
-    Player p1("David") ;
-    Player p2("Jésurémie") ;
+    int W = 500, H = 500;
+
+    Player p1("David");
+    Player p2("Jésurémie");
 
     Playground playground(p1, p2);
     p1 = Player("test") ;
 
-    //std::cout << playground.str() << std::endl ;
+    RenderWindow window(VideoMode(W, H), "The Tron Game!");
+    window.setFramerateLimit(60);
+    Game game(W, H);
 
-//    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-//    sf::CircleShape shape(100.f);
-//    shape.setFillColor(sf::Color::Magenta);
-//
-//    while (window.isOpen())
-//    {
-//        sf::Event event;
-//        while (window.pollEvent(event))
-//        {
-//            if (event.type == sf::Event::Closed)
-//                window.close();
-//        }
-//
-//        window.clear();
-//        window.draw(shape);
-//        window.display();
-//    }
+    while (window.isOpen())
+    {
+       sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(game.getSprite());
+        window.display();
+    }
 
 }
