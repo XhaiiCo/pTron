@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Playground.h"
 #include "Case.h"
 #include "Params.h"

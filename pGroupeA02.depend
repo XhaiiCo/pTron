@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1667132465 source:/home/david/Documents/GitHub/pTron/main.cpp
+1667133275 source:/home/david/Documents/GitHub/pTron/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Playground.h"
@@ -13,19 +13,18 @@
 1667118370 /home/david/Documents/GitHub/pTron/include/model/Case.h
 	"Player.h"
 
-1667132014 /home/david/Documents/GitHub/pTron/include/model/Player.h
+1667133313 /home/david/Documents/GitHub/pTron/include/model/Player.h
 	"string"
 
 1667118385 source:/home/david/Documents/GitHub/pTron/src/model/Case.cpp
 	"Case.h"
 
-1667132282 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
+1667133200 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
 	<iostream>
-	<SFML/Graphics.hpp>
 	"Player.h"
 	"Playground.h"
 
-1667132355 source:/home/david/Documents/GitHub/pTron/src/model/Playground.cpp
+1667132958 source:/home/david/Documents/GitHub/pTron/src/model/Playground.cpp
 	<iostream>
 	"Playground.h"
 	"Case.h"

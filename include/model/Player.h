@@ -3,7 +3,6 @@
 
 #include "string"
 
-
 class Player
 {
     private:
@@ -20,20 +19,10 @@ class Player
         Player& operator=(const Player& other);
 
         int getX() { return this->x ;}
-        void setX(int value){
-            if(value < 0) return ;
-            //if(value > Playground::NB_COLUMN) return
-
-            this->x = value;
-        }
+        void setX(int value) ;
 
         int getY() { return this->y ;}
-        void setY(int value){
-            if(value < 0) return ;
-            //if(value > Playground::NB_LINE) return
-
-            this->y = value ;
-        }
+        void setY(int value) ;
 
         bool changeDirection(const int dirX, const int dirY) ;
         void movePlayer() ;

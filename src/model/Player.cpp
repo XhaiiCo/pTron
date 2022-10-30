@@ -1,5 +1,4 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "Playground.h"
 
@@ -34,6 +33,20 @@ Player& Player::operator=(const Player& rhs)
     this->dirY = rhs.dirY ;
 
     return *this;
+}
+
+void Player::setX(int value){
+    if(value < 0) value = 0 ;
+    if(value > Playground::NB_COLUMN) value = 0 ;
+
+    this->x = value;
+}
+
+void Player::setY(int value){
+    if(value < 0) value = 0 ;
+    if(value > Playground::NB_LINE) value = 0 ;
+
+    this->y = value ;
 }
 
 
