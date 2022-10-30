@@ -9,7 +9,6 @@ using namespace sf;
 
 int main()
 {
-    
     int W = 500, H = 500;
 
     Player p1("D", 2, 2) ;
@@ -17,7 +16,7 @@ int main()
 
     Playground playground(p1, p2);
     playground.movePlayers() ;
-    
+
     std::cout << playground.str() << std::endl ;
 
     //Test p1
@@ -30,6 +29,7 @@ int main()
     playground.movePlayers() ;
     std::cout << playground.str() << std::endl ;
 
+    // La window
     RenderWindow window(VideoMode(W, H), "The Tron Game!");
     window.setFramerateLimit(60);
     Game game(W, H);
@@ -44,7 +44,7 @@ int main()
         }
 
         window.clear();
-        window.draw(game.getSprite());
+        window.draw(game.getSprite()); // affiche le nouveau sprite
         window.display();
     }
 

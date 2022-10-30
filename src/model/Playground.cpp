@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Playground.h"
 #include "Case.h"
-#include "Params.h"
 
 
 Playground::Playground(Player player1, Player player2): player1(player1), player2(player2)
