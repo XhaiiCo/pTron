@@ -20,6 +20,9 @@ Player::Player(const Player& other)
     this->y = other.y ;
     this->dirX = other.dirX ;
     this->dirY = other.dirY ;
+    this->red = other.red ;
+    this->green = other.green ;
+    this->blue = other.blue ;
 }
 
 Player& Player::operator=(const Player& rhs)
@@ -31,6 +34,9 @@ Player& Player::operator=(const Player& rhs)
     this->y = rhs.y ;
     this->dirX = rhs.dirX ;
     this->dirY = rhs.dirY ;
+    this->red = rhs.red ;
+    this->green = rhs.green ;
+    this->blue = rhs.blue ;
 
     return *this;
 }

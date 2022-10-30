@@ -8,8 +8,8 @@ class Playground
 {
     //CONSTANT
     public:
-        const inline static int NB_COLUMN = 10 ;
-        const inline static int NB_LINE = 10 ;
+        const inline static int NB_COLUMN = 20 ;
+        const inline static int NB_LINE = 20 ;
 
 
     private:
@@ -23,6 +23,10 @@ class Playground
         virtual ~Playground();
         Playground(const Playground& other);
         Playground& operator=(const Playground& other);
+
+        std::vector<std::vector<Case*>> getCases(){
+            return this->cases ;
+        } ;
 
         void init() ;
         void createCase() ;

@@ -14,6 +14,8 @@ int main()
 
     Player p1("D", 2, 2) ;
     Player p2("J", 3, 5) ;
+    p1.setColor(255, 0, 0) ;
+    p2.setColor(85, 255, 0) ;
 
     Playground playground(p1, p2);
     playground.movePlayers() ;
@@ -33,7 +35,7 @@ int main()
     // La window
     RenderWindow window(VideoMode(W, H), "The Tron Game!");
     window.setFramerateLimit(60);
-    Game game(W, H);
+    Game game(W, H, playground);
     Menu menu(W, H);
 
     while (window.isOpen())
@@ -75,7 +77,7 @@ int main()
             }
 
             window.clear();
-            menu.draw(window); // affiche le nouveau sprite
+            window.draw(game.getSprite()); // affiche le nouveau sprite
             window.display();
         }
     }

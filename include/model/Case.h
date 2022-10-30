@@ -14,6 +14,7 @@ class Case
         Case& operator=(const Case& other);
 
         void setPlayer(Player* player) ;
+        Player* getPlayer() { return this->player ;}
 
         std::string str() const ;
 
