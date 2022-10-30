@@ -10,22 +10,20 @@ using namespace sf;
 
 int main()
 {
-    int windowWidth = Playground::NB_COLUMN * (Game::CIRCLE_RADIUS*2 + Game::PADDING);
-    int windowHeight = Playground::NB_LINE * (Game::CIRCLE_RADIUS*2 + Game::PADDING);
-
-    Player p1("D", 3, 1) ;
-    Player p2("J", 3, 5) ;
-    p1.setColor(255, 0, 0) ;
-    p2.setColor(85, 255, 0) ;
+    int windowWidth = Playground::NB_COLUMN * (Game::CASE_WIDTH + Game::PADDING);
+    int windowHeight = Playground::NB_LINE * (Game::CASE_WIDTH + Game::PADDING);
     bool player1Lost = false ;
     bool player2Lost = false ;
+    int yStart = (int)(Playground::NB_LINE/2) ;
+
+    Player p1("D", 5, yStart) ;
+    Player p2("J", Playground::NB_COLUMN-5, yStart) ;
+    p1.setColor(255, 0, 0) ;
+    p2.setColor(85, 255, 0) ;
+    p1.changeDirection(1,0) ;
+    p2.changeDirection(-1, 0) ;
 
     Playground playground(p1, p2);
-    playground.movePlayers() ;
-
-    //Test p1
-    playground.changeDirectionPlayer1(1, 0) ;
-    playground.changeDirectionPlayer2(0,1) ;
 
     // The window
     RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");

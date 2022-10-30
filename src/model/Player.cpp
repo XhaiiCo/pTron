@@ -82,10 +82,10 @@ void Player::movePlayer(){
     this->x += dirX ;
     //If the player leaves the map, he is "teleported" to the other side
     if(this->x >= Playground::NB_COLUMN) this->x = 0 ;
-    if(this->x < 0) this->x = Playground::NB_LINE -1 ;
+    if(this->x < 0) this->x = Playground::NB_COLUMN -1 ;
 
     this->y += dirY ;
     //If the player leaves the map, he is "teleported" to the other side
     if(this->y >= Playground::NB_LINE) this->y = 0 ;
-    if(this->y < 0) this->y = Playground::NB_COLUMN -1 ;
+    if(this->y < 0) this->y = Playground::NB_LINE -1 ;
 }

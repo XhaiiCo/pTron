@@ -24,11 +24,16 @@ void Game::drawGame()  {
 
     for(int i = 0 ; i < Cases.size() ; i++){
         for(int j = 0 ; j < Cases[i].size() ; j++){
-            c.setPosition(j*(CIRCLE_RADIUS*2 + PADDING) ,i*(CIRCLE_RADIUS*2 +PADDING)) ;
             Player* p = Cases[i][j]->getPlayer() ;
-            if(p == nullptr) c.setFillColor(Color::Black) ;
-            else c.setFillColor(sf::Color(p->getRed(), p->getGreen(), p->getBlue())) ;
-            this->t.draw(c) ;
+
+            sf::RectangleShape rectangle(sf::Vector2f(CASE_WIDTH, CASE_WIDTH)) ;
+            rectangle.setPosition(j*(CASE_WIDTH + PADDING ) , i*(CASE_WIDTH + PADDING)) ;
+            rectangle.setOutlineColor(sf::Color(15,15,15)) ;
+            rectangle.setOutlineThickness(1) ;
+
+            if(p == nullptr) rectangle.setFillColor(sf::Color(25,25,30)) ;
+            else rectangle.setFillColor(sf::Color(p->getRed(), p->getGreen(), p->getBlue())) ;
+            this->t.draw(rectangle) ;
         }
     }
 

@@ -10,14 +10,13 @@ class Game
 {
     //CONSTANT
     public:
-        inline const static int CIRCLE_RADIUS = 6 ;
-        inline const static int PADDING = 6 ;
+        inline const static int CASE_WIDTH = 20 ;
+        inline const static int PADDING = 0 ;
     private:
         int width;
         int height;
         Sprite sprite;
         RenderTexture t;
-        CircleShape c = CircleShape(CIRCLE_RADIUS);
 
         Playground* playground ;
 

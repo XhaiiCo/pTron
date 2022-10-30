@@ -11,7 +11,7 @@ class Menu
         sf::Font font;
         sf::Text textBtn[MAX_NUMBER_OF_ITEMS];
     public:
-        Menu(float width, float height);
+        Menu(float width = 500, float height = 500);
         virtual ~Menu();
 
         void draw (sf::RenderWindow &window);
