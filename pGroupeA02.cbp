@@ -45,11 +45,13 @@
 		<Unit filename="include/model/Player.h" />
 		<Unit filename="include/model/Playground.h" />
 		<Unit filename="include/view/Game.h" />
+		<Unit filename="include/view/Menu.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/model/Case.cpp" />
 		<Unit filename="src/model/Player.cpp" />
 		<Unit filename="src/model/Playground.cpp" />
 		<Unit filename="src/view/Game.cpp" />
+		<Unit filename="src/view/Menu.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

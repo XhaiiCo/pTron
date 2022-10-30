@@ -4,6 +4,7 @@
 #include "Playground.h"
 #include "Player.h"
 #include "Game.h"
+#include "Menu.h"
 
 using namespace sf;
 
@@ -33,19 +34,49 @@ int main()
     RenderWindow window(VideoMode(W, H), "The Tron Game!");
     window.setFramerateLimit(60);
     Game game(W, H);
+    Menu menu(W, H);
 
     while (window.isOpen())
     {
-       sf::Event event;
+        sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if(event.type == sf::Event::KeyReleased)
+            {
+                if(event.key.code == sf::Keyboard::Up)
+                {
+                    menu.MoveUp();
+                }
+                else if(event.key.code == sf::Keyboard::Down)
+                {
+                    menu.MoveDown();
+                }
+                else if(event.key.code == sf::Keyboard::Return)
+                {
+                    int pressedItem = menu.GetPressedItem();
+
+                    if(pressedItem == 0)
+                    {
+                        std::cout << "Play button has been pressed" << std::endl;
+                    }
+                    else if(pressedItem == 1)
+                    {
+                        std::cout << "Option button has been pressed" << std::endl;
+                    }
+                    else
+                    {
+                        window.close();
+                    }
+                }
+            }
+            else if(event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
+
+            window.clear();
+            menu.draw(window); // affiche le nouveau sprite
+            window.display();
         }
-
-        window.clear();
-        window.draw(game.getSprite()); // affiche le nouveau sprite
-        window.display();
     }
-
 }
