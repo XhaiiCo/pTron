@@ -1,39 +1,41 @@
 # depslib dependency file v1.0
-1667132174 source:/home/jeremie/C++/ProjetJeuTron/pTron/main.cpp
+1667133875 source:/home/david/Documents/GitHub/pTron/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Playground.h"
 	"Player.h"
-	"Menu.h"
+	"Game.h"
 
-1667125074 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Playground.h
+1667132373 /home/david/Documents/GitHub/pTron/include/model/Playground.h
+	"Case.h"
 	"vector"
-	"Case.h"
 	"Player.h"
 
-1667125074 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Case.h
+1667118370 /home/david/Documents/GitHub/pTron/include/model/Case.h
 	"Player.h"
 
-1667125663 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Player.h
+1667133313 /home/david/Documents/GitHub/pTron/include/model/Player.h
 	"string"
-	<SFML/Graphics.hpp>
 
-1667131532 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/Menu.h
-	<SFML/Graphics.hpp>
-
-1667125074 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Case.cpp
+1667118385 source:/home/david/Documents/GitHub/pTron/src/model/Case.cpp
 	"Case.h"
 
-1667125663 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Player.cpp
+1667133317 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
 	<iostream>
-	<SFML/Graphics.hpp>
 	"Player.h"
+	"Playground.h"
 
-1667125074 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Playground.cpp
+1667134386 source:/home/david/Documents/GitHub/pTron/src/model/Playground.cpp
 	<iostream>
 	"Playground.h"
 	"Case.h"
 
-1667131560 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/Menu.cpp
-	"Menu.h"
+1667131658 /home/david/Documents/GitHub/pTron/include/util/Params.h
+
+1667134451 /home/david/Documents/GitHub/pTron/include/view/Game.h
+	<SFML/Graphics.hpp>
+
+1667134505 source:/home/david/Documents/GitHub/pTron/src/view/Game.cpp
+	"Game.h"
+	<SFML/Graphics.hpp>
 

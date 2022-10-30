@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "Playground.h"
 #include "Case.h"
 
@@ -68,17 +67,17 @@ Playground& Playground::operator=(const Playground& rhs)
     this->player1 = rhs.player1 ;
     this->player2 = rhs.player2 ;
 
-
     return *this;
 }
 
 
-
+//Init the playground
 void Playground::init()
 {
     this->createCase() ;
 }
 
+//Fill the matrix with empty cells
 void Playground::createCase()
 {
     for(int i = 0 ; i < Playground::NB_LINE ; i++)
@@ -88,16 +87,11 @@ void Playground::createCase()
         for(int j = 0 ; j < Playground::NB_COLUMN ; j++)
         {
             line.push_back(new Case()) ;
-
-            //juste pour tester si le joueur est bien ajouté
-            //line[j]->setPlayer(&player1);
-
         }
 
         this->cases.push_back(line) ;
     }
 }
-
 
 std::string Playground::str() const
 {
@@ -113,4 +107,23 @@ std::string Playground::str() const
     }
 
     return result ;
+}
+
+//Change the direction of the player 1
+bool Playground::changeDirectionPlayer1(int dirX, int dirY){
+    return player1.changeDirection(dirX, dirY) ;
+}
+
+//Change the direction of the player 2
+bool Playground::changeDirectionPlayer2(int dirX, int dirY){
+    return player2.changeDirection(dirX, dirY) ;
+}
+
+//Moves the player one square forward according to his direction
+void Playground::movePlayers(){
+    this->player1.movePlayer() ;
+    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
+
+    this->player2.movePlayer() ;
+    this->cases[this->player2.getY()][this->player2.getX()]->setPlayer(&player2) ;
 }

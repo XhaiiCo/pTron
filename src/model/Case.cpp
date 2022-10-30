@@ -20,6 +20,7 @@ Case& Case::operator=(const Case& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
 
+    this->player = rhs.player ;
     return *this;
 }
 

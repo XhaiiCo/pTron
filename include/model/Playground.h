@@ -1,15 +1,18 @@
 #ifndef PLAYGROUND_H
 #define PLAYGROUND_H
-#include "vector"
 #include "Case.h"
+#include "vector"
 #include "Player.h"
 
 class Playground
 {
-    private:
+    //CONSTANT
+    public:
         const inline static int NB_COLUMN = 10 ;
         const inline static int NB_LINE = 10 ;
 
+
+    private:
         std::vector<std::vector<Case*>> cases ;
 
         Player player1 ;
@@ -23,6 +26,10 @@ class Playground
 
         void init() ;
         void createCase() ;
+
+        bool changeDirectionPlayer1(int dirX, int dirY) ;
+        bool changeDirectionPlayer2(int dirX, int dirY) ;
+        void movePlayers() ;
 
         std::string str() const ;
 };
