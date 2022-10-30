@@ -2,20 +2,17 @@
 #include <iostream>
 
 #include "Playground.h"
+#include "Player.h"
 
 int main()
 {
+    Player p1("David") ;
+    Player p2("Jésurémie") ;
 
-    Playground playground ;
+    Playground playground(p1, p2);
+    p1 = Player("test") ;
 
     std::cout << playground.str() << std::endl ;
-
-    std::cout << "pg2" << std::endl ;
-
-    Playground pg2 = playground;
-
-    std::cout << pg2.str() << std::endl ;
-
 
 
 

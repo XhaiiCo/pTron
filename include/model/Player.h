@@ -5,9 +5,10 @@
 class Player
 {
     private:
+        std::string name ;
 
     public:
-        Player();
+        Player(std::string = "UNDEFINED");
         virtual ~Player();
         Player(const Player& other);
         Player& operator=(const Player& other);

@@ -1,6 +1,8 @@
+#include <iostream>
+
 #include "Player.h"
 
-Player::Player()
+Player::Player(std::string name): name(name)
 {
     //ctor
 }
@@ -12,17 +14,18 @@ Player::~Player()
 
 Player::Player(const Player& other)
 {
-    //copy ctor
+    this->name = other.name ;
 }
 
 Player& Player::operator=(const Player& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
+
+    this->name = rhs.name ;
     return *this;
 }
 
 
 std::string Player::str() const {
-    return "P" ;
+    return this->name ;
 }

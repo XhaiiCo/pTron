@@ -13,7 +13,7 @@ class Case
         Case(const Case& other);
         Case& operator=(const Case& other);
 
-        void setPlayer(Player& player) ;
+        void setPlayer(Player* player) ;
 
         std::string str() const ;
 

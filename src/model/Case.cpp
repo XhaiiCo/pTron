@@ -24,8 +24,8 @@ Case& Case::operator=(const Case& rhs)
 }
 
 
-void Case::setPlayer(Player& player){
-    this->player = &player ;
+void Case::setPlayer(Player* player){
+    this->player = player ;
 }
 
 std::string Case::str() const {

@@ -1,7 +1,10 @@
+#include <iostream>
+
 #include "Playground.h"
 #include "Case.h"
 
-Playground::Playground()
+
+Playground::Playground(Player player1, Player player2): player1(player1), player2(player2)
 {
     this->init() ;
 }
@@ -30,6 +33,9 @@ Playground::Playground(const Playground& other)
         }
 
         this->cases.push_back(line);
+
+        this->player1 = other.player1 ;
+        this->player2 = other.player2 ;
     }
 }
 
@@ -59,6 +65,9 @@ Playground& Playground::operator=(const Playground& rhs)
         this->cases.push_back(line);
     }
 
+    this->player1 = rhs.player1 ;
+    this->player2 = rhs.player2 ;
+
 
     return *this;
 }
@@ -81,9 +90,8 @@ void Playground::createCase()
             line.push_back(new Case()) ;
 
             //juste pour tester si le joueur est bien ajouté
-            /*
-            Player p;
-            line[j]->setPlayer(p);*/
+            //line[j]->setPlayer(&player1);
+
         }
 
         this->cases.push_back(line) ;
