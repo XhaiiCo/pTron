@@ -8,8 +8,8 @@ class Playground
 {
     //CONSTANT
     public:
-        const inline static int NB_COLUMN = 30 ;
-        const inline static int NB_LINE = 30 ;
+        const inline static int NB_COLUMN = 50 ;
+        const inline static int NB_LINE = 50 ;
 
 
     private:

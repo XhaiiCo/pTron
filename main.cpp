@@ -10,7 +10,7 @@ using namespace sf;
 
 int main()
 {
-    int W = 500, H = 500;
+    int W = 1000, H = 800;
 
     Player p1("D", 2, 2) ;
     Player p2("J", 3, 5) ;
@@ -72,6 +72,17 @@ int main()
 //            }
         }
         playground.movePlayers() ;
+
+        if (Keyboard::isKeyPressed(Keyboard::Up)) playground.changeDirectionPlayer1(0, 1);
+        if (Keyboard::isKeyPressed(Keyboard::Down)) playground.changeDirectionPlayer1(0, -1);
+        if (Keyboard::isKeyPressed(Keyboard::Left)) playground.changeDirectionPlayer1(-1, 0);
+        if (Keyboard::isKeyPressed(Keyboard::Right)) playground.changeDirectionPlayer1(1, 0);
+
+        if (Keyboard::isKeyPressed(Keyboard::Z)) playground.changeDirectionPlayer2(0, 1);
+        if (Keyboard::isKeyPressed(Keyboard::S)) playground.changeDirectionPlayer2(0, -1);
+        if (Keyboard::isKeyPressed(Keyboard::Q)) playground.changeDirectionPlayer2(-1, 0);
+        if (Keyboard::isKeyPressed(Keyboard::D)) playground.changeDirectionPlayer2(1, 0);
+
         game.drawGame() ;
         window.clear();
         window.draw(game.getSprite()); // affiche le nouveau sprite
