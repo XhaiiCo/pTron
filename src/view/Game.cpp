@@ -24,8 +24,8 @@ void Game::drawGame()  {
 
     for(int i = 0 ; i < Cases.size() ; i++){
         for(int j = 0 ; j < Cases[i].size() ; j++){
-            c.setPosition(i*(CIRCLE_RADIUS*2 +2) ,j*(CIRCLE_RADIUS*2 +2)) ;
-            Player* p = Cases[j][i]->getPlayer() ;
+            c.setPosition(j*(CIRCLE_RADIUS*2 + PADDING) ,i*(CIRCLE_RADIUS*2 +PADDING)) ;
+            Player* p = Cases[i][j]->getPlayer() ;
             if(p == nullptr) c.setFillColor(Color::Black) ;
             else c.setFillColor(sf::Color(p->getRed(), p->getGreen(), p->getBlue())) ;
             this->t.draw(c) ;

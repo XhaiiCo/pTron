@@ -11,6 +11,7 @@ class Game
     //CONSTANT
     public:
         inline const static int CIRCLE_RADIUS = 6 ;
+        inline const static int PADDING = 6 ;
     private:
         int width;
         int height;

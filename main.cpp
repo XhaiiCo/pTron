@@ -10,9 +10,10 @@ using namespace sf;
 
 int main()
 {
-    int W = 1000, H = 800;
+    int windowWidth = Playground::NB_COLUMN * (Game::CIRCLE_RADIUS*2 + Game::PADDING);
+    int windowHeight = Playground::NB_LINE * (Game::CIRCLE_RADIUS*2 + Game::PADDING);
 
-    Player p1("D", 2, 2) ;
+    Player p1("D", 3, 1) ;
     Player p2("J", 3, 5) ;
     p1.setColor(255, 0, 0) ;
     p2.setColor(85, 255, 0) ;
@@ -27,10 +28,10 @@ int main()
     playground.changeDirectionPlayer2(0,1) ;
 
     // The window
-    RenderWindow window(VideoMode(W, H), "The Tron Game!");
+    RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
     window.setFramerateLimit(9);
-    Game game(W, H, &playground);
-    Menu menu(W, H);
+    Game game(windowWidth, windowHeight, &playground);
+    Menu menu(windowWidth, windowHeight);
 
     while (window.isOpen())
     {
@@ -73,13 +74,13 @@ int main()
         }
         playground.movePlayers() ;
 
-        if (Keyboard::isKeyPressed(Keyboard::Up)) playground.changeDirectionPlayer1(0, 1);
-        if (Keyboard::isKeyPressed(Keyboard::Down)) playground.changeDirectionPlayer1(0, -1);
+        if (Keyboard::isKeyPressed(Keyboard::Up)) playground.changeDirectionPlayer1(0, -1);
+        if (Keyboard::isKeyPressed(Keyboard::Down)) playground.changeDirectionPlayer1(0, 1);
         if (Keyboard::isKeyPressed(Keyboard::Left)) playground.changeDirectionPlayer1(-1, 0);
         if (Keyboard::isKeyPressed(Keyboard::Right)) playground.changeDirectionPlayer1(1, 0);
 
-        if (Keyboard::isKeyPressed(Keyboard::Z)) playground.changeDirectionPlayer2(0, 1);
-        if (Keyboard::isKeyPressed(Keyboard::S)) playground.changeDirectionPlayer2(0, -1);
+        if (Keyboard::isKeyPressed(Keyboard::Z)) playground.changeDirectionPlayer2(0, -1);
+        if (Keyboard::isKeyPressed(Keyboard::S)) playground.changeDirectionPlayer2(0, 1);
         if (Keyboard::isKeyPressed(Keyboard::Q)) playground.changeDirectionPlayer2(-1, 0);
         if (Keyboard::isKeyPressed(Keyboard::D)) playground.changeDirectionPlayer2(1, 0);
 
