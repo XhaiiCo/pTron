@@ -63,7 +63,7 @@ std::string Player::str() const {
 //change the player direction
 bool Player::changeDirection(const int dirX, const int dirY){
 
-    //One of the direction have to be 0, because the player can't move horizontally
+    //One of the direction have to be 0, because the player can't move in diagonal
     if(dirX != 0 && dirY != 0) return false ;
 
     //If the player is currently moving on the x-axis he can only change direction in y
