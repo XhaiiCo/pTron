@@ -14,6 +14,7 @@ class Game
     public:
         Game();
         virtual ~Game();
+        void run() ;
 };
 
 #endif // GAME_H
