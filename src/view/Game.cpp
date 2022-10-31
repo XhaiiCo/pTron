@@ -6,7 +6,6 @@
 #include "Player.h"
 #include "GamePlay.h"
 #include "Menu.h"
-#include "MainWindow.h"
 #include "StateManager.h"
 Game::Game()
 {
