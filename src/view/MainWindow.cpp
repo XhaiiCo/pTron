@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::start(){
 RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
-    window.setFramerateLimit(9);
+    window.setFramerateLimit(FRAME_RATE_LIMIT);
     Game game(windowWidth, windowHeight, &playground);
     Menu menu(windowWidth, windowHeight);
 
@@ -45,7 +45,7 @@ RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
                     {
                         window.close();
                         RenderWindow play(VideoMode(windowWidth, windowHeight), "Play Option");
-                        play.setFramerateLimit(9);
+                        play.setFramerateLimit(FRAME_RATE_LIMIT);
 
                         while(play.isOpen())
                         {
@@ -58,18 +58,17 @@ RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
                                     play.close();
                                 }
                             }
-                            if (Keyboard::isKeyPressed(Keyboard::Up)) playground.changeDirectionPlayer1(0, -1);
-                            if (Keyboard::isKeyPressed(Keyboard::Down)) playground.changeDirectionPlayer1(0, 1);
-                            if (Keyboard::isKeyPressed(Keyboard::Left)) playground.changeDirectionPlayer1(-1, 0);
-                            if (Keyboard::isKeyPressed(Keyboard::Right)) playground.changeDirectionPlayer1(1, 0);
+                            if (Keyboard::isKeyPressed(Keyboard::Up)) playground.changeDirectionPlayer2(0, -1);
+                            if (Keyboard::isKeyPressed(Keyboard::Down)) playground.changeDirectionPlayer2(0, 1);
+                            if (Keyboard::isKeyPressed(Keyboard::Left)) playground.changeDirectionPlayer2(-1, 0);
+                            if (Keyboard::isKeyPressed(Keyboard::Right)) playground.changeDirectionPlayer2(1, 0);
 
-                            if (Keyboard::isKeyPressed(Keyboard::Z)) playground.changeDirectionPlayer2(0, -1);
-                            if (Keyboard::isKeyPressed(Keyboard::S)) playground.changeDirectionPlayer2(0, 1);
-                            if (Keyboard::isKeyPressed(Keyboard::Q)) playground.changeDirectionPlayer2(-1, 0);
-                            if (Keyboard::isKeyPressed(Keyboard::D)) playground.changeDirectionPlayer2(1, 0);
+                            if (Keyboard::isKeyPressed(Keyboard::Z)) playground.changeDirectionPlayer1(0, -1);
+                            if (Keyboard::isKeyPressed(Keyboard::S)) playground.changeDirectionPlayer1(0, 1);
+                            if (Keyboard::isKeyPressed(Keyboard::Q)) playground.changeDirectionPlayer1(-1, 0);
+                            if (Keyboard::isKeyPressed(Keyboard::D)) playground.changeDirectionPlayer1(1, 0);
 
                             playground.movePlayers() ;
-
 
                             player1Lost = playground.isPlayer1HasLost() ;
                             player2Lost = playground.isPlayer2HasLost() ;

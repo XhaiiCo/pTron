@@ -4,6 +4,9 @@
 
 class MainWindow
 {
+    //CONSTANT
+    public:
+    const inline static int FRAME_RATE_LIMIT = 12 ;
     private:
         int windowWidth ;
         int windowHeight ;
