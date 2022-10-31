@@ -23,6 +23,9 @@ Player::Player(const Player& other)
     this->red = other.red ;
     this->green = other.green ;
     this->blue = other.blue ;
+    this->redGodMode = other.redGodMode;
+    this->greenGodMode = other.greenGodMode;
+    this->blueGodMode = other.blueGodMode;
     this->godMode = other.godMode ;
     this->nbGodModeRemaining = other.nbGodModeRemaining ;
 }
@@ -39,6 +42,9 @@ Player& Player::operator=(const Player& rhs)
     this->red = rhs.red ;
     this->green = rhs.green ;
     this->blue = rhs.blue ;
+    this->redGodMode = rhs.redGodMode;
+    this->greenGodMode = rhs.greenGodMode;
+    this->blueGodMode = rhs.blueGodMode;
     this->godMode = rhs.godMode ;
     this->nbGodModeRemaining = rhs.nbGodModeRemaining ;
 

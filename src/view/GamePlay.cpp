@@ -25,8 +25,10 @@ void GamePlay::init(){
     int yStart = (int)(Playground::NB_LINE/2) ;
     Player p1("D", 5, yStart) ;
     Player p2("J ", Playground::NB_COLUMN-5, yStart) ;
-    p1.setColor(255, 0, 0) ;
-    p2.setColor(85, 255, 0) ;
+    p1.setColor(0, 255, 0) ;
+    p1.setColorGodMode(255, 255, 0) ;
+    p2.setColor(0, 0, 255) ;
+    p2.setColorGodMode(255, 255, 0) ;
     p1.changeDirection(1,0) ;
     p2.changeDirection(-1, 0) ;
 
@@ -108,6 +110,7 @@ void GamePlay::draw(){
             rectangle.setOutlineThickness(1) ;
 
             if(p == nullptr) rectangle.setFillColor(sf::Color(25,25,30)) ;
+            else if(p->isGodMode()) rectangle.setFillColor(sf::Color(p->getRedGodMode(), p->getGreenGodMode(), p->getBlueGodMode())) ;
             else rectangle.setFillColor(sf::Color(p->getRed(), p->getGreen(), p->getBlue())) ;
             this->window->draw(rectangle) ;
         }

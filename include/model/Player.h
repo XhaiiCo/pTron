@@ -17,6 +17,10 @@ class Player
         int green ;
         int blue ;
 
+        int redGodMode ;
+        int greenGodMode ;
+        int blueGodMode ;
+
         //BONUS
         bool godMode = false ;
         int nbGodModeRemaining = 1 ;
@@ -40,7 +44,16 @@ class Player
         };
         int getRed() { return this->red ;}
         int getGreen() { return this->green ;}
-        int getBlue() { return this->red ;}
+        int getBlue() { return this->blue ;}
+
+        void setColorGodMode(int r, int g, int b) {
+            this->redGodMode = r ;
+            this->greenGodMode = g ;
+            this->blueGodMode = b ;
+        };
+        int getRedGodMode() { return this->redGodMode;}
+        int getGreenGodMode() { return this->greenGodMode ;}
+        int getBlueGodMode() { return this->blueGodMode ;}
 
         void setNbGodModeRemaining(int value){
             if(value < 0 ) value = 0 ;
