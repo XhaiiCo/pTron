@@ -16,10 +16,11 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::start(){
-RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
+    RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
     window.setFramerateLimit(FRAME_RATE_LIMIT);
     Game game(windowWidth, windowHeight, &playground);
     Menu menu(windowWidth, windowHeight);
+    int cpt = 0 ;
 
     while (window.isOpen())
     {
@@ -68,15 +69,24 @@ RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
                             if (Keyboard::isKeyPressed(Keyboard::Q)) playground.changeDirectionPlayer1(-1, 0);
                             if (Keyboard::isKeyPressed(Keyboard::D)) playground.changeDirectionPlayer1(1, 0);
 
-                            playground.movePlayers() ;
+                            if(cpt == 0){
+                                    playground.movePlayers() ;
 
-                            player1Lost = playground.isPlayer1HasLost() ;
-                            player2Lost = playground.isPlayer2HasLost() ;
+                                    player1Lost = playground.isPlayer1HasLost() ;
+                                    player2Lost = playground.isPlayer2HasLost() ;
 
-                            if(player1Lost || player2Lost) play.close() ;
+                                    if(player1Lost || player2Lost) play.close() ;
 
-                            playground.displayplayers() ;
+                                    playground.displayplayers() ;
 
+                                    cpt++ ;
+
+                            }
+                            else {
+                                cpt++ ;
+                                if(cpt == SPEED) cpt = 0 ;
+
+                            }
                             game.drawGame() ;
 
                             play.clear();
