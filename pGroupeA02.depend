@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1667151443 source:/home/david/Documents/GitHub/pTron/main.cpp
+1667205874 source:/home/david/Documents/GitHub/pTron/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Playground.h"
@@ -7,7 +7,7 @@
 	"Game.h"
 	"Menu.h"
 
-1667150944 /home/david/Documents/GitHub/pTron/include/model/Playground.h
+1667156073 /home/david/Documents/GitHub/pTron/include/model/Playground.h
 	"Case.h"
 	"vector"
 	"Player.h"
@@ -21,7 +21,7 @@
 1667134929 source:/home/david/Documents/GitHub/pTron/src/model/Case.cpp
 	"Case.h"
 
-1667149414 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
+1667156150 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
 	<iostream>
 	"Player.h"
 	"Playground.h"
@@ -33,11 +33,11 @@
 
 1667131658 /home/david/Documents/GitHub/pTron/include/util/Params.h
 
-1667149613 /home/david/Documents/GitHub/pTron/include/view/Game.h
+1667155375 /home/david/Documents/GitHub/pTron/include/view/Game.h
 	<SFML/Graphics.hpp>
 	"Playground.h"
 
-1667149653 source:/home/david/Documents/GitHub/pTron/src/view/Game.cpp
+1667155585 source:/home/david/Documents/GitHub/pTron/src/view/Game.cpp
 	"Game.h"
 	<iostream>
 	<SFML/Graphics.hpp>
@@ -45,6 +45,15 @@
 1667136096 source:/home/david/Documents/GitHub/pTron/src/view/Menu.cpp
 	"Menu.h"
 
-1667136080 /home/david/Documents/GitHub/pTron/include/view/Menu.h
+1667156082 /home/david/Documents/GitHub/pTron/include/view/Menu.h
 	<SFML/Graphics.hpp>
+
+1667206342 source:/home/david/Documents/GitHub/pTron/src/view/MainWindow.cpp
+	"MainWindow.h"
+	<iostream>
+	"Game.h"
+	"Menu.h"
+
+1667206297 /home/david/Documents/GitHub/pTron/include/view/MainWindow.h
+	"Playground.h"
 
