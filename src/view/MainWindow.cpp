@@ -1,13 +1,13 @@
 #include "MainWindow.h"
 #include <iostream>
 
-#include "Game.h"
+#include "GamePlay.h"
 #include "Menu.h"
 
 MainWindow::MainWindow(Playground playground): playground(playground)
 {
-    this->windowWidth = Playground::NB_COLUMN * (Game::CASE_WIDTH + Game::PADDING);
-    this->windowHeight = Playground::NB_LINE * (Game::CASE_WIDTH + Game::PADDING);
+    this->windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+    this->windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
 }
 
 MainWindow::~MainWindow()

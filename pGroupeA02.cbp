@@ -46,6 +46,7 @@
 		<Unit filename="include/model/Playground.h" />
 		<Unit filename="include/view/Game.h" />
 		<Unit filename="include/view/Menu.h" />
+		<Unit filename="include/view/GamePlay.h" />
 		<Unit filename="include/view/GameState.h" />
 		<Unit filename="include/view/MainWindow.h" />
 		<Unit filename="include/view/StateManager.h" />
@@ -58,6 +59,7 @@
 		<Unit filename="src/view/GameState.cpp" />
 		<Unit filename="src/view/MainWindow.cpp" />
 		<Unit filename="src/view/StateManager.cpp" />
+		<Unit filename="src/view/GamePlay.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

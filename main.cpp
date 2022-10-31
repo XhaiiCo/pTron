@@ -3,7 +3,7 @@
 
 #include "Playground.h"
 #include "Player.h"
-#include "Game.h"
+#include "GamePlay.h"
 #include "Menu.h"
 #include "MainWindow.h"
 #include "StateManager.h"
@@ -31,13 +31,15 @@ int main()
 //    //LAUNCH THE PROGRAM
 //    mainWindow.start() ;
 
+    int windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+    int windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
 
-    RenderWindow window(VideoMode(500, 500), "The Tron Game!");
-    window.setFramerateLimit(60);
+    RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
+    window.setFramerateLimit(9);
 
     StateManager sm ;
 
-    Menu menu(&sm, &window) ;
+    Menu menu(&sm, &window, windowWidth, windowHeight) ;
     sm.setState(&menu) ;
     sm.getState()->init() ;
 

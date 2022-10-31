@@ -1,6 +1,8 @@
 #include "Menu.h"
 #include <iostream>
 
+#include "GamePlay.h"
+
 Menu::Menu(StateManager* sm, sf::RenderWindow* window, float width, float height): sm(sm), window(window), width(width), height(height){}
 
 Menu::~Menu()
@@ -53,7 +55,8 @@ void Menu::processInput(){
 
                 if(pressedItem == 0)
                 {
-                    //HERE PLAY
+                    this->sm->setState(new GamePlay(this->sm, this->window, this->width, this->height)) ;
+                    this->sm->getState()->init() ;
                 }
                 else if(pressedItem == 1)
                 {
