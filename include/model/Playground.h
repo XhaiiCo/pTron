@@ -10,6 +10,7 @@ class Playground
     public:
         const inline static int NB_COLUMN = 75;
         const inline static int NB_LINE = 50 ;
+        const inline static int NB_PLAYERS = 2 ;
 
 
     private:
@@ -21,8 +22,7 @@ class Playground
         /*
         * Associatino interne par valeur, les joueur appartiennent au plateau.
         */
-        Player player1 ;
-        Player player2 ;
+        std::vector<Player*> players ;
 
     public:
         Playground(Player = Player(), Player = Player());
@@ -37,23 +37,18 @@ class Playground
         void init() ;
         void createCase() ;
 
-        bool changeDirectionPlayer1(int dirX, int dirY) ;
-        bool changeDirectionPlayer2(int dirX, int dirY) ;
+        bool validPlayerId(int id) ;
 
-        bool triggerGodModePlayer1() ;
-        bool isPlayer1InGodMode() ;
-        void disableGodModePlayer1() ;
+        bool changeDirectionPlayer(int id, int dirX, int dirY) ;
 
-        bool triggerGodModePlayer2() ;
-        bool isPlayer2InGodMode() ;
-        void disableGodModePlayer2() ;
+        bool triggerGodModePlayer(int id) ;
+        bool isPlayerInGodMode(int id) ;
+        void disableGodModePlayer(int id) ;
 
         void movePlayers() ;
         void displayplayers() ;
 
-        bool isPlayer1HasLost() ;
-        bool isPlayer2HasLost() ;
-
+        bool isPlayerHasLost(int id) ;
         std::string str() const ;
 };
 

@@ -3,8 +3,10 @@
 #include "Case.h"
 
 
-Playground::Playground(Player player1, Player player2): player1(player1), player2(player2)
+Playground::Playground(Player player1, Player player2)
 {
+    this->players.push_back(new Player(player1)) ;
+    this->players.push_back(new Player(player2)) ;
     this->init() ;
 }
 
@@ -18,10 +20,26 @@ Playground::~Playground()
         }
     }
     this->cases.clear();
+
+    for(Player *p : this->players)
+        delete p ;
 }
 
 Playground::Playground(const Playground& other)
 {
+    for(std::vector<Case*> line : this->cases)
+    {
+        for(Case* c : line)
+        {
+            delete c;
+        }
+    }
+    this->cases.clear();
+
+    for(Player* p : players)
+        delete p ;
+    this->players.clear() ;
+
     for(std::vector<Case*> otherLine : other.cases)
     {
         std::vector<Case*> line;
@@ -32,10 +50,11 @@ Playground::Playground(const Playground& other)
         }
 
         this->cases.push_back(line);
-
-        this->player1 = other.player1 ;
-        this->player2 = other.player2 ;
     }
+
+    this->players.clear() ;
+    for(Player* p: other.players)
+        this->players.push_back(new Player(*p)) ;
 }
 
 Playground& Playground::operator=(const Playground& rhs)
@@ -49,8 +68,11 @@ Playground& Playground::operator=(const Playground& rhs)
             delete c;
         }
     }
-
     this->cases.clear();
+
+    for(Player* p : players)
+        delete p ;
+    this->players.clear() ;
 
     for(std::vector<Case*> rhsLine : rhs.cases)
     {
@@ -64,8 +86,8 @@ Playground& Playground::operator=(const Playground& rhs)
         this->cases.push_back(line);
     }
 
-    this->player1 = rhs.player1 ;
-    this->player2 = rhs.player2 ;
+    for(Player* p: rhs.players)
+        this->players.push_back(new Player(*p)) ;
 
     return *this;
 }
@@ -109,62 +131,51 @@ std::string Playground::str() const
     return result ;
 }
 
-//Change the direction of the player 1
-bool Playground::changeDirectionPlayer1(int dirX, int dirY){
-    return player1.changeDirection(dirX, dirY) ;
-}
+bool Playground::validPlayerId(int id){
+    if(id >= 0 && id < NB_PLAYERS) return true ;
 
-//Change the direction of the player 2
-bool Playground::changeDirectionPlayer2(int dirX, int dirY){
-    return player2.changeDirection(dirX, dirY) ;
-}
-
-bool Playground::triggerGodModePlayer1(){
-    return this->player1.triggerGodMode() ;
-}
-
-bool Playground::isPlayer1InGodMode(){
-    return this->player1.isGodMode() ;
-}
-
-void Playground::disableGodModePlayer1(){
-    this->player1.disableGodMode() ;
-}
-
-bool Playground::triggerGodModePlayer2(){
-    return this->player2.triggerGodMode() ;
-}
-
-bool Playground::isPlayer2InGodMode(){
-    return this->player2.isGodMode() ;
-}
-
-
-void Playground::disableGodModePlayer2(){
-    this->player2.disableGodMode() ;
-}
-
-//Moves the player one square forward according to his direction
-void Playground::movePlayers(){
-    this->player1.movePlayer() ;
-    this->player2.movePlayer() ;
-}
-
-bool Playground::isPlayer1HasLost(){
-    if(this->player1.isGodMode()) return false ;
-
-    if(this->cases[this->player1.getY()][this->player1.getX()]->getPlayer() != nullptr) return true ;
     return false ;
 }
 
-bool Playground::isPlayer2HasLost(){
-    if(this->player2.isGodMode()) return false ;
+//Change the direction of the player
+bool Playground::changeDirectionPlayer(int id, int dirX, int dirY){
+    if(!validPlayerId(id)) return false ;
+    return players[id]->changeDirection(dirX, dirY) ;
+}
 
-    if(this->cases[this->player2.getY()][this->player2.getX()]->getPlayer() != nullptr) return true ;
+bool Playground::triggerGodModePlayer(int id){
+    if(!validPlayerId(id)) return false ;
+    return this->players[id]->triggerGodMode() ;
+}
+
+void Playground::disableGodModePlayer(int id){
+    if(validPlayerId(id))
+        this->players[id]->disableGodMode() ;
+}
+
+bool Playground::isPlayerInGodMode(int id){
+    if(!validPlayerId(id)) return false ;
+    return this->players[id]->isGodMode() ;
+}
+
+
+//Moves the player one square forward according to his direction
+void Playground::movePlayers(){
+//    for(Player* p: this->players)
+//        p->movePlayer() ;
+    players[0]->movePlayer() ;
+    players[1]->movePlayer() ;
+}
+
+bool Playground::isPlayerHasLost(int id){
+    if(!validPlayerId(id)) return false ;
+    if(this->players[id]->isGodMode()) return false ;
+
+    if(this->cases[this->players[id]->getY()][this->players[id]->getX()]->getPlayer() != nullptr) return true ;
     return false ;
 }
 
 void Playground::displayplayers(){
-    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
-    this->cases[this->player2.getY()][this->player2.getX()]->setPlayer(&player2) ;
+    for(Player* p : this->players)
+        this->cases[p->getY()][p->getX()]->setPlayer(p) ;
 }

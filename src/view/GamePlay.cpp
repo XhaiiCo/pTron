@@ -45,24 +45,24 @@ void GamePlay::processInput(){
     }
 
     //PLAYER1
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) playground.changeDirectionPlayer1(0, -1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) playground.changeDirectionPlayer1(0, 1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) playground.changeDirectionPlayer1(-1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) playground.changeDirectionPlayer1(1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) playground.changeDirectionPlayer(0, 0, -1);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) playground.changeDirectionPlayer(0, 0, 1);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) playground.changeDirectionPlayer(0, -1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) playground.changeDirectionPlayer(0, 1, 0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        if(playground.triggerGodModePlayer1()){
+        if(playground.triggerGodModePlayer(0)){
             this->godModePlayer1Time.restart() ;
         }
     }
 
 
     //PLAYER 2
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) playground.changeDirectionPlayer2(0, -1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playground.changeDirectionPlayer2(0, 1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playground.changeDirectionPlayer2(-1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playground.changeDirectionPlayer2(1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) playground.changeDirectionPlayer(1, 0, -1);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playground.changeDirectionPlayer(1, 0, 1);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playground.changeDirectionPlayer(1, -1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playground.changeDirectionPlayer(1, 1, 0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
-        if(playground.triggerGodModePlayer2()){
+        if(playground.triggerGodModePlayer(1)){
             this->godModePlayer2Time.restart() ;
         }
     }
@@ -74,19 +74,19 @@ void GamePlay::processInput(){
 void GamePlay::update(){
     playground.movePlayers() ;
 
-    player1Lost = playground.isPlayer1HasLost() ;
-    player2Lost = playground.isPlayer2HasLost() ;
+    player1Lost = playground.isPlayerHasLost(0) ;
+    player2Lost = playground.isPlayerHasLost(1) ;
 
     if(player1Lost || player2Lost) this->window->close() ;
 
-    if(playground.isPlayer1InGodMode()){
+    if(playground.isPlayerInGodMode(0)){
             if(this->godModePlayer1Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)
-                playground.disableGodModePlayer1() ;
+                playground.disableGodModePlayer(0) ;
     }
 
-    if(playground.isPlayer2InGodMode()){
+    if(playground.isPlayerInGodMode(1)){
         if(this->godModePlayer2Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)
-            playground.disableGodModePlayer2() ;
+            playground.disableGodModePlayer(1) ;
     }
 
     playground.displayplayers() ;
