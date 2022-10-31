@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Playground.h"
+#include "Playground.h" nom, nom, Residence Residence
 #include "Case.h"
 
 
@@ -67,17 +67,17 @@ Playground& Playground::operator=(const Playground& rhs)
     this->player1 = rhs.player1 ;
     this->player2 = rhs.player2 ;
 
-
     return *this;
 }
 
 
-
+//Init the playground
 void Playground::init()
 {
     this->createCase() ;
 }
 
+//Fill the matrix with empty cells
 void Playground::createCase()
 {
     for(int i = 0 ; i < Playground::NB_LINE ; i++)
@@ -92,7 +92,6 @@ void Playground::createCase()
         this->cases.push_back(line) ;
     }
 }
-
 
 std::string Playground::str() const
 {
@@ -110,18 +109,37 @@ std::string Playground::str() const
     return result ;
 }
 
+//Change the direction of the player 1
 bool Playground::changeDirectionPlayer1(int dirX, int dirY){
     return player1.changeDirection(dirX, dirY) ;
 }
 
+//Change the direction of the player 2
 bool Playground::changeDirectionPlayer2(int dirX, int dirY){
     return player2.changeDirection(dirX, dirY) ;
 }
 
+//Moves the player one square forward according to his direction
 void Playground::movePlayers(){
     this->player1.movePlayer() ;
-    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
-
     this->player2.movePlayer() ;
+}
+
+bool Playground::isPlayer1HasLost(){
+    if(this->player1.isGodMode()) return false ;
+
+    if(this->cases[this->player1.getY()][this->player1.getX()]->getPlayer() != nullptr) return true ;
+    return false ;
+}
+
+bool Playground::isPlayer2HasLost(){
+    if(this->player2.isGodMode()) return false ;
+
+    if(this->cases[this->player2.getY()][this->player2.getX()]->getPlayer() != nullptr) return true ;
+    return false ;
+}
+
+void Playground::displayplayers(){
+    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
     this->cases[this->player2.getY()][this->player2.getX()]->setPlayer(&player2) ;
 }

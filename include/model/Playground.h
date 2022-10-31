@@ -8,13 +8,19 @@ class Playground
 {
     //CONSTANT
     public:
-        const inline static int NB_COLUMN = 10 ;
-        const inline static int NB_LINE = 10 ;
+        const inline static int NB_COLUMN = 75;
+        const inline static int NB_LINE = 50 ;
 
 
     private:
+        /*
+        * Association interne par pointer, les cases appartiennent au plateau de jeux, elle n'existe pas en dehors
+        */
         std::vector<std::vector<Case*>> cases ;
 
+        /*
+        * Associatino interne par valeur, les joueur appartiennent au plateau.
+        */
         Player player1 ;
         Player player2 ;
 
@@ -24,12 +30,20 @@ class Playground
         Playground(const Playground& other);
         Playground& operator=(const Playground& other);
 
+        std::vector<std::vector<Case*>> getCases(){
+            return this->cases ;
+        } ;
+
         void init() ;
         void createCase() ;
 
         bool changeDirectionPlayer1(int dirX, int dirY) ;
         bool changeDirectionPlayer2(int dirX, int dirY) ;
         void movePlayers() ;
+        void displayplayers() ;
+
+        bool isPlayer1HasLost() ;
+        bool isPlayer2HasLost() ;
 
         std::string str() const ;
 };

@@ -5,6 +5,9 @@
 class Case
 {
     private:
+        /*
+        * Association externe par pointer car le joueur existe en dehors de la case
+        */
         Player* player ;
 
     public:
@@ -14,6 +17,7 @@ class Case
         Case& operator=(const Case& other);
 
         void setPlayer(Player* player) ;
+        Player* getPlayer() { return this->player ;}
 
         std::string str() const ;
 
