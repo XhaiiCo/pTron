@@ -15,4 +15,4 @@ class GameState
         virtual void draw() = 0 ;
 };
 
-#endif // GAMESTATE_H
+#endif // GAMESTATE_HA
