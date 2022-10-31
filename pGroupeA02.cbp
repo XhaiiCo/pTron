@@ -46,13 +46,11 @@
 		<Unit filename="include/model/Case.h" />
 		<Unit filename="include/model/Player.h" />
 		<Unit filename="include/model/Playground.h" />
-		<Unit filename="include/util/Params.h" />
 		<Unit filename="include/view/Game.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/model/Case.cpp" />
 		<Unit filename="src/model/Player.cpp" />
 		<Unit filename="src/model/Playground.cpp" />
-		<Unit filename="src/util/Params.cpp" />
 		<Unit filename="src/view/Game.cpp" />
 		<Extensions />
 	</Project>
