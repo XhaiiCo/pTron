@@ -44,20 +44,24 @@
 		<Unit filename="include/model/Case.h" />
 		<Unit filename="include/model/Player.h" />
 		<Unit filename="include/model/Playground.h" />
+		<Unit filename="include/view/Button.h" />
 		<Unit filename="include/view/Game.h" />
 		<Unit filename="include/view/GamePlay.h" />
 		<Unit filename="include/view/GameState.h" />
 		<Unit filename="include/view/Menu.h" />
 		<Unit filename="include/view/StateManager.h" />
+		<Unit filename="include/view/TextBox.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/model/Case.cpp" />
 		<Unit filename="src/model/Player.cpp" />
 		<Unit filename="src/model/Playground.cpp" />
+		<Unit filename="src/view/Button.cpp" />
 		<Unit filename="src/view/Game.cpp" />
 		<Unit filename="src/view/GamePlay.cpp" />
 		<Unit filename="src/view/GameState.cpp" />
 		<Unit filename="src/view/Menu.cpp" />
 		<Unit filename="src/view/StateManager.cpp" />
+		<Unit filename="src/view/TextBox.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
