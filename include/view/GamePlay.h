@@ -12,6 +12,7 @@ class GamePlay: public GameState
     public:
         inline const static int CASE_WIDTH = 20 ;
         inline const static int PADDING = 0 ;
+        inline const static int GOD_MODE_DURATION_IN_SECONDS = 2 ;
 
 
     private:
@@ -24,6 +25,8 @@ class GamePlay: public GameState
         bool player1Lost = false ;
         bool player2Lost = false ;
 
+        sf::Clock godModePlayer1Time ;
+        sf::Clock godModePlayer2Time ;
 
     public:
         GamePlay(StateManager* sm, sf::RenderWindow* window, float width = 500, float height = 500);

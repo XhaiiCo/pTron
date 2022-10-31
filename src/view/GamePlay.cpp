@@ -47,7 +47,11 @@ void GamePlay::processInput(){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) playground.changeDirectionPlayer1(0, 1);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) playground.changeDirectionPlayer1(-1, 0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) playground.changeDirectionPlayer1(1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) playground.triggerGodModePlayer1() ;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        if(playground.triggerGodModePlayer1()){
+            this->godModePlayer1Time.restart() ;
+        }
+    }
 
 
     //PLAYER 2
@@ -55,7 +59,12 @@ void GamePlay::processInput(){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playground.changeDirectionPlayer2(0, 1);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playground.changeDirectionPlayer2(-1, 0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playground.changeDirectionPlayer2(1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) playground.triggerGodModePlayer2() ;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
+        if(playground.triggerGodModePlayer2()){
+            this->godModePlayer2Time.restart() ;
+        }
+    }
+
 
 
 }
@@ -67,6 +76,16 @@ void GamePlay::update(){
     player2Lost = playground.isPlayer2HasLost() ;
 
     if(player1Lost || player2Lost) this->window->close() ;
+
+    if(playground.isPlayer1InGodMode()){
+            if(this->godModePlayer1Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)
+                playground.disableGodModePlayer1() ;
+    }
+
+    if(playground.isPlayer2InGodMode()){
+        if(this->godModePlayer2Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)
+            playground.disableGodModePlayer2() ;
+    }
 
     playground.displayplayers() ;
 

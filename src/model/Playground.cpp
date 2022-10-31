@@ -123,8 +123,25 @@ bool Playground::triggerGodModePlayer1(){
     return this->player1.triggerGodMode() ;
 }
 
+bool Playground::isPlayer1InGodMode(){
+    return this->player1.isGodMode() ;
+}
+
+void Playground::disableGodModePlayer1(){
+    this->player1.disableGodMode() ;
+}
+
 bool Playground::triggerGodModePlayer2(){
     return this->player2.triggerGodMode() ;
+}
+
+bool Playground::isPlayer2InGodMode(){
+    return this->player2.isGodMode() ;
+}
+
+
+void Playground::disableGodModePlayer2(){
+    this->player2.disableGodMode() ;
 }
 
 //Moves the player one square forward according to his direction
