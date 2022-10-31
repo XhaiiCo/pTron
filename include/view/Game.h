@@ -1,19 +1,28 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include <SFML/Graphics.hpp>
 
 #include "Playground.h"
-
-using namespace sf;
-
+#include "Player.h"
+#include "GamePlay.h"
+#include "Menu.h"
+#include "StateManager.h"
 class Game
 {
 
     private:
+        int windowWidth ;
+        int windowHeight ;
+        sf::RenderWindow* window ;
+        StateManager* stateManager ;
 
     public:
         Game();
         virtual ~Game();
+        Game(const Game& other);
+        Game& operator=(const Game& other);
+
         void run() ;
 };
 

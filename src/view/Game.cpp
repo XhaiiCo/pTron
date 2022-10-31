@@ -1,40 +1,56 @@
 #include "Game.h"
 #include <iostream>
-#include <SFML/Graphics.hpp>
 
-#include "Playground.h"
-#include "Player.h"
-#include "GamePlay.h"
-#include "Menu.h"
-#include "StateManager.h"
 Game::Game()
 {
+    this->windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+    this->windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+
+    this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!");
+    this->window->setFramerateLimit(9);
+
+    stateManager = new StateManager() ;
 }
 
 Game::~Game()
 {
-    //dtor
+    delete window ;
+    delete stateManager ;
 }
 
 
+Game::Game(const Game& other)
+{
+    this->windowWidth = other.windowWidth ;
+    this->windowHeight = other.windowHeight;
+    this->window = other.window ;
+    this->stateManager = other.stateManager ;
+}
+
+Game& Game::operator=(const Game& rhs)
+{
+    if (this == &rhs) return *this; // handle self assignment
+
+    delete window ;
+    delete stateManager ;
+
+    this->windowWidth = rhs.windowWidth ;
+    this->windowHeight = rhs.windowHeight;
+    this->window = rhs.window ;
+    this->stateManager = rhs.stateManager ;
+
+    return *this;
+}
+
 void Game::run(){
-    int windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
-    int windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+    Menu menu(stateManager, window, windowWidth, windowHeight) ;
+    stateManager->setState(&menu) ;
+    stateManager->getState()->init() ;
 
-    RenderWindow window(VideoMode(windowWidth, windowHeight), "The Tron Game!");
-    window.setFramerateLimit(9);
-
-    StateManager sm ;
-
-    Menu menu(&sm, &window, windowWidth, windowHeight) ;
-    sm.setState(&menu) ;
-    sm.getState()->init() ;
-
-    while(window.isOpen()){
-        sm.getState()->processInput() ;
-        sm.getState()->update() ;
-        sm.getState()->draw() ;
-
+    while(window->isOpen()){
+        stateManager->getState()->processInput() ;
+        stateManager->getState()->update() ;
+        stateManager->getState()->draw() ;
     }
 }
 

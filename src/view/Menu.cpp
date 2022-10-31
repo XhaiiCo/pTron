@@ -36,39 +36,30 @@ void Menu::init(){
 
 void Menu::processInput(){
     sf::Event event;
-    while (window->pollEvent(event))
-    {
+    while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
-        if(event.type == sf::Event::KeyReleased)
-        {
-            if(event.key.code == sf::Keyboard::Up)
-            {
-                this->MoveUp();
-            }
-            else if(event.key.code == sf::Keyboard::Down)
-            {
-                this->MoveDown();
-            }
-            else if(event.key.code == sf::Keyboard::Return)
-            {
-                int pressedItem = this->GetPressedItem();
+    }
 
-                if(pressedItem == 0)
-                {
-                    this->sm->setState(new GamePlay(this->sm, this->window, this->width, this->height)) ;
-                    this->sm->getState()->init() ;
-                }
-                else if(pressedItem == 1)
-                {
-                    std::cout << "Option button has been pressed" << std::endl;
-                }
-                else
-                {
-                    window->close();
-                }
-            }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) this->MoveUp() ;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) this->MoveDown() ;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+        int pressedItem = this->GetPressedItem();
+
+        if(pressedItem == 0)
+        {
+            this->sm->setState(new GamePlay(this->sm, this->window, this->width, this->height)) ;
+            this->sm->getState()->init() ;
+        }
+        else if(pressedItem == 1)
+        {
+            std::cout << "Option button has been pressed" << std::endl;
+        }
+        else
+        {
+            window->close();
         }
     }
+
 };
 
 void Menu::update(){};

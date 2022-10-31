@@ -32,19 +32,14 @@ void GamePlay::init(){
 
     Playground p(p1,p2) ;
 
-    p.movePlayers() ;
-    p.displayplayers() ;
-
-
     this->playground = p;
 }
 
 void GamePlay::processInput(){
     sf::Event event;
+
     while(window->pollEvent(event))
-    {
         if(event.type == sf::Event::Closed) this->window->close();
-    }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) playground.changeDirectionPlayer2(0, -1);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playground.changeDirectionPlayer2(0, 1);
@@ -66,8 +61,6 @@ void GamePlay::update(){
     if(player1Lost || player2Lost) this->window->close() ;
 
     playground.displayplayers() ;
-
-
 
     if(player1Lost && player2Lost) std::cout << "Match draw" << std::endl ;
     else if(player2Lost) std::cout << "Player 1 won" << std::endl ;
