@@ -1,59 +1,75 @@
 # depslib dependency file v1.0
-1667205874 source:/home/david/Documents/GitHub/pTron/main.cpp
+1667221325 source:/home/david/Documents/GitHub/pTron/main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Playground.h"
 	"Player.h"
 	"Game.h"
 	"Menu.h"
+	"MainWindow.h"
+	"StateManager.h"
 
-1667156073 /home/david/Documents/GitHub/pTron/include/model/Playground.h
+1667208282 /home/david/Documents/GitHub/pTron/include/model/Playground.h
 	"Case.h"
 	"vector"
 	"Player.h"
 
-1667143533 /home/david/Documents/GitHub/pTron/include/model/Case.h
+1667208823 /home/david/Documents/GitHub/pTron/include/model/Case.h
 	"Player.h"
 
-1667143806 /home/david/Documents/GitHub/pTron/include/model/Player.h
+1667211367 /home/david/Documents/GitHub/pTron/include/model/Player.h
 	"string"
+
+1667208139 /home/david/Documents/GitHub/pTron/include/view/Game.h
+	<SFML/Graphics.hpp>
+	"Playground.h"
+
+1667221381 /home/david/Documents/GitHub/pTron/include/view/Menu.h
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"StateManager.h"
+
+1667217896 /home/david/Documents/GitHub/pTron/include/view/MainWindow.h
+	"Playground.h"
 
 1667134929 source:/home/david/Documents/GitHub/pTron/src/model/Case.cpp
 	"Case.h"
 
-1667156150 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
+1667211586 source:/home/david/Documents/GitHub/pTron/src/model/Player.cpp
 	<iostream>
 	"Player.h"
 	"Playground.h"
 
-1667150951 source:/home/david/Documents/GitHub/pTron/src/model/Playground.cpp
+1667211498 source:/home/david/Documents/GitHub/pTron/src/model/Playground.cpp
 	<iostream>
 	"Playground.h"
 	"Case.h"
 
-1667131658 /home/david/Documents/GitHub/pTron/include/util/Params.h
-
-1667155375 /home/david/Documents/GitHub/pTron/include/view/Game.h
-	<SFML/Graphics.hpp>
-	"Playground.h"
-
-1667155585 source:/home/david/Documents/GitHub/pTron/src/view/Game.cpp
+1667215470 source:/home/david/Documents/GitHub/pTron/src/view/Game.cpp
 	"Game.h"
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1667136096 source:/home/david/Documents/GitHub/pTron/src/view/Menu.cpp
+1667221421 source:/home/david/Documents/GitHub/pTron/src/view/Menu.cpp
 	"Menu.h"
+	<iostream>
 
-1667156082 /home/david/Documents/GitHub/pTron/include/view/Menu.h
-	<SFML/Graphics.hpp>
-
-1667206342 source:/home/david/Documents/GitHub/pTron/src/view/MainWindow.cpp
+1667220831 source:/home/david/Documents/GitHub/pTron/src/view/MainWindow.cpp
 	"MainWindow.h"
 	<iostream>
 	"Game.h"
 	"Menu.h"
 
-1667206297 /home/david/Documents/GitHub/pTron/include/view/MainWindow.h
-	"Playground.h"
+1667218346 source:/home/david/Documents/GitHub/pTron/src/view/GameState.cpp
+	"GameState.h"
+	<SFML/System.hpp>
+
+1667221293 /home/david/Documents/GitHub/pTron/include/view/GameState.h
+
+1667218427 source:/home/david/Documents/GitHub/pTron/src/view/StateManager.cpp
+	"StateManager.h"
+
+1667219774 /home/david/Documents/GitHub/pTron/include/view/StateManager.h
+	<stack>
+	"GameState.h"
 

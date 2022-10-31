@@ -1,8 +1,14 @@
 #include "Menu.h"
+#include <iostream>
 
-Menu::Menu(float width, float height)
+Menu::Menu(StateManager* sm, sf::RenderWindow* window, float width, float height): sm(sm), window(window), width(width), height(height){}
+
+Menu::~Menu()
 {
+    //dtor
+}
 
+void Menu::init(){
     if (!font.loadFromFile("arial.ttf"))
     {
         //handle error
@@ -24,21 +30,55 @@ Menu::Menu(float width, float height)
     textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
 
     selectedItemIndex = 0;
-}
+};
 
-Menu::~Menu()
-{
-    //dtor
-}
+void Menu::processInput(){
+    sf::Event event;
+    while (window->pollEvent(event))
+    {
+        if(event.type == sf::Event::Closed) window->close() ;
+        if(event.type == sf::Event::KeyReleased)
+        {
+            if(event.key.code == sf::Keyboard::Up)
+            {
+                this->MoveUp();
+            }
+            else if(event.key.code == sf::Keyboard::Down)
+            {
+                this->MoveDown();
+            }
+            else if(event.key.code == sf::Keyboard::Return)
+            {
+                int pressedItem = this->GetPressedItem();
 
-void Menu::draw(sf::RenderWindow &window)
-{
+                if(pressedItem == 0)
+                {
+                    //HERE PLAY
+                }
+                else if(pressedItem == 1)
+                {
+                    std::cout << "Option button has been pressed" << std::endl;
+                }
+                else
+                {
+                    window->close();
+                }
+            }
+        }
+    }
+};
+
+void Menu::update(){};
+
+void Menu::draw(){
+    this->window->clear() ;
     for(int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
     {
 
-        window.draw(textBtn[i]);
+        this->window->draw(textBtn[i]);
     }
-}
+    this->window->display();
+};
 
 void Menu::MoveUp()
 {
