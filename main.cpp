@@ -14,7 +14,7 @@ int main()
     //CONFIG PLAYER AND PLAYGROUND
     int yStart = (int)(Playground::NB_LINE/2) ;
     Player p1("D", 5, yStart) ;
-    Player p2("J", Playground::NB_COLUMN-5, yStart) ;
+    Player p2("J ", Playground::NB_COLUMN-5, yStart) ;
     p1.setColor(255, 0, 0) ;
     p2.setColor(85, 255, 0) ;
     p1.changeDirection(1,0) ;

@@ -1,6 +1,5 @@
 
 *.o
-pGroupeA02.cbp
 bin/Debug/pTron
 obj/Debug/main.o
 obj/Debug/src/model/Case.o
