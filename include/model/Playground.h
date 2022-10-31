@@ -13,8 +13,14 @@ class Playground
 
 
     private:
+        /*
+        * Association interne par pointer, les cases appartiennent au plateau de jeux, elle n'existe pas en dehors
+        */
         std::vector<std::vector<Case*>> cases ;
 
+        /*
+        * Associatino interne par valeur, les joueur appartiennent au plateau.
+        */
         Player player1 ;
         Player player2 ;
 

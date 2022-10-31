@@ -5,6 +5,9 @@
 class Case
 {
     private:
+        /*
+        * Association externe par pointer car le joueur existe en dehors de la case
+        */
         Player* player ;
 
     public:

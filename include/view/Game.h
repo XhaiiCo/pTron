@@ -12,6 +12,7 @@ class Game
     public:
         inline const static int CASE_WIDTH = 20 ;
         inline const static int PADDING = 0 ;
+
     private:
         int width;
         int height;
