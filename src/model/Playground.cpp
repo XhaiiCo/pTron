@@ -119,6 +119,14 @@ bool Playground::changeDirectionPlayer2(int dirX, int dirY){
     return player2.changeDirection(dirX, dirY) ;
 }
 
+bool Playground::triggerGodModePlayer1(){
+    return this->player1.triggerGodMode() ;
+}
+
+bool Playground::triggerGodModePlayer2(){
+    return this->player2.triggerGodMode() ;
+}
+
 //Moves the player one square forward according to his direction
 void Playground::movePlayers(){
     this->player1.movePlayer() ;

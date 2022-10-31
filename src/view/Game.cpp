@@ -7,7 +7,7 @@ Game::Game()
     this->windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
 
     this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!");
-    this->window->setFramerateLimit(9);
+    this->window->setFramerateLimit(12);
 
     stateManager = new StateManager() ;
 }

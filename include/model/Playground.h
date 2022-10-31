@@ -39,6 +39,10 @@ class Playground
 
         bool changeDirectionPlayer1(int dirX, int dirY) ;
         bool changeDirectionPlayer2(int dirX, int dirY) ;
+
+        bool triggerGodModePlayer1() ;
+        bool triggerGodModePlayer2() ;
+
         void movePlayers() ;
         void displayplayers() ;
 

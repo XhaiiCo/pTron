@@ -38,18 +38,26 @@ void GamePlay::init(){
 void GamePlay::processInput(){
     sf::Event event;
 
-    while(window->pollEvent(event))
+    while(window->pollEvent(event)){
         if(event.type == sf::Event::Closed) this->window->close();
+    }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) playground.changeDirectionPlayer2(0, -1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playground.changeDirectionPlayer2(0, 1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playground.changeDirectionPlayer2(-1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playground.changeDirectionPlayer2(1, 0);
-
+    //PLAYER1
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) playground.changeDirectionPlayer1(0, -1);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) playground.changeDirectionPlayer1(0, 1);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) playground.changeDirectionPlayer1(-1, 0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) playground.changeDirectionPlayer1(1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) playground.triggerGodModePlayer1() ;
+
+
+    //PLAYER 2
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) playground.changeDirectionPlayer2(0, -1);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) playground.changeDirectionPlayer2(0, 1);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) playground.changeDirectionPlayer2(-1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) playground.changeDirectionPlayer2(1, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) playground.triggerGodModePlayer2() ;
+
+
 }
 
 void GamePlay::update(){
