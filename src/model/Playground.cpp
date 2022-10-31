@@ -126,11 +126,15 @@ void Playground::movePlayers(){
 }
 
 bool Playground::isPlayer1HasLost(){
+    if(this->player1.isGodMode()) return false ;
+
     if(this->cases[this->player1.getY()][this->player1.getX()]->getPlayer() != nullptr) return true ;
     return false ;
 }
 
 bool Playground::isPlayer2HasLost(){
+    if(this->player2.isGodMode()) return false ;
+
     if(this->cases[this->player2.getY()][this->player2.getX()]->getPlayer() != nullptr) return true ;
     return false ;
 }

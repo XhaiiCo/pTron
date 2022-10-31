@@ -23,6 +23,8 @@ Player::Player(const Player& other)
     this->red = other.red ;
     this->green = other.green ;
     this->blue = other.blue ;
+    this->godMode = other.godMode ;
+    this->nbGodModeRemaining = other.nbGodModeRemaining ;
 }
 
 Player& Player::operator=(const Player& rhs)
@@ -37,6 +39,8 @@ Player& Player::operator=(const Player& rhs)
     this->red = rhs.red ;
     this->green = rhs.green ;
     this->blue = rhs.blue ;
+    this->godMode = rhs.godMode ;
+    this->nbGodModeRemaining = rhs.nbGodModeRemaining ;
 
     return *this;
 }
@@ -88,4 +92,15 @@ void Player::movePlayer(){
     //If the player leaves the map, he is "teleported" to the other side
     if(this->y >= Playground::NB_LINE) this->y = 0 ;
     if(this->y < 0) this->y = Playground::NB_LINE -1 ;
+}
+
+bool Player::triggerGodMode(){
+    if(this->nbGodModeRemaining <= 0) return false ;
+    this->godMode = true ;
+    this->nbGodModeRemaining-- ;
+    return true ;
+}
+
+void Player::disableGodMode(){
+    this->godMode = false ;
 }

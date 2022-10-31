@@ -19,6 +19,9 @@ int main()
     p2.setColor(85, 255, 0) ;
     p1.changeDirection(1,0) ;
     p2.changeDirection(-1, 0) ;
+
+    //p1.triggerGodMode() ;
+
     Playground playground(p1, p2);
 
     //CREATE THE MAINWINDOW

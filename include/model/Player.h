@@ -17,6 +17,10 @@ class Player
         int green ;
         int blue ;
 
+        //BONUS
+        bool godMode = false ;
+        int nbGodModeRemaining = 1 ;
+
     public:
         Player(std::string = "UNDEFINED", int x = 0, int y = 0);
         virtual ~Player();
@@ -37,6 +41,15 @@ class Player
         int getRed() { return this->red ;}
         int getGreen() { return this->green ;}
         int getBlue() { return this->red ;}
+
+        void setNbGodModeRemaining(int value){
+            if(value < 0 ) value = 0 ;
+            this->nbGodModeRemaining = value ;
+        }
+
+        bool triggerGodMode() ;
+        void disableGodMode() ;
+        bool isGodMode(){ return this->godMode ;}
 
         bool changeDirection(const int dirX, const int dirY) ;
         void movePlayer() ;
