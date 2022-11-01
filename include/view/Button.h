@@ -12,7 +12,7 @@ class Button
         sf::Text text;
 
     public:
-        Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor);
+        Button(std::string t = "button", sf::Vector2f size = {200, 50}, int charSize = 30, sf::Color bgColor = sf::Color::Green, sf::Color textColor = sf::Color::Black);
 
         void setFont(sf::Font &font);
 
@@ -24,7 +24,7 @@ class Button
 
         void drawTo(sf::RenderWindow &window);
 
-        bool isMouseOver(sf::RenderWindow &window);
+        bool isMouseOver(sf::RenderWindow *window);
 
 };
 

@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include <iostream>
 
-#include "GamePlay.h"
+#include "GameSettings.h"
 
 Menu::Menu(GameContext* gameContext): gameContext(gameContext){}
 
@@ -82,7 +82,7 @@ void Menu::draw(){
 
 void Menu::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-    stateManager->setState(new GamePlay(this->gameContext)) ;
+    stateManager->setState(new GameSettings(this->gameContext)) ;
     stateManager->getState()->init() ;
 }
 

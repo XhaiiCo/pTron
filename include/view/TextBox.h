@@ -23,7 +23,10 @@ class TextBox
         void deleteLastChar();
 
     public:
-        TextBox(int size, sf::Color color, bool sel);
+        TextBox(int size = 30, sf::Color color = sf::Color::Black, bool sel = false);
+        virtual ~TextBox();
+        TextBox(const TextBox& other);
+        TextBox& operator=(const TextBox& rhs);
 
         void setFont(sf::Font &font);
 
@@ -37,11 +40,11 @@ class TextBox
 
         std::string getText();
 
-        void drawTo(sf::RenderWindow &window);
+        void drawTo(sf::RenderWindow *window);
 
         void typedOn(sf::Event input);
 
-        bool isMouseOver(sf::RenderWindow &window);
+        bool isMouseOver(sf::RenderWindow *window);
 
 };
 

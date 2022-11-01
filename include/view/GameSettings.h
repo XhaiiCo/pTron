@@ -1,18 +1,33 @@
 #ifndef GAMESETTINGS_H
 #define GAMESETTINGS_H
 
+#include "GameState.h"
+#include "GameContext.h"
+#include "TextBox.h"
+#include "Button.h"
 
-class GameSettings
+class GameSettings: public GameState
 {
+    private:
+        GameContext* gameContext ;
+
+        TextBox textbox1 ;
+        TextBox textbox2 ;
+        Button btn1 ;
+
     public:
-        GameSettings();
+        GameSettings(GameContext* gameContext);
         virtual ~GameSettings();
         GameSettings(const GameSettings& other);
         GameSettings& operator=(const GameSettings& other);
 
-    protected:
+        virtual void init() override ;
+        virtual void processInput() override ;
+        virtual void update() override ;
+        virtual void draw() override ;
 
-    private:
+        virtual void nextState() override ;
+
 };
 
 #endif // GAMESETTINGS_H

@@ -48,6 +48,24 @@ TextBox::TextBox(int size, sf::Color color, bool sel)
     background.setFillColor(sf::Color::White);
 }
 
+TextBox::~TextBox(){
+
+}
+
+TextBox::TextBox(const TextBox& other){
+        this->background = other.background ;
+        this->textbox = other.textbox ;
+
+        this->isSelected = other.isSelected ;
+        this->limit = other.limit;
+}
+TextBox& TextBox::operator=(const TextBox& rhs){
+        this->background = rhs.background ;
+        this->textbox = rhs.textbox ;
+        this->isSelected = rhs.isSelected ;
+        this->limit = rhs.limit;
+}
+
 void TextBox::setFont(sf::Font &font)
 {
     textbox.setFont(font);
@@ -93,10 +111,10 @@ std::string TextBox::getText()
     return text.str();
 }
 
-void TextBox::drawTo(sf::RenderWindow &window)
+void TextBox::drawTo(sf::RenderWindow* window)
 {
-    window.draw(background);
-    window.draw(textbox);
+    window->draw(background);
+    //window->draw(textbox);
 }
 
 void TextBox::typedOn(sf::Event input)
@@ -120,10 +138,10 @@ void TextBox::typedOn(sf::Event input)
     }
 }
 
-bool TextBox::isMouseOver(sf::RenderWindow &window)
+bool TextBox::isMouseOver(sf::RenderWindow *window)
 {
-    float mouseX = sf::Mouse::getPosition(window).x;
-    float mouseY = sf::Mouse::getPosition(window).y;
+    float mouseX = sf::Mouse::getPosition(*window).x;
+    float mouseY = sf::Mouse::getPosition(*window).y;
 
     float btnPosX = background.getPosition().x;
     float btnPosY = background.getPosition().y;
