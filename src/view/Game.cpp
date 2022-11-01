@@ -1,6 +1,8 @@
 #include "Game.h"
 #include <iostream>
 
+#include "GameLaunch.h"
+
 Game::Game()
 {
     this->windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
@@ -43,10 +45,13 @@ Game& Game::operator=(const Game& rhs)
 }
 
 void Game::run(){
-    Menu menu(stateManager, window, windowWidth, windowHeight) ;
-    stateManager->setState(&menu) ;
-    stateManager->getState()->init() ;
+//    Menu menu(stateManager, window, windowWidth, windowHeight) ;
+//    stateManager->setState(&menu) ;
+//    stateManager->getState()->init() ;
 
+    GameLaunch gameLauch(stateManager, window, windowWidth, windowHeight) ;
+    stateManager->setState(&gameLauch) ;
+    stateManager->getState()->init() ;
     while(window->isOpen()){
         stateManager->getState()->processInput() ;
         stateManager->getState()->update() ;
