@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-GamePlay::GamePlay(StateManager* sm, sf::RenderWindow* window, float width, float height): sm(sm), window(window), width(width), height(height){}
+#include "GameOver.h"
+GamePlay::GamePlay(StateManager* stateManager, sf::RenderWindow* window, float windowWidth, float windowHeight): stateManager(stateManager), window(window), windowWidth(windowWidth), windowHeight(windowHeight){}
 
 GamePlay::~GamePlay()
 {
@@ -77,7 +78,7 @@ void GamePlay::update(){
     player1Lost = playground.isPlayerHasLost(0) ;
     player2Lost = playground.isPlayerHasLost(1) ;
 
-    if(player1Lost || player2Lost) this->window->close() ;
+    if(player1Lost || player2Lost) this->nextState() ;
 
     if(playground.isPlayerInGodMode(0)){
             if(this->godModePlayer1Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)
@@ -90,10 +91,6 @@ void GamePlay::update(){
     }
 
     playground.displayplayers() ;
-
-    if(player1Lost && player2Lost) std::cout << "Match draw" << std::endl ;
-    else if(player2Lost) std::cout << "Player 1 won" << std::endl ;
-    else if(player1Lost) std::cout << "Player 2 won" << std::endl ;
 }
 
 void GamePlay::draw(){
@@ -119,5 +116,6 @@ void GamePlay::draw(){
 }
 
 void GamePlay::nextState(){
-
+    this->stateManager->setState(new GameOver(this->stateManager, this->window, this->windowWidth, this->windowHeight));
+    this->stateManager->getState()->init() ;
 }

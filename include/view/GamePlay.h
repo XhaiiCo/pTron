@@ -17,9 +17,9 @@ class GamePlay: public GameState
 
     private:
         sf::RenderWindow* window ;
-        StateManager* sm ;
-        float width ;
-        float height ;
+        StateManager* stateManager ;
+        float windowWidth ;
+        float windowHeight ;
         Playground playground ;
 
         bool player1Lost = false ;
@@ -29,7 +29,7 @@ class GamePlay: public GameState
         sf::Clock godModePlayer2Time ;
 
     public:
-        GamePlay(StateManager* sm, sf::RenderWindow* window, float width = 500, float height = 500);
+        GamePlay(StateManager* stateManager, sf::RenderWindow* window, float windowWidth = 500, float windowHeight = 500);
         virtual ~GamePlay();
         GamePlay(const GamePlay& other);
         GamePlay& operator=(const GamePlay& other);
