@@ -81,15 +81,18 @@ void GamePlay::processInput(){
 }
 
 void GamePlay::update(){
+    Player* p1 = this->gameContext->getPlayer1() ;
+    Player* p2 = this->gameContext->getPlayer2() ;
+
     playground.movePlayers() ;
 
     player1Lost = playground.isPlayerHasLost(0) ;
     player2Lost = playground.isPlayerHasLost(1) ;
 
-    if(player1Lost || player2Lost) this->nextState() ;
+    if(player1Lost) p2->ecreaseScore() ;
+    if(player2Lost) p1->ecreaseScore() ;
 
-    Player* p1 = this->gameContext->getPlayer1() ;
-    Player* p2 = this->gameContext->getPlayer2() ;
+    if(player1Lost || player2Lost) this->nextState() ;
 
     if(p1->isGodMode()){
             if(this->godModePlayer1Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)

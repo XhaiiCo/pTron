@@ -9,6 +9,8 @@ class Player
 {
     private:
         std::string name ;
+        int score = 0;
+
         int x;
         int y ;
         int dirX = 0;
@@ -29,6 +31,8 @@ class Player
         Player& operator=(const Player& other);
 
         void resetParams() ;
+        void ecreaseScore() ;
+        int getScore() ;
 
         int getX() { return this->x ;}
         void setX(int value) ;

@@ -16,6 +16,7 @@ Player::~Player()
 Player::Player(const Player& other)
 {
     this->name = other.name ;
+    this->score = other.score ;
     this->x = other.x ;
     this->y = other.y ;
     this->dirX = other.dirX ;
@@ -31,6 +32,7 @@ Player& Player::operator=(const Player& rhs)
     if (this == &rhs) return *this; // handle self assignment
 
     this->name = rhs.name ;
+    this->score = rhs.score ;
     this->x = rhs.x ;
     this->y = rhs.y ;
     this->dirX = rhs.dirX ;
@@ -48,6 +50,15 @@ void Player::resetParams(){
     this->nbGodModeRemaining = 1 ;
     this->godMode = false ;
 }
+
+void Player::ecreaseScore(){
+    this->score++ ;
+}
+
+int Player::getScore(){
+    return this->score ;
+}
+
 
 void Player::setX(int value){
     if(value < 0) value = 0 ;

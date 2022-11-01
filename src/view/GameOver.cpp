@@ -40,13 +40,13 @@ void GameOver::init(){
     //SCORE PLAYEE 1
     scorePlayer1.setFont(font);
     scorePlayer1.setColor(sf::Color(p1->getMainColor().getRed(), p1->getMainColor().getGreen(), p1->getMainColor().getBlue()));
-    scorePlayer1.setString("2");
+    scorePlayer1.setString(std::to_string(p1->getScore()));
     scorePlayer1.setPosition(sf::Vector2f(windowWidth / 4, windowHeight / 2));
 
     //SCORE PLAYEE 2
     scorePlayer2.setFont(font);
     scorePlayer2.setColor(sf::Color(p2->getMainColor().getRed(), p2->getMainColor().getGreen(), p2->getMainColor().getBlue()));
-    scorePlayer2.setString("6");
+    scorePlayer2.setString(std::to_string(p2->getScore()));
     scorePlayer2.setPosition(sf::Vector2f((windowWidth / 4)*2, windowHeight / 2));
 }
 void GameOver::processInput(){
