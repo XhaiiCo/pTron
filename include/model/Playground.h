@@ -25,7 +25,7 @@ class Playground
         std::vector<Player*> players ;
 
     public:
-        Playground(Player = Player(), Player = Player());
+        Playground(Player* player1 = new Player(), Player* player2 = new Player());
         virtual ~Playground();
         Playground(const Playground& other);
         Playground& operator=(const Playground& other);
@@ -38,12 +38,6 @@ class Playground
         void createCase() ;
 
         bool validPlayerId(int id) ;
-
-        bool changeDirectionPlayer(int id, int dirX, int dirY) ;
-
-        bool triggerGodModePlayer(int id) ;
-        bool isPlayerInGodMode(int id) ;
-        void disableGodModePlayer(int id) ;
 
         void movePlayers() ;
         void displayplayers() ;

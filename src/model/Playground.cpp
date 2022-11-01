@@ -3,10 +3,10 @@
 #include "Case.h"
 
 
-Playground::Playground(Player player1, Player player2)
+Playground::Playground(Player* player1, Player* player2)
 {
-    this->players.push_back(new Player(player1)) ;
-    this->players.push_back(new Player(player2)) ;
+    this->players.push_back(player1) ;
+    this->players.push_back(player2) ;
     this->init() ;
 }
 
@@ -20,9 +20,6 @@ Playground::~Playground()
         }
     }
     this->cases.clear();
-
-    for(Player *p : this->players)
-        delete p ;
 }
 
 Playground::Playground(const Playground& other)
@@ -38,6 +35,7 @@ Playground::Playground(const Playground& other)
 
     for(Player* p : players)
         delete p ;
+
     this->players.clear() ;
 
     for(std::vector<Case*> otherLine : other.cases)
@@ -52,9 +50,8 @@ Playground::Playground(const Playground& other)
         this->cases.push_back(line);
     }
 
-    this->players.clear() ;
     for(Player* p: other.players)
-        this->players.push_back(new Player(*p)) ;
+        this->players.push_back(p) ;
 }
 
 Playground& Playground::operator=(const Playground& rhs)
@@ -87,7 +84,7 @@ Playground& Playground::operator=(const Playground& rhs)
     }
 
     for(Player* p: rhs.players)
-        this->players.push_back(new Player(*p)) ;
+        this->players.push_back(p) ;
 
     return *this;
 }
@@ -136,28 +133,6 @@ bool Playground::validPlayerId(int id){
 
     return false ;
 }
-
-//Change the direction of the player
-bool Playground::changeDirectionPlayer(int id, int dirX, int dirY){
-    if(!validPlayerId(id)) return false ;
-    return players[id]->changeDirection(dirX, dirY) ;
-}
-
-bool Playground::triggerGodModePlayer(int id){
-    if(!validPlayerId(id)) return false ;
-    return this->players[id]->triggerGodMode() ;
-}
-
-void Playground::disableGodModePlayer(int id){
-    if(validPlayerId(id))
-        this->players[id]->disableGodMode() ;
-}
-
-bool Playground::isPlayerInGodMode(int id){
-    if(!validPlayerId(id)) return false ;
-    return this->players[id]->isGodMode() ;
-}
-
 
 //Moves the player one square forward according to his direction
 void Playground::movePlayers(){

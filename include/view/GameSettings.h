@@ -29,6 +29,7 @@ class GameSettings: public GameState
 
         virtual void nextState() override ;
 
+        void applySettingToPlayers() ;
 };
 
 #endif // GAMESETTINGS_H

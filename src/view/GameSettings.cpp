@@ -94,15 +94,7 @@ void GameSettings::processInput(){
                 }
                 else if(btnPlay.isMouseOver(*window))
                 {
-                    std::string namePlayer1 = this->tbNamePlayer1.getText() ;
-                    if(namePlayer1 == "") namePlayer1 = "Player 1" ;
-
-                    std::string namePlayer2 = this->tbNamePlayer2.getText() ;
-                    if(namePlayer2 == "") namePlayer2 = "Player 2" ;
-
-                    this->gameContext->setNamePlayer1(namePlayer1) ;
-                    this->gameContext->setNamePlayer2(namePlayer2) ;
-
+                    this->applySettingToPlayers() ;
                     this->nextState() ;
 
                 }
@@ -135,4 +127,22 @@ void GameSettings::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
     stateManager->setState(new GamePlay(this->gameContext)) ;
     stateManager->getState()->init() ;
+}
+
+
+void GameSettings::applySettingToPlayers(){
+    Player* p1 = this->gameContext->getPlayer1() ;
+    Player* p2 = this->gameContext->getPlayer2() ;
+
+    std::string namePlayer1 = this->tbNamePlayer1.getText() ;
+    if(namePlayer1 == "") namePlayer1 = "Player 1" ;
+
+    std::string namePlayer2 = this->tbNamePlayer2.getText() ;
+    if(namePlayer2 == "") namePlayer2 = "Player 2" ;
+
+
+    p1->setMainColor(Color(0, 255, 0));
+    p1->setGodModeColor(Color(255, 255, 0)) ;
+    p2->setMainColor(Color(0, 0, 255)) ;
+    p2->setGodModeColor(Color(255, 255, 0)) ;
 }

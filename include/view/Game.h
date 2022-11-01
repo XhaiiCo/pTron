@@ -9,12 +9,15 @@
 #include "Menu.h"
 #include "StateManager.h"
 #include "GameContext.h"
+#include "Player.h"
 
 class Game
 {
 
     private:
         GameContext* gameContext ;
+        Player* player1 ;
+        Player* player2 ;
 
     public:
         Game();

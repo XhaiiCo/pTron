@@ -8,14 +8,21 @@ Game::Game(){}
 Game::~Game()
 {
      delete gameContext ;
+     delete player1 ;
+     delete player2 ;
 }
 
 
 Game::Game(const Game& other)
 {
     delete gameContext ;
+    delete player1 ;
+    delete player2 ;
+
 
     this->gameContext = other.gameContext ;
+    this->player1 = other.player1 ;
+    this->player2 = other.player2 ;
 }
 
 Game& Game::operator=(const Game& rhs)
@@ -23,8 +30,12 @@ Game& Game::operator=(const Game& rhs)
     if (this == &rhs) return *this; // handle self assignment
 
     delete gameContext ;
+    delete player1 ;
+    delete player2 ;
 
     this->gameContext = rhs.gameContext ;
+    this->player1 = rhs.player1 ;
+    this->player2 = rhs.player2 ;
 
     return *this;
 }
@@ -54,6 +65,10 @@ void Game::initGameContext(){
 
     StateManager stateManager = StateManager() ;
 
-    this->gameContext = new GameContext(stateManager, window, windowWidth, windowHeight) ;
+    int yStart = (int)(Playground::NB_LINE/2) ;
+    this->player1 = new Player("D", 5, yStart) ;
+    this->player2 = new Player("A", Playground::NB_COLUMN-5, yStart) ;
+
+    this->gameContext = new GameContext(stateManager, window, player1, player2, windowWidth, windowHeight) ;
 }
 
