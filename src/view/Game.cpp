@@ -12,17 +12,24 @@ Game::Game()
     this->window->setFramerateLimit(12);
 
     stateManager = new StateManager() ;
+
+    this->gameContext = new GameContext(this->stateManager, this->window, this->windowWidth, this->windowHeight) ;
 }
 
 Game::~Game()
 {
     delete window ;
     delete stateManager ;
+    delete gameContext ;
 }
 
 
 Game::Game(const Game& other)
 {
+    delete window ;
+    delete stateManager ;
+    delete gameContext ;
+
     this->windowWidth = other.windowWidth ;
     this->windowHeight = other.windowHeight;
     this->window = other.window ;
@@ -35,6 +42,7 @@ Game& Game::operator=(const Game& rhs)
 
     delete window ;
     delete stateManager ;
+    delete gameContext ;
 
     this->windowWidth = rhs.windowWidth ;
     this->windowHeight = rhs.windowHeight;
@@ -45,10 +53,6 @@ Game& Game::operator=(const Game& rhs)
 }
 
 void Game::run(){
-//    Menu menu(stateManager, window, windowWidth, windowHeight) ;
-//    stateManager->setState(&menu) ;
-//    stateManager->getState()->init() ;
-
     GameLaunch gameLauch(stateManager, window, windowWidth, windowHeight) ;
     stateManager->setState(&gameLauch) ;
     stateManager->getState()->init() ;

@@ -47,6 +47,7 @@
 		<Unit filename="include/model/Playground.h" />
 		<Unit filename="include/view/Button.h" />
 		<Unit filename="include/view/Game.h" />
+		<Unit filename="include/view/GameContext.h" />
 		<Unit filename="include/view/GameLaunch.h" />
 		<Unit filename="include/view/GameOver.h" />
 		<Unit filename="include/view/GamePlay.h" />
@@ -61,6 +62,7 @@
 		<Unit filename="src/model/Playground.cpp" />
 		<Unit filename="src/view/Button.cpp" />
 		<Unit filename="src/view/Game.cpp" />
+		<Unit filename="src/view/GameContext.cpp" />
 		<Unit filename="src/view/GameLaunch.cpp" />
 		<Unit filename="src/view/GameOver.cpp" />
 		<Unit filename="src/view/GamePlay.cpp" />

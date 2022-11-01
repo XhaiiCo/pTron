@@ -8,6 +8,8 @@
 #include "GamePlay.h"
 #include "Menu.h"
 #include "StateManager.h"
+#include "GameContext.h"
+
 class Game
 {
 
@@ -16,6 +18,8 @@ class Game
         int windowHeight ;
         sf::RenderWindow* window ;
         StateManager* stateManager ;
+
+        GameContext* gameContext ;
 
     public:
         Game();
