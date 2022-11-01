@@ -117,3 +117,7 @@ void GamePlay::draw(){
     }
     this->window->display();
 }
+
+void GamePlay::nextState(){
+
+}

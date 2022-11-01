@@ -48,14 +48,17 @@ void GameLaunch::processInput(){
 }
 
 void GameLaunch::update(){
-    if(this->duration.getElapsedTime().asSeconds() >= LAUNCH_SCREEN_DURATION_IN_SECONDS){
-        this->stateManager->setState(new Menu(this->stateManager, this->window, windowWidth, windowHeight)) ;
-        this->stateManager->getState()->init() ;
-    }
+    if(this->duration.getElapsedTime().asSeconds() >= LAUNCH_SCREEN_DURATION_IN_SECONDS)
+        this->nextState() ;
 }
 
 void GameLaunch::draw(){
     this->window->clear() ;
     this->window->draw(title);
     this->window->display();
+}
+
+void GameLaunch::nextState(){
+    this->stateManager->setState(new Menu(this->stateManager, this->window, windowWidth, windowHeight)) ;
+    this->stateManager->getState()->init() ;
 }

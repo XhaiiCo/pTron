@@ -32,7 +32,7 @@ void Menu::init(){
     textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
 
     selectedItemIndex = 0;
-};
+}
 
 void Menu::processInput(){
     sf::Event event;
@@ -47,8 +47,7 @@ void Menu::processInput(){
 
         if(pressedItem == 0)
         {
-            this->sm->setState(new GamePlay(this->sm, this->window, this->width, this->height)) ;
-            this->sm->getState()->init() ;
+            this->nextState() ;
         }
         else if(pressedItem == 1)
         {
@@ -60,7 +59,7 @@ void Menu::processInput(){
         }
     }
 
-};
+}
 
 void Menu::update(){};
 
@@ -72,7 +71,12 @@ void Menu::draw(){
         this->window->draw(textBtn[i]);
     }
     this->window->display();
-};
+}
+
+void Menu::nextState(){
+    this->sm->setState(new GamePlay(this->sm, this->window, this->width, this->height)) ;
+    this->sm->getState()->init() ;
+}
 
 void Menu::MoveUp()
 {

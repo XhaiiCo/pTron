@@ -39,6 +39,7 @@ class GamePlay: public GameState
         virtual void processInput() override ;
         virtual void update() override ;
         virtual void draw() override ;
+        virtual void nextState() override ;
 
 };
 

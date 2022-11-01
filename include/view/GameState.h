@@ -15,6 +15,8 @@ class GameState
         virtual void processInput() = 0 ;
         virtual void update() = 0 ;
         virtual void draw() = 0 ;
+
+        virtual void nextState() = 0 ;
 };
 
 #endif // GAMESTATE_HA
