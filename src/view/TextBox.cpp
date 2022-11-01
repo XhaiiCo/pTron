@@ -100,6 +100,10 @@ void TextBox::setSelected(bool sel)
     }
 }
 
+void TextBox::setText(std::string value){
+    textbox.setString(value) ;
+}
+
 void TextBox::setBorder(sf::Color color)
 {
     background.setOutlineColor(color);

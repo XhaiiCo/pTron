@@ -31,21 +31,23 @@ void GameSettings::init(){
     window->setKeyRepeatEnabled(true);
 
     font.loadFromFile("assets/fonts/Square-Bold.otf");
-    this->textbox1 = TextBox(30, sf::Color::Black, false);
-    this->textbox1.setFont(font);
-    this->textbox1.setPosition({300, 100});
-    this->textbox1.setLimit(10);
-    this->textbox1.setBorder(sf::Color::White);
+    this->tbNamePlayer1 = TextBox(30, sf::Color::Black, false);
+    this->tbNamePlayer1.setFont(font);
+    this->tbNamePlayer1.setPosition({300, 100});
+    this->tbNamePlayer1.setLimit(10);
+    this->tbNamePlayer1.setBorder(sf::Color::White);
+    this->tbNamePlayer1.setText("Player 1") ;
 
-    textbox2 = TextBox(30, sf::Color::Black, false);
-    textbox2.setFont(font);
-    textbox2.setPosition({1200, 100});
-    textbox2.setLimit(10);
-    textbox2.setBorder(sf::Color::White);
+    this->tbNamePlayer2 = TextBox(30, sf::Color::Black, false);
+    this->tbNamePlayer2.setFont(font);
+    this->tbNamePlayer2.setPosition({1200, 100});
+    this->tbNamePlayer2.setLimit(10);
+    this->tbNamePlayer2.setBorder(sf::Color::White);
+    this->tbNamePlayer2.setText("Player 2") ;
 
-    btn1 = Button("PLAY", {200, 50}, 30, sf::Color::Green, sf::Color::Black);
-    btn1.setPosition({760,600});
-    btn1.setFont(font);
+    this->btnPlay = Button("PLAY", {200, 50}, 30, sf::Color::Green, sf::Color::Black);
+    this->btnPlay .setPosition({760,600});
+    this->btnPlay .setFont(font);
 }
 
 void GameSettings::processInput(){
@@ -60,44 +62,54 @@ void GameSettings::processInput(){
                 break ;
 
             case sf::Event::TextEntered:
-                textbox1.typedOn(event);
-                textbox2.typedOn(event);
+                tbNamePlayer1.typedOn(event);
+                tbNamePlayer2.typedOn(event);
                 break;
 
             case sf::Event::MouseMoved:
-                if(btn1.isMouseOver(*window))
+                if(btnPlay.isMouseOver(*window))
                 {
-                    btn1.setBackColor(sf::Color::White);
+                    btnPlay.setBackColor(sf::Color::White);
                 }
                 else
                 {
-                    btn1.setBackColor(sf::Color::Green);
+                    btnPlay.setBackColor(sf::Color::Green);
                 }
                 break;
 
             case sf::Event::MouseButtonPressed:
-                if(textbox1.isMouseOver(*window))
+                if(tbNamePlayer1.isMouseOver(*window))
                 {
-                    textbox1.setSelected(true);
-                    textbox1.setBorder(sf::Color::Green);
-                    textbox2.setSelected(false);
-                    textbox2.setBorder(sf::Color::White);
+                    tbNamePlayer1.setSelected(true);
+                    tbNamePlayer1.setBorder(sf::Color::Green);
+                    tbNamePlayer2.setSelected(false);
+                    tbNamePlayer2.setBorder(sf::Color::White);
                 }
-                else if(textbox2.isMouseOver(*window))
+                else if(tbNamePlayer2.isMouseOver(*window))
                 {
-                    textbox2.setSelected(true);
-                    textbox2.setBorder(sf::Color::Green);
-                    textbox1.setSelected(false);
-                    textbox1.setBorder(sf::Color::White);
+                    tbNamePlayer2.setSelected(true);
+                    tbNamePlayer2.setBorder(sf::Color::Green);
+                    tbNamePlayer1.setSelected(false);
+                    tbNamePlayer1.setBorder(sf::Color::White);
                 }
-                else if(btn1.isMouseOver(*window))
+                else if(btnPlay.isMouseOver(*window))
                 {
+                    std::string namePlayer1 = this->tbNamePlayer1.getText() ;
+                    if(namePlayer1 == "") namePlayer1 = "Player 1" ;
+
+                    std::string namePlayer2 = this->tbNamePlayer2.getText() ;
+                    if(namePlayer2 == "") namePlayer2 = "Player 2" ;
+
+                    this->gameContext->setNamePlayer1(namePlayer1) ;
+                    this->gameContext->setNamePlayer2(namePlayer2) ;
+
                     this->nextState() ;
+
                 }
                 else
                 {
-                    textbox1.setSelected(false);
-                    textbox2.setSelected(false);
+                    tbNamePlayer1.setSelected(false);
+                    tbNamePlayer2.setSelected(false);
                 }
                 break ;
         }
@@ -112,9 +124,9 @@ void GameSettings::draw(){
 
     window->clear();
 
-    this->textbox1.drawTo(*window);
-    this->textbox2.drawTo(*window);
-    this->btn1.drawTo(*window);
+    this->tbNamePlayer1.drawTo(*window);
+    this->tbNamePlayer2.drawTo(*window);
+    this->btnPlay.drawTo(*window);
 
     window->display();
 }

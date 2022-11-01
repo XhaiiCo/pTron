@@ -12,9 +12,9 @@ class GameSettings: public GameState
         GameContext* gameContext ;
 
         sf::Font font;
-        TextBox textbox1 ;
-        TextBox textbox2 ;
-        Button btn1 ;
+        TextBox tbNamePlayer1 ;
+        TextBox tbNamePlayer2;
+        Button btnPlay ;
 
     public:
         GameSettings(GameContext* gameContext);

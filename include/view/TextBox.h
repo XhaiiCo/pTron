@@ -38,6 +38,8 @@ class TextBox
 
         void setBorder(sf::Color color);
 
+        void setText(std::string value) ;
+
         std::string getText();
 
         void drawTo(sf::RenderWindow &window);

@@ -25,8 +25,8 @@ GamePlay& GamePlay::operator=(const GamePlay& rhs)
 
 void GamePlay::init(){
     int yStart = (int)(Playground::NB_LINE/2) ;
-    Player p1("D", 5, yStart) ;
-    Player p2("J ", Playground::NB_COLUMN-5, yStart) ;
+    Player p1(this->gameContext->getNamePlayer1(), 5, yStart) ;
+    Player p2(this->gameContext->getNamePlayer2(), Playground::NB_COLUMN-5, yStart) ;
 
     p1.setMainColor(Color(0, 255, 0));
     p1.setGodModeColor(Color(255, 255, 0)) ;
