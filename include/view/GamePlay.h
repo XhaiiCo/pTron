@@ -5,6 +5,7 @@
 #include "StateManager.h"
 #include <SFML/Graphics.hpp>
 #include "Playground.h"
+#include "Color.h"
 
 class GamePlay: public GameState
 {
@@ -21,6 +22,7 @@ class GamePlay: public GameState
         float windowWidth ;
         float windowHeight ;
         Playground playground ;
+        Color emptyCaseColor = Color(25,25,30) ;
 
         bool player1Lost = false ;
         bool player2Lost = false ;

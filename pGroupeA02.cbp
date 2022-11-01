@@ -42,6 +42,7 @@
 			<Add library="sfml-system" />
 		</Linker>
 		<Unit filename="include/model/Case.h" />
+		<Unit filename="include/model/Color.h" />
 		<Unit filename="include/model/Player.h" />
 		<Unit filename="include/model/Playground.h" />
 		<Unit filename="include/view/Button.h" />
@@ -55,6 +56,7 @@
 		<Unit filename="include/view/TextBox.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/model/Case.cpp" />
+		<Unit filename="src/model/Color.cpp" />
 		<Unit filename="src/model/Player.cpp" />
 		<Unit filename="src/model/Playground.cpp" />
 		<Unit filename="src/view/Button.cpp" />
