@@ -11,24 +11,24 @@ Menu::~Menu()
 }
 
 void Menu::init(){
-    if (!font.loadFromFile("arial.ttf"))
+    if (!font.loadFromFile("Square-Regular.otf"))
     {
         //handle error
     }
 
     textBtn[0].setFont(font);
     textBtn[0].setColor(sf::Color::Red);
-    textBtn[0].setString("Play");
+    textBtn[0].setString("PLAY");
     textBtn[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 1));
 
     textBtn[1].setFont(font);
     textBtn[1].setColor(sf::Color::White);
-    textBtn[1].setString("Options");
+    textBtn[1].setString("OPTIONS");
     textBtn[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2));
 
     textBtn[2].setFont(font);
     textBtn[2].setColor(sf::Color::White);
-    textBtn[2].setString("Exit");
+    textBtn[2].setString("EXIT");
     textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
 
     selectedItemIndex = 0;
