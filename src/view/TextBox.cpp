@@ -111,10 +111,10 @@ std::string TextBox::getText()
     return text.str();
 }
 
-void TextBox::drawTo(sf::RenderWindow* window)
+void TextBox::drawTo(sf::RenderWindow &window)
 {
-    window->draw(background);
-    //window->draw(textbox);
+    window.draw(background);
+    window.draw(textbox);
 }
 
 void TextBox::typedOn(sf::Event input)
@@ -138,10 +138,10 @@ void TextBox::typedOn(sf::Event input)
     }
 }
 
-bool TextBox::isMouseOver(sf::RenderWindow *window)
+bool TextBox::isMouseOver(sf::RenderWindow &window)
 {
-    float mouseX = sf::Mouse::getPosition(*window).x;
-    float mouseY = sf::Mouse::getPosition(*window).y;
+    float mouseX = sf::Mouse::getPosition(window).x;
+    float mouseY = sf::Mouse::getPosition(window).y;
 
     float btnPosX = background.getPosition().x;
     float btnPosY = background.getPosition().y;

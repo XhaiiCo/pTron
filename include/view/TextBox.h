@@ -40,11 +40,11 @@ class TextBox
 
         std::string getText();
 
-        void drawTo(sf::RenderWindow *window);
+        void drawTo(sf::RenderWindow &window);
 
         void typedOn(sf::Event input);
 
-        bool isMouseOver(sf::RenderWindow *window);
+        bool isMouseOver(sf::RenderWindow &window);
 
 };
 

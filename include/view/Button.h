@@ -24,7 +24,7 @@ class Button
 
         void drawTo(sf::RenderWindow &window);
 
-        bool isMouseOver(sf::RenderWindow *window);
+        bool isMouseOver(sf::RenderWindow &window);
 
 };
 

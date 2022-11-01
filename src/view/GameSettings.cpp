@@ -30,7 +30,6 @@ void GameSettings::init(){
 
     window->setKeyRepeatEnabled(true);
 
-    sf::Font font;
     font.loadFromFile("assets/fonts/Square-Bold.otf");
     this->textbox1 = TextBox(30, sf::Color::Black, false);
     this->textbox1.setFont(font);
@@ -47,7 +46,6 @@ void GameSettings::init(){
     btn1 = Button("PLAY", {200, 50}, 30, sf::Color::Green, sf::Color::Black);
     btn1.setPosition({760,600});
     btn1.setFont(font);
-
 }
 
 void GameSettings::processInput(){
@@ -67,7 +65,7 @@ void GameSettings::processInput(){
                 break;
 
             case sf::Event::MouseMoved:
-                if(btn1.isMouseOver(window))
+                if(btn1.isMouseOver(*window))
                 {
                     btn1.setBackColor(sf::Color::White);
                 }
@@ -78,21 +76,21 @@ void GameSettings::processInput(){
                 break;
 
             case sf::Event::MouseButtonPressed:
-                if(textbox1.isMouseOver(window))
+                if(textbox1.isMouseOver(*window))
                 {
                     textbox1.setSelected(true);
                     textbox1.setBorder(sf::Color::Green);
                     textbox2.setSelected(false);
                     textbox2.setBorder(sf::Color::White);
                 }
-                else if(textbox2.isMouseOver(window))
+                else if(textbox2.isMouseOver(*window))
                 {
                     textbox2.setSelected(true);
                     textbox2.setBorder(sf::Color::Green);
                     textbox1.setSelected(false);
                     textbox1.setBorder(sf::Color::White);
                 }
-                else if(btn1.isMouseOver(window))
+                else if(btn1.isMouseOver(*window))
                 {
                     this->nextState() ;
                 }
@@ -114,8 +112,8 @@ void GameSettings::draw(){
 
     window->clear();
 
-    this->textbox1.drawTo(window);
-    this->textbox2.drawTo(window);
+    this->textbox1.drawTo(*window);
+    this->textbox2.drawTo(*window);
     this->btn1.drawTo(*window);
 
     window->display();

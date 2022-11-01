@@ -11,6 +11,7 @@ class GameSettings: public GameState
     private:
         GameContext* gameContext ;
 
+        sf::Font font;
         TextBox textbox1 ;
         TextBox textbox2 ;
         Button btn1 ;
