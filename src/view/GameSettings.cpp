@@ -92,6 +92,10 @@ void GameSettings::processInput(){
                     textbox1.setSelected(false);
                     textbox1.setBorder(sf::Color::White);
                 }
+                else if(btn1.isMouseOver(window))
+                {
+                    this->nextState() ;
+                }
                 else
                 {
                     textbox1.setSelected(false);
