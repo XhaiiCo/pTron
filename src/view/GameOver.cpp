@@ -20,7 +20,7 @@ GameOver& GameOver::operator=(const GameOver& rhs)
 }
 
 void GameOver::init(){
-    if (!font.loadFromFile("arial.ttf"))
+    if (!font.loadFromFile(FONT_PATH))
     {
         //handle error
     }

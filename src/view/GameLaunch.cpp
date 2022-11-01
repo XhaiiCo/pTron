@@ -28,7 +28,7 @@ GameLaunch& GameLaunch::operator=(const GameLaunch& rhs)
 void GameLaunch::init(){
     this->duration.restart() ;
 
-    if (!font.loadFromFile("arial.ttf"))
+    if (!font.loadFromFile(FONT_PATH))
     {
         //handle error
     }

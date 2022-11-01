@@ -10,6 +10,10 @@
 
 class Menu: public GameState
 {
+    //CONSTANT
+    public:
+        const inline static std::string FONT_PATH = "assets/fonts/Square-Bold.otf" ;
+
     private:
         int selectedItemIndex;
         sf::Font font;

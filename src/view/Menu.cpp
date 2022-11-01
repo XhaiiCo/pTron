@@ -11,7 +11,7 @@ Menu::~Menu()
 }
 
 void Menu::init(){
-    if (!font.loadFromFile("Square-Regular.otf"))
+    if (!font.loadFromFile(FONT_PATH))
     {
         //handle error
     }
