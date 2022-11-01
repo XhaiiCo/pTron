@@ -27,6 +27,9 @@ void GamePlay::init(){
     Player* p1 = this->gameContext->getPlayer1() ;
     Player* p2 = this->gameContext->getPlayer2() ;
 
+    p1->resetParams() ;
+    p2->resetParams() ;
+
     int yStart = (int)(Playground::NB_LINE/2) ;
     p1->setX(5) ;
     p1->setY(yStart) ;

@@ -1,4 +1,5 @@
 #include "GameOver.h"
+#include "GamePlay.h"
 
 GameOver::GameOver(GameContext* gameContext): gameContext(gameContext){}
 
@@ -41,6 +42,8 @@ void GameOver::processInput(){
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
     }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) this->nextState();
 }
 
 void GameOver::update(){}
@@ -53,4 +56,8 @@ void GameOver::draw(){
     window->display();
 }
 
-void GameOver::nextState(){}
+void GameOver::nextState(){
+    StateManager* stateManager = this->gameContext->getStateManager() ;
+    stateManager->setState(new GamePlay(this->gameContext)) ;
+    stateManager->getState()->init() ;
+}

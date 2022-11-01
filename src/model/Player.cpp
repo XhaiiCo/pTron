@@ -43,6 +43,12 @@ Player& Player::operator=(const Player& rhs)
     return *this;
 }
 
+void Player::resetParams(){
+    this->changeDirection(0, 0) ;
+    this->nbGodModeRemaining = 1 ;
+    this->godMode = false ;
+}
+
 void Player::setX(int value){
     if(value < 0) value = 0 ;
     if(value > Playground::NB_COLUMN) value = 0 ;

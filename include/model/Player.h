@@ -20,13 +20,15 @@ class Player
 
         //BONUS
         bool godMode = false ;
-        int nbGodModeRemaining = 1 ;
+        int nbGodModeRemaining ;
 
     public:
         Player(std::string = "UNDEFINED", int x = 0, int y = 0);
         virtual ~Player();
         Player(const Player& other);
         Player& operator=(const Player& other);
+
+        void resetParams() ;
 
         int getX() { return this->x ;}
         void setX(int value) ;
