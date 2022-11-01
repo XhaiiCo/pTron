@@ -3,7 +3,7 @@
 
 #include "GamePlay.h"
 
-Menu::Menu(StateManager* sm, sf::RenderWindow* window, float width, float height): sm(sm), window(window), width(width), height(height){}
+Menu::Menu(GameContext* gameContext): gameContext(gameContext){}
 
 Menu::~Menu()
 {
@@ -15,6 +15,9 @@ void Menu::init(){
     {
         //handle error
     }
+
+    float width = this->gameContext->getWindowWidth() ;
+    float height = this->gameContext->getWindowHeight() ;
 
     textBtn[0].setFont(font);
     textBtn[0].setColor(sf::Color::Red);
@@ -36,6 +39,8 @@ void Menu::init(){
 
 void Menu::processInput(){
     sf::Event event;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
     }
@@ -64,18 +69,21 @@ void Menu::processInput(){
 void Menu::update(){};
 
 void Menu::draw(){
-    this->window->clear() ;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
+    window->clear() ;
     for(int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
     {
 
-        this->window->draw(textBtn[i]);
+        window->draw(textBtn[i]);
     }
-    this->window->display();
+    window->display();
 }
 
 void Menu::nextState(){
-    this->sm->setState(new GamePlay(this->sm, this->window, this->width, this->height)) ;
-    this->sm->getState()->init() ;
+    StateManager* stateManager = this->gameContext->getStateManager() ;
+    stateManager->setState(new GamePlay(this->gameContext)) ;
+    stateManager->getState()->init() ;
 }
 
 void Menu::MoveUp()

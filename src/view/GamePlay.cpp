@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameOver.h"
 
-GamePlay::GamePlay(StateManager* stateManager, sf::RenderWindow* window, float windowWidth, float windowHeight): stateManager(stateManager), window(window), windowWidth(windowWidth), windowHeight(windowHeight){}
+GamePlay::GamePlay(GameContext* gameContext): gameContext(gameContext){}
 
 GamePlay::~GamePlay()
 {
@@ -43,9 +43,10 @@ void GamePlay::init(){
 
 void GamePlay::processInput(){
     sf::Event event;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
 
     while(window->pollEvent(event)){
-        if(event.type == sf::Event::Closed) this->window->close();
+        if(event.type == sf::Event::Closed) window->close();
     }
 
     //PLAYER1
@@ -70,9 +71,6 @@ void GamePlay::processInput(){
             this->godModePlayer2Time.restart() ;
         }
     }
-
-
-
 }
 
 void GamePlay::update(){
@@ -97,7 +95,9 @@ void GamePlay::update(){
 }
 
 void GamePlay::draw(){
-    this->window->clear() ;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
+    window->clear() ;
     std::vector<std::vector<Case*>> Cases = this->playground.getCases() ;
 
     for(int i = 0 ; i < Cases.size() ; i++){
@@ -116,13 +116,14 @@ void GamePlay::draw(){
 
             rectangle.setFillColor(sf::Color(color.getRed(), color.getGreen(), color.getBlue())) ;
 
-            this->window->draw(rectangle) ;
+            window->draw(rectangle) ;
         }
     }
-    this->window->display();
+    window->display();
 }
 
 void GamePlay::nextState(){
-    this->stateManager->setState(new GameOver(this->stateManager, this->window, this->windowWidth, this->windowHeight));
-    this->stateManager->getState()->init() ;
+    StateManager* stateManager = this->gameContext->getStateManager() ;
+    stateManager->setState(new GameOver(this->gameContext));
+    stateManager->getState()->init() ;
 }

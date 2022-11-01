@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "Playground.h"
 #include "Color.h"
+#include "GameContext.h"
 
 class GamePlay: public GameState
 {
@@ -17,10 +18,8 @@ class GamePlay: public GameState
 
 
     private:
-        sf::RenderWindow* window ;
-        StateManager* stateManager ;
-        float windowWidth ;
-        float windowHeight ;
+        GameContext* gameContext ;
+
         Playground playground ;
         Color emptyCaseColor = Color(25,25,30) ;
 
@@ -31,7 +30,7 @@ class GamePlay: public GameState
         sf::Clock godModePlayer2Time ;
 
     public:
-        GamePlay(StateManager* stateManager, sf::RenderWindow* window, float windowWidth = 500, float windowHeight = 500);
+        GamePlay(GameContext* gameContext);
         virtual ~GamePlay();
         GamePlay(const GamePlay& other);
         GamePlay& operator=(const GamePlay& other);

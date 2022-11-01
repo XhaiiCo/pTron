@@ -2,7 +2,7 @@
 #include "Menu.h"
 #include <iostream>
 
-GameLaunch::GameLaunch(StateManager* stateManager, sf::RenderWindow* window, int windowWidth, int windowHeight): window(window), stateManager(stateManager), windowWidth(windowWidth), windowHeight(windowHeight)
+GameLaunch::GameLaunch(GameContext* gameContext): gameContext(gameContext)
 {
     //ctor
 }
@@ -37,11 +37,12 @@ void GameLaunch::init(){
     title.setFont(font);
     title.setColor(sf::Color::Blue);
     title.setString("THE TRON GAME !");
-    title.setPosition(sf::Vector2f(windowWidth / 2 - 100, windowHeight / 2 - 20));
+    title.setPosition(sf::Vector2f(this->gameContext->getWindowWidth() / 2 - 100, this->gameContext->getWindowHeight() / 2 - 20));
 }
 
 void GameLaunch::processInput(){
-    sf::Event event;
+    sf::Event event ;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
     }
@@ -53,12 +54,16 @@ void GameLaunch::update(){
 }
 
 void GameLaunch::draw(){
-    this->window->clear() ;
-    this->window->draw(title);
-    this->window->display();
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
+    window->clear() ;
+    window->draw(title);
+    window->display();
 }
 
 void GameLaunch::nextState(){
-    this->stateManager->setState(new Menu(this->stateManager, this->window, windowWidth, windowHeight)) ;
-    this->stateManager->getState()->init() ;
+    StateManager* stateManager = this->gameContext->getStateManager() ;
+
+    stateManager->setState(new Menu(this->gameContext)) ;
+    stateManager->getState()->init() ;
 }

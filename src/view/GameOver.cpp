@@ -1,7 +1,6 @@
 #include "GameOver.h"
 
-GameOver::GameOver(StateManager* stateManager, sf::RenderWindow* window, int windowWidth, int windowHeight)
-    : stateManager(stateManager), window(window), windowWidth(windowWidth), windowHeight(windowHeight){}
+GameOver::GameOver(GameContext* gameContext): gameContext(gameContext){}
 
 GameOver::~GameOver()
 {
@@ -26,6 +25,9 @@ void GameOver::init(){
         //handle error
     }
 
+    float windowWidth = this->gameContext->getWindowWidth() ;
+    float windowHeight = this->gameContext->getWindowHeight() ;
+
     //CREATE THE TILE
     title.setFont(font);
     title.setColor(sf::Color::Blue);
@@ -34,14 +36,21 @@ void GameOver::init(){
 }
 void GameOver::processInput(){
     sf::Event event;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
     }
 }
+
 void GameOver::update(){}
+
 void GameOver::draw(){
-    this->window->clear() ;
-    this->window->draw(this->title) ;
-    this->window->display();
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
+    window->clear() ;
+    window->draw(this->title) ;
+    window->display();
 }
+
 void GameOver::nextState(){}

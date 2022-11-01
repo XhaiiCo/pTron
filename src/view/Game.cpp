@@ -53,7 +53,7 @@ Game& Game::operator=(const Game& rhs)
 }
 
 void Game::run(){
-    GameLaunch gameLauch(stateManager, window, windowWidth, windowHeight) ;
+    GameLaunch gameLauch(this->gameContext) ;
     stateManager->setState(&gameLauch) ;
     stateManager->getState()->init() ;
     while(window->isOpen()){

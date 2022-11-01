@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameState.h"
 #include "StateManager.h"
+#include "GameContext.h"
 
 class GameLaunch: public GameState
 {
@@ -16,13 +17,10 @@ class GameLaunch: public GameState
         sf::Text title ;
         sf::Font font ;
 
-        sf::RenderWindow* window ;
-        StateManager* stateManager ;
-        int windowWidth ;
-        int windowHeight ;
+        GameContext* gameContext ;
 
     public:
-        GameLaunch(StateManager*, sf::RenderWindow*, int = 500, int = 500);
+        GameLaunch(GameContext* gameContext);
         virtual ~GameLaunch();
         GameLaunch(const GameLaunch& other);
         GameLaunch& operator=(const GameLaunch& other);

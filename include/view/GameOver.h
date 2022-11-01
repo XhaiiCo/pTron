@@ -4,20 +4,18 @@
 #include "GameState.h"
 #include "StateManager.h"
 #include <SFML/Graphics.hpp>
+#include "GameContext.h"
 
 class GameOver: public GameState
 {
     private:
-        StateManager* stateManager ;
-        sf::RenderWindow* window ;
-        int windowWidth ;
-        int windowHeight ;
+        GameContext* gameContext ;
 
         sf::Text title ;
         sf::Font font ;
 
     public:
-        GameOver(StateManager*, sf::RenderWindow*, int windowWidth = 500, int windowHeight = 500);
+        GameOver(GameContext* gameContext);
         virtual ~GameOver();
         GameOver(const GameOver& other);
         GameOver& operator=(const GameOver& other);
