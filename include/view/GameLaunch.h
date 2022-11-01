@@ -11,7 +11,7 @@ class GameLaunch: public GameState
     //CONSTANT
     public:
         const inline static int LAUNCH_SCREEN_DURATION_IN_SECONDS = 3 ;
-        const inline static std::string FONT_PATH = "assets/fonts/Square-Bold.otf" ;
+        const inline static std::string FONT_PATH = "assets/fonts/joystix-monospace.ttf" ;
 
     private:
         sf::Clock duration ;
