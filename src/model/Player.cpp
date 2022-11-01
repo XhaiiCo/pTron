@@ -20,12 +20,8 @@ Player::Player(const Player& other)
     this->y = other.y ;
     this->dirX = other.dirX ;
     this->dirY = other.dirY ;
-    this->red = other.red ;
-    this->green = other.green ;
-    this->blue = other.blue ;
-    this->redGodMode = other.redGodMode;
-    this->greenGodMode = other.greenGodMode;
-    this->blueGodMode = other.blueGodMode;
+    this->mainColor = other.mainColor ;
+    this->godModeColor = other.godModeColor ;
     this->godMode = other.godMode ;
     this->nbGodModeRemaining = other.nbGodModeRemaining ;
 }
@@ -39,12 +35,8 @@ Player& Player::operator=(const Player& rhs)
     this->y = rhs.y ;
     this->dirX = rhs.dirX ;
     this->dirY = rhs.dirY ;
-    this->red = rhs.red ;
-    this->green = rhs.green ;
-    this->blue = rhs.blue ;
-    this->redGodMode = rhs.redGodMode;
-    this->greenGodMode = rhs.greenGodMode;
-    this->blueGodMode = rhs.blueGodMode;
+    this->mainColor = rhs.mainColor ;
+    this->godModeColor = rhs.godModeColor ;
     this->godMode = rhs.godMode ;
     this->nbGodModeRemaining = rhs.nbGodModeRemaining ;
 

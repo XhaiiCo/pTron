@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include "string"
+#include "Color.h"
+
 
 class Player
 {
@@ -13,13 +15,8 @@ class Player
         int dirY = 0;
 
         //COLOR
-        int red ;
-        int green ;
-        int blue ;
-
-        int redGodMode ;
-        int greenGodMode ;
-        int blueGodMode ;
+        Color mainColor ;
+        Color godModeColor ;
 
         //BONUS
         bool godMode = false ;
@@ -37,23 +34,15 @@ class Player
         int getY() { return this->y ;}
         void setY(int value) ;
 
-        void setColor(int r, int g, int b) {
-            this->red = r ;
-            this->green = g ;
-            this->blue = b ;
+        void setMainColor(Color color) {
+            this->mainColor = color ;
         };
-        int getRed() { return this->red ;}
-        int getGreen() { return this->green ;}
-        int getBlue() { return this->blue ;}
+        Color getMainColor(){ return this->mainColor ;}
 
-        void setColorGodMode(int r, int g, int b) {
-            this->redGodMode = r ;
-            this->greenGodMode = g ;
-            this->blueGodMode = b ;
+        void setGodModeColor(Color color) {
+            this->godModeColor = color ;
         };
-        int getRedGodMode() { return this->redGodMode;}
-        int getGreenGodMode() { return this->greenGodMode ;}
-        int getBlueGodMode() { return this->blueGodMode ;}
+        Color getGodModeColor(){ return this->godModeColor ;}
 
         void setNbGodModeRemaining(int value){
             if(value < 0 ) value = 0 ;
