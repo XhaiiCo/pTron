@@ -14,11 +14,6 @@ class Game
 {
 
     private:
-        int windowWidth ;
-        int windowHeight ;
-        sf::RenderWindow* window ;
-        StateManager* stateManager ;
-
         GameContext* gameContext ;
 
     public:
@@ -28,6 +23,7 @@ class Game
         Game& operator=(const Game& other);
 
         void run() ;
+        void initGameContext() ;
 };
 
 #endif // GAME_H

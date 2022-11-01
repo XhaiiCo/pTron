@@ -13,7 +13,7 @@ class GameContext
         float windowHeight ;
 
     public:
-        GameContext(StateManager* stateManager, sf::RenderWindow* window, float windowWidth = 500, float windowHeight = 500);
+        GameContext(StateManager stateManager, sf::RenderWindow* window, float windowWidth = 500, float windowHeight = 500);
         virtual ~GameContext();
         GameContext(const GameContext& other);
         GameContext& operator=(const GameContext& other);
