@@ -89,8 +89,12 @@ void GamePlay::update(){
     player1Lost = playground.isPlayerHasLost(0) ;
     player2Lost = playground.isPlayerHasLost(1) ;
 
-    if(player1Lost) p2->ecreaseScore() ;
-    if(player2Lost) p1->ecreaseScore() ;
+    if(player1Lost != player2Lost)//If there is a draw, we do not increase the scores
+    {
+        if(player1Lost) p2->ecreaseScore() ;
+        if(player2Lost) p1->ecreaseScore() ;
+    }
+
 
     if(player1Lost || player2Lost) this->nextState() ;
 
