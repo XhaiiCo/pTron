@@ -12,6 +12,7 @@
 class TextBox
 {
     private:
+        sf::RectangleShape background;
         sf::Text textbox;
         std::ostringstream text;
         bool isSelected = false;
@@ -32,11 +33,15 @@ class TextBox
 
         void setSelected(bool sel);
 
+        void setBorder(sf::Color color);
+
         std::string getText();
 
         void drawTo(sf::RenderWindow &window);
 
         void typedOn(sf::Event input);
+
+        bool isMouseOver(sf::RenderWindow &window);
 
 };
 
