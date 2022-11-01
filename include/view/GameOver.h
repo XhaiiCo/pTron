@@ -14,8 +14,10 @@ class GameOver: public GameState
     private:
         GameContext* gameContext ;
 
-        sf::Text title ;
         sf::Font font ;
+        sf::Text title ;
+        sf::Text scorePlayer1 ;
+        sf::Text scorePlayer2 ;
 
     public:
         GameOver(GameContext* gameContext);
