@@ -45,7 +45,7 @@ class Player
         Color godModeColor ;
 
     public:
-        Player(std::string = "UNDEFINED", int x = 0, int y = 0);
+        Player(std::string str = "UNDEFINED", int x = 0, int y = 0);
         virtual ~Player();
         Player(const Player& other);
         Player& operator=(const Player& other);
