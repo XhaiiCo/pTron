@@ -56,8 +56,8 @@ void GameSettings::init(){
     this->tbNamePlayer2.setBorder(sf::Color::White);
     this->tbNamePlayer2.setText("Player 2") ;
 
-    this->btnPlay = Button("PLAY", {300, 100}, 80, sf::Color::Black, sf::Color::White);
-    this->btnPlay.setPosition({window->getView().getCenter().x - 50,window->getView().getCenter().y});
+    this->btnPlay = Button("PLAY", {300, 100}, 80, sf::Color::Green, sf::Color::White);
+    this->btnPlay.setPosition(this->gameContext->getWindow()->getView().getCenter());
     this->btnPlay.setFont(font);
 
     std::cout << window->getView().getCenter().x << std::endl;
