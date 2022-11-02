@@ -40,9 +40,8 @@ void GamePlay::init(){
     p1->changeDirection(1,0) ;
     p2->changeDirection(-1, 0) ;
 
-    Playground p(p1,p2) ;
 
-    this->playground = p;
+    this->playground.init(p1, p2) ;
 }
 
 void GamePlay::processInput(){

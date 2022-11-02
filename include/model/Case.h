@@ -14,7 +14,7 @@ class Case
         * At the beginning the case is empty (player = nullptr),
         * if a player goes over, the case belong to him.
         * External association by pointer:
-        * The player don't belong to the case. He exits outside the box.
+        *   The player don't belong to the case. He exits outside the box.
         */
         Player* player ;
 
