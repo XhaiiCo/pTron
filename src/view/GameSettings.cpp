@@ -160,7 +160,8 @@ void GameSettings::applySettingToPlayers(){
     std::string namePlayer2 = this->tbNamePlayer2.getText() ;
     if(namePlayer2 == "") namePlayer2 = "Player 2" ;
 
-
+    p1->setName(namePlayer1) ;
+    p2->setName(namePlayer2) ;
     p1->setMainColor(Color(0, 255, 0));
     p1->setGodModeColor(Color(255, 255, 0)) ;
     p2->setMainColor(Color(0, 0, 255)) ;
