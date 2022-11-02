@@ -40,7 +40,7 @@ GamePlay& GamePlay::operator=(const GamePlay& rhs)
 void GamePlay::init(){
     Player* p1 = this->gameContext->getPlayer1() ;
     Player* p2 = this->gameContext->getPlayer2() ;
-    this->gameContext->getWindow()->setFramerateLimit(9) ;
+    this->gameContext->getWindow()->setFramerateLimit(11) ;
 
     p1->resetParams() ;
     p2->resetParams() ;
