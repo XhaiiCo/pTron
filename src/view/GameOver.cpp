@@ -10,13 +10,23 @@ GameOver::~GameOver()
 
 GameOver::GameOver(const GameOver& other)
 {
-    //copy ctor
+        this->gameContext = other.gameContext ;
+        this->font = other.font ;
+        this->title = other.title ;
+        this->scorePlayer1 = other.scorePlayer1 ;
+        this->scorePlayer2 = other.scorePlayer2 ;
 }
 
 GameOver& GameOver::operator=(const GameOver& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    this->gameContext = rhs.gameContext ;
+    this->font = rhs.font ;
+    this->title = rhs.title ;
+    this->scorePlayer1 = rhs.scorePlayer1 ;
+    this->scorePlayer2 = rhs.scorePlayer2 ;
+
     return *this;
 }
 
@@ -74,6 +84,13 @@ void GameOver::draw(){
 
 void GameOver::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-    stateManager->setState(new GamePlay(this->gameContext)) ;
+    GamePlay* gamePlay = new GamePlay(this->gameContext) ;
+    stateManager->setState(gamePlay) ;
     stateManager->getState()->init() ;
+
+    delete gamePlay ;
+}
+
+GameOver* GameOver::clone() {
+    return new GameOver(*this) ;
 }

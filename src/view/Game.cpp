@@ -48,9 +48,11 @@ void Game::run(){
     sf::RenderWindow* window = this->gameContext->getWindow() ;
 
     //Create the lauch game view and add it to the gameContext
-    GameLaunch gameLauch(this->gameContext) ;
-    stateManager->setState(&gameLauch) ;
+    GameLaunch* gameLauch = new GameLaunch(this->gameContext) ;
+    stateManager->setState(gameLauch) ;
     stateManager->getState()->init() ;
+
+    delete gameLauch ;
 
     //Main loop
     while(window->isOpen()){

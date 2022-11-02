@@ -17,6 +17,8 @@ class GameState
         virtual void draw() = 0 ;
 
         virtual void nextState() = 0 ;
+
+        virtual GameState* clone() = 0 ;
 };
 
 #endif // GAMESTATE_HA

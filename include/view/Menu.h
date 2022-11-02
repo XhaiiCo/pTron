@@ -23,6 +23,8 @@ class Menu: public GameState
     public:
         Menu(GameContext* gameContext);
         virtual ~Menu();
+        Menu(const Menu& other);
+        Menu& operator=(const Menu& other);
 
         void draw (sf::RenderWindow &window);
         void MoveUp();
@@ -34,6 +36,7 @@ class Menu: public GameState
         virtual void update() override ;
         virtual void draw() override ;
         virtual void nextState() override ;
+        virtual Menu* clone() override;
 };
 
 #endif // MENU_H
