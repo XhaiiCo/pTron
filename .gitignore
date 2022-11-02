@@ -10,3 +10,5 @@ obj/Debug/src/view/Game.o
 obj/Debug/src/view/Menu.o
 pGroupeA02.depend
 pGroupeA02.layout
+*.o
+*.o
