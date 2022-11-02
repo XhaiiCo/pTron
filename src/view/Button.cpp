@@ -10,6 +10,20 @@ Button::Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor
     button.setFillColor(bgColor);
 }
 
+Button::Button(const Button& other)
+{
+    std::cout << " copy button " ;
+    this->button = other.button ;
+    this->text = other.text ;
+}
+
+Button& Button::operator=(const Button& rhs)
+{
+    std::cout << " = button " ;
+    this->button = rhs.button ;
+    this->text = rhs.text ;
+}
+
 void Button::setFont(sf::Font &font)
 {
     text.setFont(font);

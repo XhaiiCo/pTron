@@ -57,11 +57,11 @@ void GameSettings::init(){
     this->tbNamePlayer2.setText("Player 2") ;
 
     this->btnPlay = Button("PLAY", {300, 100}, 80, sf::Color::Black, sf::Color::White);
-    this->btnPlay.setPosition(this->gameContext->getWindow()->getView().getCenter());
+    this->btnPlay.setPosition({window->getView().getCenter().x - 50,window->getView().getCenter().y});
     this->btnPlay.setFont(font);
 
-    std::cout << this->gameContext->getWindow()->getView().getCenter().x << std::endl;
-    std::cout << this->gameContext->getWindow()->getView().getCenter().y << std::endl;
+    std::cout << window->getView().getCenter().x << std::endl;
+    std::cout << window->getView().getCenter().y << std::endl;
 }
 
 void GameSettings::processInput(){
