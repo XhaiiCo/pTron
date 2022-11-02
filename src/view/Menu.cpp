@@ -42,6 +42,7 @@ void Menu::init(){
 
     float width = this->gameContext->getWindowWidth() ;
     float height = this->gameContext->getWindowHeight() ;
+    this->gameContext->getWindow()->setKeyRepeatEnabled(false) ;
 
     textBtn[0].setFont(font);
     textBtn[0].setColor(sf::Color::Green);
