@@ -41,6 +41,7 @@ void GameSettings::init(){
     window->setKeyRepeatEnabled(true);
 
     font.loadFromFile("assets/fonts/Square-Bold.otf");
+
     this->tbNamePlayer1 = TextBox(30, sf::Color::Black, false);
     this->tbNamePlayer1.setFont(font);
     this->tbNamePlayer1.setPosition({300, 100});
@@ -55,9 +56,12 @@ void GameSettings::init(){
     this->tbNamePlayer2.setBorder(sf::Color::White);
     this->tbNamePlayer2.setText("Player 2") ;
 
-    this->btnPlay = Button("PLAY", {200, 50}, 30, sf::Color::Green, sf::Color::Black);
-    this->btnPlay .setPosition({760,600});
-    this->btnPlay .setFont(font);
+    this->btnPlay = Button("PLAY", {300, 100}, 80, sf::Color::Black, sf::Color::White);
+    this->btnPlay.setPosition({window->getView().getCenter().x - 50,window->getView().getCenter().y});
+    this->btnPlay.setFont(font);
+
+    std::cout << window->getView().getCenter().x << std::endl;
+    std::cout << window->getView().getCenter().y << std::endl;
 }
 
 void GameSettings::processInput(){
