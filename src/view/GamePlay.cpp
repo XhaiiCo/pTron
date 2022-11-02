@@ -91,8 +91,8 @@ void GamePlay::update(){
 
     if(player1Lost != player2Lost)//If there is a draw, we do not increase the scores
     {
-        if(player1Lost) p2->ecreaseScore() ;
-        if(player2Lost) p1->ecreaseScore() ;
+        if(player1Lost) p2->increaseScore() ;
+        if(player2Lost) p1->increaseScore() ;
     }
 
 

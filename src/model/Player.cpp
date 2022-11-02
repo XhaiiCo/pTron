@@ -51,7 +51,7 @@ void Player::resetParams(){
     this->godMode = false ;
 }
 
-void Player::ecreaseScore(){
+void Player::increaseScore(){
     this->score++ ;
 }
 
@@ -61,6 +61,7 @@ int Player::getScore(){
 
 
 void Player::setX(int value){
+    //The x have to be in the playground
     if(value < 0) value = 0 ;
     if(value > Playground::NB_COLUMN) value = 0 ;
 
@@ -68,6 +69,7 @@ void Player::setX(int value){
 }
 
 void Player::setY(int value){
+    //The y have to be in the playground
     if(value < 0) value = 0 ;
     if(value > Playground::NB_LINE) value = 0 ;
 
@@ -99,19 +101,25 @@ bool Player::changeDirection(const int dirX, const int dirY){
 
 void Player::movePlayer(){
     this->x += dirX ;
+
     //If the player leaves the map, he is "teleported" to the other side
     if(this->x >= Playground::NB_COLUMN) this->x = 0 ;
     if(this->x < 0) this->x = Playground::NB_COLUMN -1 ;
 
     this->y += dirY ;
+
     //If the player leaves the map, he is "teleported" to the other side
     if(this->y >= Playground::NB_LINE) this->y = 0 ;
     if(this->y < 0) this->y = Playground::NB_LINE -1 ;
 }
 
 bool Player::triggerGodMode(){
+    //No god mode remaining
     if(this->nbGodModeRemaining <= 0) return false ;
+
     this->godMode = true ;
+
+    //Decrease the number of god mode reamainning
     this->nbGodModeRemaining-- ;
     return true ;
 }
