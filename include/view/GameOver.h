@@ -30,6 +30,7 @@ class GameOver: public GameState
         virtual void update() override ;
         virtual void draw() override ;
         virtual void nextState() override ;
+        virtual GameOver* clone() override;
 };
 
 #endif // GAMEOVER_H

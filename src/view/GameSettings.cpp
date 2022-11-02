@@ -14,13 +14,23 @@ GameSettings::~GameSettings()
 
 GameSettings::GameSettings(const GameSettings& other)
 {
-    //copy ctor
+    this->gameContext = other.gameContext ;
+    this->font = other.font ;
+    this->tbNamePlayer1 = other.tbNamePlayer1 ;
+    this->tbNamePlayer2 = other.tbNamePlayer2 ;
+    this->btnPlay = other.btnPlay ;
 }
 
 GameSettings& GameSettings::operator=(const GameSettings& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    this->gameContext = rhs.gameContext ;
+    this->font = rhs.font ;
+    this->tbNamePlayer1 = rhs.tbNamePlayer1 ;
+    this->tbNamePlayer2 = rhs.tbNamePlayer2 ;
+    this->btnPlay = rhs.btnPlay ;
+
     return *this;
 }
 
@@ -129,10 +139,16 @@ void GameSettings::draw(){
 
 void GameSettings::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-    stateManager->setState(new GamePlay(this->gameContext)) ;
+    GamePlay* gamePlay = new GamePlay(this->gameContext) ;
+    stateManager->setState(gamePlay) ;
     stateManager->getState()->init() ;
+
+    delete gamePlay ;
 }
 
+GameSettings* GameSettings::clone() {
+    return new GameSettings(*this) ;
+}
 
 void GameSettings::applySettingToPlayers(){
     Player* p1 = this->gameContext->getPlayer1() ;

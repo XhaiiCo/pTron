@@ -14,13 +14,22 @@ GameLaunch::~GameLaunch()
 
 GameLaunch::GameLaunch(const GameLaunch& other)
 {
-    //copy ctor
+    this->duration = other.duration ;
+    this->title = other.title ;
+    this->font = other.font ;
+    this->gameContext = other.gameContext ;
 }
 
 GameLaunch& GameLaunch::operator=(const GameLaunch& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    this->duration = rhs.duration ;
+    this->title = rhs.title ;
+    this->font = rhs.font ;
+    this->gameContext = rhs.gameContext ;
+
+
     return *this;
 }
 
@@ -70,7 +79,13 @@ void GameLaunch::draw(){
 
 void GameLaunch::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-
-    stateManager->setState(new Menu(this->gameContext)) ;
+    Menu* menu = new Menu(this->gameContext) ;
+    stateManager->setState(menu);
     stateManager->getState()->init() ;
+
+    delete menu ;
+}
+
+GameLaunch* GameLaunch::clone() {
+    return new GameLaunch(*this) ;
 }

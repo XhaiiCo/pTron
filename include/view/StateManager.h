@@ -13,8 +13,8 @@ class StateManager
         StateManager(const StateManager& other);
         StateManager& operator=(const StateManager& other);
 
-        void setState(GameState* state){ this->state = state ;}
-        GameState* getState(){return this->state ;}
+        void setState(GameState* state) ;
+        GameState* getState() ;
  };
 
 #endif // STATEMANAGER_H
