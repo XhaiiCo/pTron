@@ -144,3 +144,7 @@ void GamePlay::nextState(){
     stateManager->setState(new GameOver(this->gameContext));
     stateManager->getState()->init() ;
 }
+
+GamePlay* GamePlay::clone() {
+    return new GamePlay(*this) ;
+}

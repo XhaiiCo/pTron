@@ -86,6 +86,10 @@ void Menu::nextState(){
     stateManager->getState()->init() ;
 }
 
+Menu* Menu::clone() {
+    return new Menu(*this) ;
+}
+
 void Menu::MoveUp()
 {
     if(selectedItemIndex - 1 >= 0)

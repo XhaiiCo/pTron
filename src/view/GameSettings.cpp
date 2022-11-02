@@ -129,6 +129,9 @@ void GameSettings::nextState(){
     stateManager->getState()->init() ;
 }
 
+GameSettings* GameSettings::clone() {
+    return new GameSettings(*this) ;
+}
 
 void GameSettings::applySettingToPlayers(){
     Player* p1 = this->gameContext->getPlayer1() ;

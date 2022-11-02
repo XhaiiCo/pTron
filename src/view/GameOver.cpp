@@ -77,3 +77,7 @@ void GameOver::nextState(){
     stateManager->setState(new GamePlay(this->gameContext)) ;
     stateManager->getState()->init() ;
 }
+
+GameOver* GameOver::clone() {
+    return new GameOver(*this) ;
+}

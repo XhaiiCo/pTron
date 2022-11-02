@@ -74,3 +74,7 @@ void GameLaunch::nextState(){
     stateManager->setState(new Menu(this->gameContext)) ;
     stateManager->getState()->init() ;
 }
+
+GameLaunch* GameLaunch::clone() {
+    return new GameLaunch(*this) ;
+}
