@@ -60,7 +60,7 @@ void Game::initGameContext(){
     int windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
     int windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
 
-    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!");
+    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!", sf::Style::Close);
     window->setFramerateLimit(12);
 
     StateManager stateManager = StateManager() ;

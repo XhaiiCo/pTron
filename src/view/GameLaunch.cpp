@@ -35,9 +35,16 @@ void GameLaunch::init(){
 
     //CREATE THE TILE
     title.setFont(font);
-    title.setColor(sf::Color::Blue);
-    title.setString("THE TRON GAME !");
-    title.setPosition(sf::Vector2f(this->gameContext->getWindowWidth() / 2 - 100, this->gameContext->getWindowHeight() / 2 - 20));
+    title.setColor(sf::Color::Green);
+    title.setString("THE TRON GAME");
+    title.setCharacterSize(70);
+
+    sf::FloatRect titleRect = title.getLocalBounds();
+    title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
+
+    //title.setPosition(sf::Vector2f(this->gameContext->getWindowWidth() / 2 - 100, this->gameContext->getWindowHeight() / 2 - 20));
+
+    title.setPosition(this->gameContext->getWindow()->getView().getCenter());
 }
 
 void GameLaunch::processInput(){
