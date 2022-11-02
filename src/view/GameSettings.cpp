@@ -14,13 +14,23 @@ GameSettings::~GameSettings()
 
 GameSettings::GameSettings(const GameSettings& other)
 {
-    //copy ctor
+    this->gameContext = other.gameContext ;
+    this->font = other.font ;
+    this->tbNamePlayer1 = other.tbNamePlayer1 ;
+    this->tbNamePlayer2 = other.tbNamePlayer2 ;
+    this->btnPlay = other.btnPlay ;
 }
 
 GameSettings& GameSettings::operator=(const GameSettings& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    this->gameContext = rhs.gameContext ;
+    this->font = rhs.font ;
+    this->tbNamePlayer1 = rhs.tbNamePlayer1 ;
+    this->tbNamePlayer2 = rhs.tbNamePlayer2 ;
+    this->btnPlay = rhs.btnPlay ;
+
     return *this;
 }
 

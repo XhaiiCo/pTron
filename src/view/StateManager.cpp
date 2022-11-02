@@ -21,3 +21,12 @@ StateManager& StateManager::operator=(const StateManager& rhs)
     //assignment operator
     return *this;
 }
+
+
+void StateManager::setState(GameState* state){
+    this->state = state->clone() ;
+}
+
+GameState* StateManager::getState(){
+    return this->state ;
+}

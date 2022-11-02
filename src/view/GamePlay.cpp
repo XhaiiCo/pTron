@@ -13,13 +13,27 @@ GamePlay::~GamePlay()
 
 GamePlay::GamePlay(const GamePlay& other)
 {
-    //copy ctor
+        this->gameContext = other.gameContext ;
+        this->playground = other.playground ;
+        this->emptyCaseColor = other.emptyCaseColor ;
+        this->player1Lost = other.player1Lost ;
+        this->player2Lost = other.player2Lost ;
+        this->godModePlayer1Time = other.godModePlayer1Time ;
+        this->godModePlayer2Time = other.godModePlayer2Time ;
 }
 
 GamePlay& GamePlay::operator=(const GamePlay& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+        this->gameContext = rhs.gameContext ;
+        this->playground = rhs.playground ;
+        this->emptyCaseColor = rhs.emptyCaseColor ;
+        this->player1Lost = rhs.player1Lost ;
+        this->player2Lost = rhs.player2Lost ;
+        this->godModePlayer1Time = rhs.godModePlayer1Time ;
+        this->godModePlayer2Time = rhs.godModePlayer2Time ;
+
     return *this;
 }
 

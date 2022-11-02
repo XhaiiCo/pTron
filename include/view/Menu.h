@@ -23,6 +23,8 @@ class Menu: public GameState
     public:
         Menu(GameContext* gameContext);
         virtual ~Menu();
+        Menu(const Menu& other);
+        Menu& operator=(const Menu& other);
 
         void draw (sf::RenderWindow &window);
         void MoveUp();

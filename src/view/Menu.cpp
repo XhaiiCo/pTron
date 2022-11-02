@@ -10,6 +10,30 @@ Menu::~Menu()
     //dtor
 }
 
+Menu::Menu(const Menu& other)
+{
+        this->selectedItemIndex = other.selectedItemIndex ;
+        this->font = other.font ;
+        for(int i = 0 ; i < MAX_NUMBER_OF_ITEMS ; i++){
+            this->textBtn[i] = other.textBtn[i] ;
+        }
+        this->gameContext = other.gameContext ;
+}
+
+Menu& Menu::operator=(const Menu& rhs)
+{
+    if (this == &rhs) return *this; // handle self assignment
+    //assignment operator
+        this->selectedItemIndex = rhs.selectedItemIndex ;
+        this->font = rhs.font ;
+        for(int i = 0 ; i < MAX_NUMBER_OF_ITEMS ; i++){
+            this->textBtn[i] = rhs.textBtn[i] ;
+        }
+        this->gameContext = rhs.gameContext ;
+
+    return *this;
+}
+
 void Menu::init(){
     if (!font.loadFromFile(FONT_PATH))
     {
