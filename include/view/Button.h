@@ -13,6 +13,9 @@ class Button
 
     public:
         Button(std::string t = "button", sf::Vector2f size = {200, 50}, int charSize = 30, sf::Color bgColor = sf::Color::Green, sf::Color textColor = sf::Color::Black);
+        Button(const Button& other);
+        Button& operator=(const Button& other);
+
 
         void setFont(sf::Font &font);
 
