@@ -1,6 +1,5 @@
 
 *.o
-pGroupeA02.cbp
 bin/Debug/pTron
 obj/Debug/main.o
 obj/Debug/src/model/Case.o
@@ -10,5 +9,4 @@ obj/Debug/src/view/Game.o
 obj/Debug/src/view/Menu.o
 pGroupeA02.depend
 pGroupeA02.layout
-*.o
 *.o

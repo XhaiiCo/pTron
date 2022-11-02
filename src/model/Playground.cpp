@@ -1,15 +1,11 @@
-#include <iostream>
-#include "Playground.h" nom, nom, Residence Residence
-#include "Case.h"
+#include "Playground.h"
 
-
-Playground::Playground(Player player1, Player player2): player1(player1), player2(player2)
-{
-    this->init() ;
-}
+Playground::Playground()
+{}
 
 Playground::~Playground()
 {
+    //Remove cases
     for(std::vector<Case*> line : this->cases)
     {
         for(Case* c : line)
@@ -22,6 +18,20 @@ Playground::~Playground()
 
 Playground::Playground(const Playground& other)
 {
+    //Remove cases
+    for(std::vector<Case*> line : this->cases)
+    {
+        for(Case* c : line)
+        {
+            delete c;
+        }
+    }
+    this->cases.clear();
+
+    //Clear players list but not delete, because their don't belong to playground.
+    this->players.clear() ;
+
+    //Add cases
     for(std::vector<Case*> otherLine : other.cases)
     {
         std::vector<Case*> line;
@@ -32,16 +42,18 @@ Playground::Playground(const Playground& other)
         }
 
         this->cases.push_back(line);
-
-        this->player1 = other.player1 ;
-        this->player2 = other.player2 ;
     }
+
+    //Add players
+    for(Player* p: other.players)
+        this->players.push_back(p) ;
 }
 
 Playground& Playground::operator=(const Playground& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
 
+    //Delete cases
     for(std::vector<Case*> line : this->cases)
     {
         for(Case* c : line)
@@ -49,9 +61,12 @@ Playground& Playground::operator=(const Playground& rhs)
             delete c;
         }
     }
-
     this->cases.clear();
 
+    //Clear players list but not delete, because their don't belong to playground.
+    this->players.clear() ;
+
+    //Add cases
     for(std::vector<Case*> rhsLine : rhs.cases)
     {
         std::vector<Case*> line;
@@ -64,16 +79,18 @@ Playground& Playground::operator=(const Playground& rhs)
         this->cases.push_back(line);
     }
 
-    this->player1 = rhs.player1 ;
-    this->player2 = rhs.player2 ;
+    //add players
+    for(Player* p: rhs.players)
+        this->players.push_back(p) ;
 
     return *this;
 }
 
-
-//Init the playground
-void Playground::init()
+void Playground::init(Player* player1, Player* player2)
 {
+    this->players.push_back(player1) ;
+    this->players.push_back(player2) ;
+
     this->createCase() ;
 }
 
@@ -109,37 +126,31 @@ std::string Playground::str() const
     return result ;
 }
 
-//Change the direction of the player 1
-bool Playground::changeDirectionPlayer1(int dirX, int dirY){
-    return player1.changeDirection(dirX, dirY) ;
-}
+bool Playground::validPlayerId(int id){
+    if(id >= 0 && id < NB_PLAYERS) return true ;
 
-//Change the direction of the player 2
-bool Playground::changeDirectionPlayer2(int dirX, int dirY){
-    return player2.changeDirection(dirX, dirY) ;
+    return false ;
 }
 
 //Moves the player one square forward according to his direction
 void Playground::movePlayers(){
-    this->player1.movePlayer() ;
-    this->player2.movePlayer() ;
+    for(Player* p: this->players)
+        p->movePlayer() ;
 }
 
-bool Playground::isPlayer1HasLost(){
-    if(this->player1.isGodMode()) return false ;
+bool Playground::isPlayerHasLost(int id){
+    if(!validPlayerId(id)) return false ;
 
-    if(this->cases[this->player1.getY()][this->player1.getX()]->getPlayer() != nullptr) return true ;
-    return false ;
-}
+    //If the player is in god mode he can't loose
+    if(this->players[id]->isGodMode()) return false ;
 
-bool Playground::isPlayer2HasLost(){
-    if(this->player2.isGodMode()) return false ;
-
-    if(this->cases[this->player2.getY()][this->player2.getX()]->getPlayer() != nullptr) return true ;
+    //If the case where the player goes isn't empty, he loses.
+    if(this->cases[this->players[id]->getY()][this->players[id]->getX()]->getPlayer() != nullptr) return true ;
     return false ;
 }
 
 void Playground::displayplayers(){
-    this->cases[this->player1.getY()][this->player1.getX()]->setPlayer(&player1) ;
-    this->cases[this->player2.getY()][this->player2.getX()]->setPlayer(&player2) ;
+    //For each player, put it in the case according to its x and y
+    for(Player* p : this->players)
+        this->cases[p->getY()][p->getX()]->setPlayer(p) ;
 }

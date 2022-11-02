@@ -16,13 +16,13 @@ Player::~Player()
 Player::Player(const Player& other)
 {
     this->name = other.name ;
+    this->score = other.score ;
     this->x = other.x ;
     this->y = other.y ;
     this->dirX = other.dirX ;
     this->dirY = other.dirY ;
-    this->red = other.red ;
-    this->green = other.green ;
-    this->blue = other.blue ;
+    this->mainColor = other.mainColor ;
+    this->godModeColor = other.godModeColor ;
     this->godMode = other.godMode ;
     this->nbGodModeRemaining = other.nbGodModeRemaining ;
 }
@@ -32,20 +32,36 @@ Player& Player::operator=(const Player& rhs)
     if (this == &rhs) return *this; // handle self assignment
 
     this->name = rhs.name ;
+    this->score = rhs.score ;
     this->x = rhs.x ;
     this->y = rhs.y ;
     this->dirX = rhs.dirX ;
     this->dirY = rhs.dirY ;
-    this->red = rhs.red ;
-    this->green = rhs.green ;
-    this->blue = rhs.blue ;
+    this->mainColor = rhs.mainColor ;
+    this->godModeColor = rhs.godModeColor ;
     this->godMode = rhs.godMode ;
     this->nbGodModeRemaining = rhs.nbGodModeRemaining ;
 
     return *this;
 }
 
+void Player::resetParams(){
+    this->changeDirection(0, 0) ;
+    this->nbGodModeRemaining = 1 ;
+    this->godMode = false ;
+}
+
+void Player::increaseScore(){
+    this->score++ ;
+}
+
+int Player::getScore(){
+    return this->score ;
+}
+
+
 void Player::setX(int value){
+    //The x have to be in the playground
     if(value < 0) value = 0 ;
     if(value > Playground::NB_COLUMN) value = 0 ;
 
@@ -53,6 +69,7 @@ void Player::setX(int value){
 }
 
 void Player::setY(int value){
+    //The y have to be in the playground
     if(value < 0) value = 0 ;
     if(value > Playground::NB_LINE) value = 0 ;
 
@@ -84,19 +101,25 @@ bool Player::changeDirection(const int dirX, const int dirY){
 
 void Player::movePlayer(){
     this->x += dirX ;
+
     //If the player leaves the map, he is "teleported" to the other side
     if(this->x >= Playground::NB_COLUMN) this->x = 0 ;
     if(this->x < 0) this->x = Playground::NB_COLUMN -1 ;
 
     this->y += dirY ;
+
     //If the player leaves the map, he is "teleported" to the other side
     if(this->y >= Playground::NB_LINE) this->y = 0 ;
     if(this->y < 0) this->y = Playground::NB_LINE -1 ;
 }
 
 bool Player::triggerGodMode(){
+    //No god mode remaining
     if(this->nbGodModeRemaining <= 0) return false ;
+
     this->godMode = true ;
+
+    //Decrease the number of god mode reamainning
     this->nbGodModeRemaining-- ;
     return true ;
 }

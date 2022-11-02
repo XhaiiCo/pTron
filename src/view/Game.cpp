@@ -1,45 +1,83 @@
 #include "Game.h"
 #include <iostream>
-#include <SFML/Graphics.hpp>
 
+#include "GameLaunch.h"
 
-Game::Game(int width, int height, Playground* playground): width(width), height(height), playground(playground)
-{
-}
+Game::Game(){}
 
 Game::~Game()
 {
-    //dtor
+     delete gameContext ;
+     delete player1 ;
+     delete player2 ;
 }
 
-void Game::drawGame()  {
-    // Créée une image sur laquelle on peut dessiner
-    this->t.create(this->width, this->height);
-    this->t.setSmooth(true);
-    // on l'a met dans le sprite
-    this->sprite.setTexture(this->t.getTexture());
-    // Sinon ça affiche des trucs chelou
-    this->t.clear();
-    std::vector<std::vector<Case*>> Cases = this->playground->getCases() ;
 
-    for(int i = 0 ; i < Cases.size() ; i++){
-        for(int j = 0 ; j < Cases[i].size() ; j++){
-            Player* p = Cases[i][j]->getPlayer() ;
+Game::Game(const Game& other)
+{
+    delete gameContext ;
+    delete player1 ;
+    delete player2 ;
 
-            sf::RectangleShape rectangle(sf::Vector2f(CASE_WIDTH, CASE_WIDTH)) ;
-            rectangle.setPosition(j*(CASE_WIDTH + PADDING ) , i*(CASE_WIDTH + PADDING)) ;
-            rectangle.setOutlineColor(sf::Color(15,15,15)) ;
-            rectangle.setOutlineThickness(1) ;
 
-            if(p == nullptr) rectangle.setFillColor(sf::Color(25,25,30)) ;
-            else rectangle.setFillColor(sf::Color(p->getRed(), p->getGreen(), p->getBlue())) ;
-            this->t.draw(rectangle) ;
-        }
+    this->gameContext = other.gameContext ;
+    this->player1 = other.player1 ;
+    this->player2 = other.player2 ;
+}
+
+Game& Game::operator=(const Game& rhs)
+{
+    if (this == &rhs) return *this; // handle self assignment
+
+    delete gameContext ;
+    delete player1 ;
+    delete player2 ;
+
+    this->gameContext = rhs.gameContext ;
+    this->player1 = rhs.player1 ;
+    this->player2 = rhs.player2 ;
+
+    return *this;
+}
+
+void Game::run(){
+    this->initGameContext() ;
+
+    //Get the stateManager and window from gameContext
+    StateManager* stateManager = this->gameContext->getStateManager() ;
+    sf::RenderWindow* window = this->gameContext->getWindow() ;
+
+    //Create the lauch game view and add it to the gameContext
+    GameLaunch gameLauch(this->gameContext) ;
+    stateManager->setState(&gameLauch) ;
+    stateManager->getState()->init() ;
+
+    //Main loop
+    while(window->isOpen()){
+        stateManager->getState()->processInput() ;
+        stateManager->getState()->update() ;
+        stateManager->getState()->draw() ;
     }
-
-    this->t.display();
 }
 
-Sprite Game::getSprite() {
-    return this->sprite;
+void Game::initGameContext(){
+
+    //Calculates window's size
+    int windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+    int windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
+
+    //Create the window
+    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!", sf::Style::Close);
+    window->setFramerateLimit(12);
+
+    //Create the stateManager
+    StateManager stateManager = StateManager() ;
+
+    //Create the players
+    this->player1 = new Player() ;
+    this->player2 = new Player() ;
+
+    //Create the gameContext
+    this->gameContext = new GameContext(stateManager, window, player1, player2, windowWidth, windowHeight) ;
 }
+

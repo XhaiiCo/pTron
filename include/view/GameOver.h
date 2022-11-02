@@ -1,33 +1,29 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef GAMEOVER_H
+#define GAMEOVER_H
 
-#include <SFML/Graphics.hpp>
 #include "GameState.h"
 #include "StateManager.h"
+#include <SFML/Graphics.hpp>
 #include "GameContext.h"
 
-#define MAX_NUMBER_OF_ITEMS 3
-
-class Menu: public GameState
+class GameOver: public GameState
 {
     //CONSTANT
     public:
         const inline static std::string FONT_PATH = "assets/fonts/Square-Bold.otf" ;
-
     private:
-        int selectedItemIndex;
-        sf::Font font;
-        sf::Text textBtn[MAX_NUMBER_OF_ITEMS];
-
         GameContext* gameContext ;
-    public:
-        Menu(GameContext* gameContext);
-        virtual ~Menu();
 
-        void draw (sf::RenderWindow &window);
-        void MoveUp();
-        void MoveDown();
-        int GetPressedItem() const;
+        sf::Font font ;
+        sf::Text title ;
+        sf::Text scorePlayer1 ;
+        sf::Text scorePlayer2 ;
+
+    public:
+        GameOver(GameContext* gameContext);
+        virtual ~GameOver();
+        GameOver(const GameOver& other);
+        GameOver& operator=(const GameOver& other);
 
         virtual void init() override ;
         virtual void processInput() override ;
@@ -36,4 +32,4 @@ class Menu: public GameState
         virtual void nextState() override ;
 };
 
-#endif // MENU_H
+#endif // GAMEOVER_H
