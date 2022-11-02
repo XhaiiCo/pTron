@@ -79,9 +79,11 @@ void GameLaunch::draw(){
 
 void GameLaunch::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-
-    stateManager->setState(new Menu(this->gameContext)) ;
+    Menu* menu = new Menu(this->gameContext) ;
+    stateManager->setState(menu);
     stateManager->getState()->init() ;
+
+    delete menu ;
 }
 
 GameLaunch* GameLaunch::clone() {

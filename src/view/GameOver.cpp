@@ -84,8 +84,11 @@ void GameOver::draw(){
 
 void GameOver::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-    stateManager->setState(new GamePlay(this->gameContext)) ;
+    GamePlay* gamePlay = new GamePlay(this->gameContext) ;
+    stateManager->setState(gamePlay) ;
     stateManager->getState()->init() ;
+
+    delete gamePlay ;
 }
 
 GameOver* GameOver::clone() {
