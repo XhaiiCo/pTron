@@ -70,7 +70,7 @@ void Game::initGameContext(){
 
     //Create the window
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!", sf::Style::Close);
-    window->setFramerateLimit(12);
+    window->setFramerateLimit(60);
 
     //Create the stateManager
     StateManager stateManager = StateManager() ;

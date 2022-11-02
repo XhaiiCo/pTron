@@ -16,7 +16,6 @@ class GamePlay: public GameState
         inline const static int PADDING = 0 ;
         inline const static int GOD_MODE_DURATION_IN_SECONDS = 2 ;
 
-
     private:
         GameContext* gameContext ;
 

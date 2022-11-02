@@ -10,13 +10,18 @@ class GameLaunch: public GameState
 {
     //CONSTANT
     public:
-        const inline static int LAUNCH_SCREEN_DURATION_IN_SECONDS = 3 ;
         const inline static std::string FONT_PATH = "assets/fonts/joystix-monospace.ttf" ;
+        const inline static float DISPLAY_GUIDE_DURATION = 1.3;
 
     private:
         sf::Clock duration ;
         sf::Text title ;
-        sf::Font font ;
+        sf::Font titleFont ;
+        sf::Text guideText ;
+
+        bool goNextState = false ;
+        int titleY ;
+        int velocitytitleY = -7;
 
         GameContext* gameContext ;
 
