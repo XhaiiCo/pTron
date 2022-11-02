@@ -20,19 +20,28 @@ void Menu::init(){
     float height = this->gameContext->getWindowHeight() ;
 
     textBtn[0].setFont(font);
-    textBtn[0].setColor(sf::Color::Red);
+    textBtn[0].setColor(sf::Color::Green);
     textBtn[0].setString("PLAY");
-    textBtn[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 1));
+    textBtn[0].setCharacterSize(70);
+    sf::FloatRect textRect = textBtn[0].getLocalBounds();
+    textBtn[0].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    textBtn[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.1));
 
     textBtn[1].setFont(font);
     textBtn[1].setColor(sf::Color::White);
-    textBtn[1].setString("OPTIONS");
-    textBtn[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2));
+    textBtn[1].setString("RULES");
+    textBtn[1].setCharacterSize(70);
+    textRect = textBtn[1].getLocalBounds();
+    textBtn[1].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    textBtn[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.7));
 
     textBtn[2].setFont(font);
     textBtn[2].setColor(sf::Color::White);
     textBtn[2].setString("EXIT");
-    textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
+    textBtn[2].setCharacterSize(70);
+    textRect = textBtn[2].getLocalBounds();
+    textBtn[2].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3.3));
 
     selectedItemIndex = 0;
 }
@@ -92,7 +101,7 @@ void Menu::MoveUp()
     {
         textBtn[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex--;
-        textBtn[selectedItemIndex].setColor(sf::Color::Red);
+        textBtn[selectedItemIndex].setColor(sf::Color::Green);
     }
 }
 
@@ -103,7 +112,7 @@ void Menu::MoveDown()
     {
         textBtn[selectedItemIndex].setColor(sf::Color::White);
         selectedItemIndex++;
-        textBtn[selectedItemIndex].setColor(sf::Color::Red);
+        textBtn[selectedItemIndex].setColor(sf::Color::Green);
     }
 }
 

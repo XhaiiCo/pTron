@@ -27,11 +27,24 @@ void Button::setTextColor(sf::Color color)
 
 void Button::setPosition(sf::Vector2f pos)
 {
-    button.setPosition(pos);
+/*
+    sf::FloatRect buttonRect = button.getLocalBounds();
+    button.setOrigin(buttonRect.left + buttonRect.width/2.0f, buttonRect.top  + buttonRect.height/2.0f);
 
-    float xPos = (pos.x + button.getLocalBounds().width / 3) - (text.getLocalBounds().width / 2);
-    float yPos = (pos.y + button.getLocalBounds().height / 3) - (text.getLocalBounds().height / 2);
-    text.setPosition(xPos, yPos);
+    sf::FloatRect textRect = text.getLocalBounds();
+    text.setOrigin(textRect.left + textRect.width/2.0f, buttonRect.top  + buttonRect.height/2.0f);
+
+    button.setPosition(pos);*/
+
+    sf::FloatRect textRect = text.getLocalBounds();
+    text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    text.setPosition(pos);
+
+    /*
+    sf::FloatRect textLB = text.getLocalBounds().;
+    sf::Vector2f center = {textLB.width / 2.0f, textLB.height / 2.0f} ;
+    sf::Vector2f localBounds = center + textLB.*/
+
 }
 
 void Button::drawTo(sf::RenderWindow &window)

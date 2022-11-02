@@ -33,9 +33,13 @@ void GameOver::init(){
 
     //CREATE THE TILE
     title.setFont(font);
+    title.setCharacterSize(60);
     title.setColor(sf::Color::Red);
-    title.setString("Game Over broooo");
-    title.setPosition(sf::Vector2f(windowWidth / 2, windowHeight / 4));
+    title.setString("PlayerX won the game !");
+
+    sf::FloatRect titleRect = title.getLocalBounds();
+    title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
+    title.setPosition(this->gameContext->getWindow()->getView().getCenter());
 
     //SCORE PLAYEE 1
     scorePlayer1.setFont(font);
