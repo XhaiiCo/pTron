@@ -68,6 +68,24 @@ void Menu::init(){
     textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3.3));
 
     selectedItemIndex = 0;
+
+    if (!titleFont.loadFromFile(TITLE_FONT_PATH))
+    {
+        //handle error
+    }
+
+    //CREATE THE TILE
+    title.setFont(titleFont);
+    title.setColor(sf::Color::Green);
+    title.setString("THE TRON GAME");
+    title.setCharacterSize(70);
+
+    sf::FloatRect titleRect = title.getLocalBounds();
+    title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
+    title.setPosition({
+                      this->gameContext->getWindow()->getView().getCenter().x,
+                      this->gameContext->getWindow()->getView().getCenter().y / 2
+                      });
 }
 
 void Menu::processInput(){
@@ -110,6 +128,7 @@ void Menu::draw(){
 
         window->draw(textBtn[i]);
     }
+    window->draw(this->title) ;
     window->display();
 }
 

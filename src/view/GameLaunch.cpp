@@ -51,9 +51,6 @@ void GameLaunch::init(){
     sf::FloatRect titleRect = title.getLocalBounds();
     title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
     title.setPosition(this->gameContext->getWindow()->getView().getCenter());
-
-    std::cout << this->gameContext->getWindow()->getView().getCenter().x << std::endl;
-    std::cout << this->gameContext->getWindow()->getView().getCenter().y << std::endl;
 }
 
 void GameLaunch::processInput(){
