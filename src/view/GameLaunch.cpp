@@ -44,6 +44,8 @@ GameLaunch& GameLaunch::operator=(const GameLaunch& rhs)
 
 void GameLaunch::init(){
     titleY = this->gameContext->getWindow()->getView().getCenter().y ;
+
+    //Start the timer
     this->duration.restart() ;
 
     if (!titleFont.loadFromFile(FONT_PATH))
@@ -51,12 +53,13 @@ void GameLaunch::init(){
         //handle error
     }
 
-    //CREATE THE TILE
+    //CREATE THE TITLE
     title.setFont(titleFont);
     title.setColor(sf::Color::Green);
     title.setString("THE TRON GAME");
     title.setCharacterSize(70);
 
+    //POSITION THE TITLE
     sf::FloatRect titleRect = title.getLocalBounds();
     title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
     title.setPosition(this->gameContext->getWindow()->getView().getCenter());
@@ -67,6 +70,7 @@ void GameLaunch::init(){
     guideText.setString("press enter");
     guideText.setCharacterSize(20);
 
+    //POSITION THE GUIDE TEXT
     sf::FloatRect guideTextRect = guideText.getLocalBounds();
     guideText.setOrigin(guideTextRect.left + guideTextRect.width/2.0f, guideTextRect.top  + guideTextRect.height/2.0f);
     guideText.setPosition({
@@ -87,19 +91,24 @@ void GameLaunch::processInput(){
 }
 
 void GameLaunch::update(){
+    //If the player have press enter and the title did not reach its final point
     if(goNextState && titleY > this->gameContext->getWindow()->getView().getCenter().y / 2){
+        //Change the title y position
         titleY += velocitytitleY ;
         title.setPosition({
               this->gameContext->getWindow()->getView().getCenter().x,
               titleY
               });
     }
+    //Else if he have press enter and the title have reach its final point
     else if(goNextState){
+        //Set the right position
         title.setPosition({
                 this->gameContext->getWindow()->getView().getCenter().x,
                 this->gameContext->getWindow()->getView().getCenter().y / 2
               });
-              this->nextState() ;
+        //Go next view
+        this->nextState() ;
     }
 }
 
