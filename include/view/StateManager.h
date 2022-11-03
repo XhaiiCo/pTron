@@ -2,7 +2,9 @@
 #define STATEMANAGER_H
 
 #include "GameState.h"
-
+/* DESIGN PATTERN STATE
+* The stateManager class will just contain the current state of the application.
+*/
 class StateManager
 {
     private:

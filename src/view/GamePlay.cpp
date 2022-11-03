@@ -110,15 +110,6 @@ void GamePlay::update(){
     player1Lost = playground.isPlayerHasLost(0) ;
     player2Lost = playground.isPlayerHasLost(1) ;
 
-    if(player1Lost || player2Lost){
-        if(player1Lost != player2Lost)//If there is a draw, we do not increase the scores
-        {
-            if(player1Lost) { p2->increaseScore() ; p2->setWin(true) ; }
-            if(player2Lost) { p1->increaseScore() ; p1->setWin(true) ; }
-        }
-        this->nextState() ;
-    }
-
     //MANAGE GOD MODE
     if(p1->isGodMode()){
             if(this->godModePlayer1Time.getElapsedTime().asSeconds() >= GOD_MODE_DURATION_IN_SECONDS)
@@ -133,6 +124,15 @@ void GamePlay::update(){
 
     //AND SET PLAYER ON THE MAP
     playground.displayplayers() ;
+
+    if(player1Lost || player2Lost){
+        if(player1Lost != player2Lost)//If there is a draw, we do not increase the scores
+        {
+            if(player1Lost) { p2->increaseScore() ; p2->setWin(true) ; }
+            if(player2Lost) { p1->increaseScore() ; p1->setWin(true) ; }
+        }
+        this->nextState() ;
+    }
 }
 
 void GamePlay::draw(){
