@@ -8,11 +8,15 @@
 #include "Color.h"
 #include "GameContext.h"
 
+/*
+* This view display a game.
+* It makes a new playground and passes him the both players
+*/
 class GamePlay: public GameState
 {
     //CONSTANT
     public:
-        inline const static int CASE_WIDTH = 20 ;
+        inline const static int CASE_WIDTH = 17 ;
         inline const static int PADDING = 0 ;
         inline const static int GOD_MODE_DURATION_IN_SECONDS = 2 ;
 
@@ -22,9 +26,11 @@ class GamePlay: public GameState
         Playground playground ;
         Color emptyCaseColor = Color(25,25,30) ;
 
+        //If a player have lost
         bool player1Lost = false ;
         bool player2Lost = false ;
 
+        //The time since the player is in god mode
         sf::Clock godModePlayer1Time ;
         sf::Clock godModePlayer2Time ;
 
