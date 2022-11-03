@@ -10,6 +10,8 @@ Game::~Game()
      delete gameContext ;
      delete player1 ;
      delete player2 ;
+    delete this->stateManager ;
+    delete this->window ;
 }
 
 
@@ -18,11 +20,15 @@ Game::Game(const Game& other)
     delete gameContext ;
     delete player1 ;
     delete player2 ;
+    delete this->stateManager ;
+    delete this->window ;
 
 
     this->gameContext = other.gameContext ;
     this->player1 = other.player1 ;
     this->player2 = other.player2 ;
+    this->stateManager = other.stateManager ;
+    this->window = other.window ;
 }
 
 Game& Game::operator=(const Game& rhs)
@@ -32,10 +38,15 @@ Game& Game::operator=(const Game& rhs)
     delete gameContext ;
     delete player1 ;
     delete player2 ;
+    delete this->stateManager ;
+    delete this->window ;
 
     this->gameContext = rhs.gameContext ;
     this->player1 = rhs.player1 ;
     this->player2 = rhs.player2 ;
+    this->stateManager = rhs.stateManager ;
+    this->window = rhs.window ;
+
 
     return *this;
 }
@@ -63,17 +74,16 @@ void Game::run(){
 }
 
 void Game::initGameContext(){
-
     //Calculates window's size
     int windowWidth = Playground::NB_COLUMN * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
     int windowHeight = Playground::NB_LINE * (GamePlay::CASE_WIDTH + GamePlay::PADDING);
 
     //Create the window
-    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!", sf::Style::Close);
+    window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "The Tron Game!", sf::Style::Close);
     window->setFramerateLimit(60);
 
     //Create the stateManager
-    StateManager stateManager = StateManager() ;
+    stateManager = new StateManager() ;
 
     //Create the players
     this->player1 = new Player() ;
