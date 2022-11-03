@@ -8,7 +8,12 @@
 class StateManager
 {
     private:
+        /*
+        * Internal association by pointer.
+        * The stateManager manage the state so it manages its life cycle.
+        */
         GameState* state ;
+
     public:
         StateManager();
         virtual ~StateManager();
