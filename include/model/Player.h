@@ -15,6 +15,9 @@ class Player
         //The score increase when the player win a game.
         int score = 0;
 
+        //If the player win the game
+        bool win ;
+
         //Position on the playground
         int x;
         int y ;
@@ -59,11 +62,17 @@ class Player
         //Return the current score
         int getScore() ;
 
+        std::string getName(){ return this->name ;}
+        void setName(std::string value){ this->name = value ;}
+
         int getX() { return this->x ;}
         void setX(int value) ;
 
         int getY() { return this->y ;}
         void setY(int value) ;
+
+        bool getWin() { return this->win ;}
+        void setWin(bool value){ this->win = value ;}
 
         void setMainColor(Color color) {
             this->mainColor = color ;

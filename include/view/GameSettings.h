@@ -6,6 +6,9 @@
 #include "TextBox.h"
 #include "Button.h"
 
+/*
+* This view is displayed before the first game for ask settings.
+*/
 class GameSettings: public GameState
 {
     private:
@@ -29,6 +32,7 @@ class GameSettings: public GameState
         virtual void nextState() override ;
         virtual GameSettings* clone() override;
 
+        //Apply the settings to the players
         void applySettingToPlayers() ;
 };
 

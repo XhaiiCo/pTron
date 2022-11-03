@@ -25,6 +25,8 @@ Player::Player(const Player& other)
     this->godModeColor = other.godModeColor ;
     this->godMode = other.godMode ;
     this->nbGodModeRemaining = other.nbGodModeRemaining ;
+    this->win = other.win ;
+
 }
 
 Player& Player::operator=(const Player& rhs)
@@ -41,6 +43,7 @@ Player& Player::operator=(const Player& rhs)
     this->godModeColor = rhs.godModeColor ;
     this->godMode = rhs.godMode ;
     this->nbGodModeRemaining = rhs.nbGodModeRemaining ;
+    this->win = rhs.win ;
 
     return *this;
 }
@@ -49,6 +52,7 @@ void Player::resetParams(){
     this->changeDirection(0, 0) ;
     this->nbGodModeRemaining = 1 ;
     this->godMode = false ;
+    this->win = false ;
 }
 
 void Player::increaseScore(){

@@ -6,17 +6,33 @@
 #include "StateManager.h"
 #include "GameContext.h"
 
+/*
+* This view is the first view of the application.
+* It display the title and move to the next when the user press enter
+*/
 class GameLaunch: public GameState
 {
     //CONSTANT
     public:
-        const inline static int LAUNCH_SCREEN_DURATION_IN_SECONDS = 3 ;
         const inline static std::string FONT_PATH = "assets/fonts/joystix-monospace.ttf" ;
+
+        //The time after which the guide message is displayed
+        const inline static float DISPLAY_GUIDE_DURATION = 1.3;
 
     private:
         sf::Clock duration ;
         sf::Text title ;
-        sf::Font font ;
+        sf::Font titleFont ;
+        sf::Text guideText ;
+
+        //When the user press enter, start the animation and after change view
+        bool goNextState = false ;
+
+        //y position of the title
+        int titleY ;
+
+        //y velocity
+        int velocitytitleY = -7;
 
         GameContext* gameContext ;
 

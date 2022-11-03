@@ -1,8 +1,8 @@
 #include "GameContext.h"
 
-GameContext::GameContext(StateManager stateManager, sf::RenderWindow* window, Player* player1, Player* player2,  float windowWidth, float windowHeight): windowWidth(windowWidth), windowHeight(windowHeight)
+GameContext::GameContext(StateManager* stateManager, sf::RenderWindow* window, Player* player1, Player* player2,  float windowWidth, float windowHeight): windowWidth(windowWidth), windowHeight(windowHeight)
 {
-    this->stateManager = new StateManager(stateManager) ;
+    this->stateManager = stateManager ;
     this->window = window ;
     this->player1 = player1 ;
     this->player2 = player2 ;

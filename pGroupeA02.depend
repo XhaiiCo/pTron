@@ -80,3 +80,140 @@
 	<SFML/Graphics.hpp>
 	"Playground.h"
 
+1667330213 source:/home/jeremie/C++/ProjetJeuTron/pTron/main.cpp
+	"Game.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/Game.h
+	<SFML/Graphics.hpp>
+	"Playground.h"
+	"Player.h"
+	"GamePlay.h"
+	"Menu.h"
+	"StateManager.h"
+	"GameContext.h"
+	"Player.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Playground.h
+	"Case.h"
+	"vector"
+	"Player.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Case.h
+	"Player.h"
+
+1667381658 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Player.h
+	"string"
+	"Color.h"
+
+1667381658 /home/jeremie/C++/ProjetJeuTron/pTron/include/model/Color.h
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/GamePlay.h
+	"GameState.h"
+	"StateManager.h"
+	<SFML/Graphics.hpp>
+	"Playground.h"
+	"Color.h"
+	"GameContext.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/GameState.h
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/StateManager.h
+	"GameState.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/GameContext.h
+	<SFML/Graphics.hpp>
+	"StateManager.h"
+	"Player.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/Menu.h
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"StateManager.h"
+	"GameContext.h"
+
+1667135692 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Case.cpp
+	"Case.h"
+
+1667303235 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Color.cpp
+	"Color.h"
+
+1667381658 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Player.cpp
+	<iostream>
+	"Player.h"
+	"Playground.h"
+
+1667404373 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/Button.cpp
+	"Button.h"
+
+1667402272 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/Button.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1667329413 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/GameContext.cpp
+	"GameContext.h"
+
+1667221868 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/GameState.cpp
+	"GameState.h"
+	<SFML/System.hpp>
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/Menu.cpp
+	"Menu.h"
+	<iostream>
+	"GameSettings.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/GameSettings.h
+	"GameState.h"
+	"GameContext.h"
+	"TextBox.h"
+	"Button.h"
+
+1667326667 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/TextBox.h
+	<iostream>
+	<SFML/Graphics.hpp>
+	<sstream>
+
+1667326667 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/TextBox.cpp
+	"TextBox.h"
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/model/Playground.cpp
+	"Playground.h"
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/Game.cpp
+	"Game.h"
+	<iostream>
+	"GameLaunch.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/GameLaunch.h
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"StateManager.h"
+	"GameContext.h"
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/GameLaunch.cpp
+	"GameLaunch.h"
+	"Menu.h"
+	<iostream>
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/GameOver.cpp
+	"GameOver.h"
+	"GamePlay.h"
+
+1667400920 /home/jeremie/C++/ProjetJeuTron/pTron/include/view/GameOver.h
+	"GameState.h"
+	"StateManager.h"
+	<SFML/Graphics.hpp>
+	"GameContext.h"
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/GamePlay.cpp
+	"GamePlay.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+	"GameOver.h"
+
+1667404301 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/GameSettings.cpp
+	"GameSettings.h"
+	"GamePlay.h"
+
+1667400920 source:/home/jeremie/C++/ProjetJeuTron/pTron/src/view/StateManager.cpp
+	"StateManager.h"
+

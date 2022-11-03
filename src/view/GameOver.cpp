@@ -10,11 +10,11 @@ GameOver::~GameOver()
 
 GameOver::GameOver(const GameOver& other)
 {
-        this->gameContext = other.gameContext ;
-        this->font = other.font ;
-        this->title = other.title ;
-        this->scorePlayer1 = other.scorePlayer1 ;
-        this->scorePlayer2 = other.scorePlayer2 ;
+    this->gameContext = other.gameContext ;
+    this->font = other.font ;
+    this->title = other.title ;
+    this->scorePlayer1 = other.scorePlayer1 ;
+    this->scorePlayer2 = other.scorePlayer2 ;
 }
 
 GameOver& GameOver::operator=(const GameOver& rhs)
@@ -41,23 +41,30 @@ void GameOver::init(){
     Player* p1 = this->gameContext->getPlayer1() ;
     Player* p2 = this->gameContext->getPlayer2() ;
 
-    //CREATE THE TILE
+    //Set the title text
+    std::string titleText = "" ;
+    if(p1->getWin()) titleText = p1->getName() + " won the game !";
+    else if(p2->getWin()) titleText = p2->getName()+ " won the game !" ;
+    else titleText = "Match draw" ;
+
+    //CREATE THE TITLE
     title.setFont(font);
     title.setCharacterSize(60);
     title.setColor(sf::Color::Red);
-    title.setString("PlayerX won the game !");
+    title.setString(titleText);
 
+    //POSITION THE TITLE
     sf::FloatRect titleRect = title.getLocalBounds();
     title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
     title.setPosition(this->gameContext->getWindow()->getView().getCenter());
 
-    //SCORE PLAYEE 1
+    //SCORE PLAYER 1
     scorePlayer1.setFont(font);
     scorePlayer1.setColor(sf::Color(p1->getMainColor().getRed(), p1->getMainColor().getGreen(), p1->getMainColor().getBlue()));
     scorePlayer1.setString(std::to_string(p1->getScore()));
     scorePlayer1.setPosition(sf::Vector2f(windowWidth / 4, windowHeight / 2));
 
-    //SCORE PLAYEE 2
+    //SCORE PLAYER 2
     scorePlayer2.setFont(font);
     scorePlayer2.setColor(sf::Color(p2->getMainColor().getRed(), p2->getMainColor().getGreen(), p2->getMainColor().getBlue()));
     scorePlayer2.setString(std::to_string(p2->getScore()));
