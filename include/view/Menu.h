@@ -8,6 +8,9 @@
 
 #define MAX_NUMBER_OF_ITEMS 3
 
+/*
+* This view is the main menu of the game
+*/
 class Menu: public GameState
 {
     //CONSTANT
@@ -30,9 +33,13 @@ class Menu: public GameState
         Menu(const Menu& other);
         Menu& operator=(const Menu& other);
 
-        void draw (sf::RenderWindow &window);
+        //Move up to item's menu
         void MoveUp();
+
+        //Move down to item's menu
         void MoveDown();
+
+        //Get the current selected item
         int GetPressedItem() const;
 
         virtual void init() override ;
