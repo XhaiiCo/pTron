@@ -6,11 +6,16 @@
 #include <SFML/Graphics.hpp>
 #include "GameContext.h"
 
+/*
+* This view will be displayed at the end of the game.
+* And display the winner and the score.
+*/
 class GameOver: public GameState
 {
     //CONSTANT
     public:
         const inline static std::string FONT_PATH = "assets/fonts/Square-Bold.otf" ;
+
     private:
         GameContext* gameContext ;
 

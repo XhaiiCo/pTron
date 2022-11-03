@@ -10,11 +10,11 @@ GameOver::~GameOver()
 
 GameOver::GameOver(const GameOver& other)
 {
-        this->gameContext = other.gameContext ;
-        this->font = other.font ;
-        this->title = other.title ;
-        this->scorePlayer1 = other.scorePlayer1 ;
-        this->scorePlayer2 = other.scorePlayer2 ;
+    this->gameContext = other.gameContext ;
+    this->font = other.font ;
+    this->title = other.title ;
+    this->scorePlayer1 = other.scorePlayer1 ;
+    this->scorePlayer2 = other.scorePlayer2 ;
 }
 
 GameOver& GameOver::operator=(const GameOver& rhs)
@@ -40,18 +40,20 @@ void GameOver::init(){
     float windowHeight = this->gameContext->getWindowHeight() ;
     Player* p1 = this->gameContext->getPlayer1() ;
     Player* p2 = this->gameContext->getPlayer2() ;
-    std::string titleText = "" ;
 
+    //Set the title text
+    std::string titleText = "" ;
     if(p1->getWin()) titleText = p1->getName() + " won the game !";
     else if(p2->getWin()) titleText = p2->getName()+ " won the game !" ;
     else titleText = "Match draw" ;
 
-    //CREATE THE TILE
+    //CREATE THE TITLE
     title.setFont(font);
     title.setCharacterSize(60);
     title.setColor(sf::Color::Red);
     title.setString(titleText);
 
+    //POSITION THE TITLE
     sf::FloatRect titleRect = title.getLocalBounds();
     title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
     title.setPosition(this->gameContext->getWindow()->getView().getCenter());
