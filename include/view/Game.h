@@ -30,6 +30,8 @@ class Game
         *   the game class create the gameContext and handle it.
         */
         GameContext* gameContext ;
+        StateManager* stateManager ;
+        sf::RenderWindow* window ;
 
         /*
         * Internal association by pointer:

@@ -36,12 +36,14 @@ GameSettings& GameSettings::operator=(const GameSettings& rhs)
 
 
 void GameSettings::init(){
+    //GET THE WINDOW FROM THE GAME CONTEXT
     sf::RenderWindow* window = this->gameContext->getWindow() ;
 
     window->setKeyRepeatEnabled(true);
 
     font.loadFromFile("assets/fonts/Square-Bold.otf");
 
+    //CREATE THE TEXTBOX FOR PLAYER 1 NAME
     this->tbNamePlayer1 = TextBox(30, sf::Color::Black, false);
     this->tbNamePlayer1.setFont(font);
     this->tbNamePlayer1.setPosition({300, 100});
@@ -49,6 +51,7 @@ void GameSettings::init(){
     this->tbNamePlayer1.setBorder(sf::Color::White);
     this->tbNamePlayer1.setText("Player 1") ;
 
+    //CREATE THE TEXTBOX FOR PLAYER 2 NAME
     this->tbNamePlayer2 = TextBox(30, sf::Color::Black, false);
     this->tbNamePlayer2.setFont(font);
     this->tbNamePlayer2.setPosition({1200, 100});
@@ -56,12 +59,10 @@ void GameSettings::init(){
     this->tbNamePlayer2.setBorder(sf::Color::White);
     this->tbNamePlayer2.setText("Player 2") ;
 
+    //CREATE THE PLAY BUTTON
     this->btnPlay = Button("PLAY", {300, 100}, 80, sf::Color::Green, sf::Color::White);
     this->btnPlay.setPosition(this->gameContext->getWindow()->getView().getCenter());
     this->btnPlay.setFont(font);
-
-    std::cout << window->getView().getCenter().x << std::endl;
-    std::cout << window->getView().getCenter().y << std::endl;
 }
 
 void GameSettings::processInput(){
