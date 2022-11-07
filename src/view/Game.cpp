@@ -7,9 +7,9 @@ Game::Game(){}
 
 Game::~Game()
 {
-     delete gameContext ;
-     delete player1 ;
-     delete player2 ;
+    delete gameContext ;
+    delete player1 ;
+    delete player2 ;
     delete this->stateManager ;
     delete this->window ;
 }
@@ -17,13 +17,6 @@ Game::~Game()
 
 Game::Game(const Game& other)
 {
-    delete gameContext ;
-    delete player1 ;
-    delete player2 ;
-    delete this->stateManager ;
-    delete this->window ;
-
-
     this->gameContext = other.gameContext ;
     this->player1 = other.player1 ;
     this->player2 = other.player2 ;

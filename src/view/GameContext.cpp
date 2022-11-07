@@ -10,15 +10,10 @@ GameContext::GameContext(StateManager* stateManager, sf::RenderWindow* window, P
 
 GameContext::~GameContext()
 {
-    delete this->stateManager ;
-    delete this->window ;
 }
 
 GameContext::GameContext(const GameContext& other)
 {
-    delete this->stateManager ;
-    delete this->window ;
-
     this->stateManager = other.stateManager ;
     this->window = other.window ;
     this->windowWidth = other.windowWidth ;
@@ -28,9 +23,6 @@ GameContext::GameContext(const GameContext& other)
 
 GameContext& GameContext::operator=(const GameContext& rhs)
 {
-    delete this->stateManager ;
-    delete this->window ;
-
     if (this == &rhs) return *this; // handle self assignment
 
     this->stateManager = rhs.stateManager ;

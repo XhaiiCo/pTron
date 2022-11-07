@@ -18,19 +18,6 @@ Playground::~Playground()
 
 Playground::Playground(const Playground& other)
 {
-    //Remove cases
-    for(std::vector<Case*> line : this->cases)
-    {
-        for(Case* c : line)
-        {
-            delete c;
-        }
-    }
-    this->cases.clear();
-
-    //Clear players list but not delete, because their don't belong to playground.
-    this->players.clear() ;
-
     //Add cases
     for(std::vector<Case*> otherLine : other.cases)
     {

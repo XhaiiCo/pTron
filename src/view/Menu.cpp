@@ -135,8 +135,11 @@ void Menu::draw(){
 
 void Menu::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
-    stateManager->setState(new GameSettings(this->gameContext)) ;
+    GameSettings* gameSettings = new GameSettings(this->gameContext) ;
+    stateManager->setState(gameSettings) ;
     stateManager->getState()->init() ;
+
+    delete gameSettings ;
 }
 
 Menu* Menu::clone() {
