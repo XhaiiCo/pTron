@@ -48,6 +48,9 @@ void Button::setPosition(sf::Vector2f pos)
 
     button.setPosition(pos);*/
 
+
+
+
     sf::FloatRect buttonRect = button.getLocalBounds();
     button.setOrigin(buttonRect.left + buttonRect.width/2.0f, buttonRect.top  + buttonRect.height/2.0f);
     button.setPosition(pos);

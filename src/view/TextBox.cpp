@@ -75,9 +75,10 @@ void TextBox::setPosition(sf::Vector2f pos)
 {
     background.setPosition(pos);
 
-    float xPos = (pos.x + background.getLocalBounds().width / 3) - (textbox.getLocalBounds().width / 2);
-    float yPos = (pos.y + background.getLocalBounds().height / 3) - (textbox.getLocalBounds().height / 2);
+    float xPos = (pos.x + background.getLocalBounds().width / 10) - (textbox.getLocalBounds().width / 2);
+    float yPos = (pos.y + background.getLocalBounds().height / 8) - (textbox.getLocalBounds().height / 2);
     textbox.setPosition(xPos, yPos);
+
 }
 
 void TextBox::setLimit(int lim)
