@@ -43,10 +43,15 @@ void GameSettings::init(){
 
     font.loadFromFile("assets/fonts/Square-Bold.otf");
 
+    //float windowWidth = window->getSize().x;
+
+    float xPosTb = window->getSize().x / 6;
+    float yPosTb = window->getSize().y / 7;
+
     //CREATE THE TEXTBOX FOR PLAYER 1 NAME
     this->tbNamePlayer1 = TextBox(30, sf::Color::Black, false);
     this->tbNamePlayer1.setFont(font);
-    this->tbNamePlayer1.setPosition({300, 100});
+    this->tbNamePlayer1.setPosition({xPosTb, yPosTb});
     this->tbNamePlayer1.setLimit(10);
     this->tbNamePlayer1.setBorder(sf::Color::White);
     this->tbNamePlayer1.setText("Player 1") ;
@@ -54,15 +59,17 @@ void GameSettings::init(){
     //CREATE THE TEXTBOX FOR PLAYER 2 NAME
     this->tbNamePlayer2 = TextBox(30, sf::Color::Black, false);
     this->tbNamePlayer2.setFont(font);
-    this->tbNamePlayer2.setPosition({1200, 100});
+    this->tbNamePlayer2.setPosition({xPosTb * 4.07, yPosTb});
     this->tbNamePlayer2.setLimit(10);
     this->tbNamePlayer2.setBorder(sf::Color::White);
     this->tbNamePlayer2.setText("Player 2") ;
 
     //CREATE THE PLAY BUTTON
-    this->btnPlay = Button("PLAY", {300, 100}, 80, sf::Color::Green, sf::Color::White);
-    this->btnPlay.setPosition(this->gameContext->getWindow()->getView().getCenter());
+    this->btnPlay = Button("PLAY", {270, 90}, 80, sf::Color::Black, sf::Color::Green);
+    this->btnPlay.setPosition({window->getSize().x / 2, window->getSize().y / 1.4});
     this->btnPlay.setFont(font);
+     this->btnPlay.setBorder(sf::Color::Green);
+
 }
 
 void GameSettings::processInput(){
@@ -88,7 +95,7 @@ void GameSettings::processInput(){
                 }
                 else
                 {
-                    btnPlay.setBackColor(sf::Color::Green);
+                    btnPlay.setBackColor(sf::Color::Black);
                 }
                 break;
 
@@ -128,6 +135,8 @@ void GameSettings::update(){}
 
 void GameSettings::draw(){
     sf::RenderWindow* window = this->gameContext->getWindow() ;
+
+
 
     window->clear();
 

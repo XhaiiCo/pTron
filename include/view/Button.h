@@ -17,6 +17,8 @@ class Button
         Button& operator=(const Button& other);
 
 
+        void setBorder(sf::Color color);
+
         void setFont(sf::Font &font);
 
         void setBackColor(sf::Color color);

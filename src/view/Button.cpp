@@ -10,6 +10,12 @@ Button::Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor
     button.setFillColor(bgColor);
 }
 
+void Button::setBorder(sf::Color color)
+{
+    button.setOutlineColor(color);
+    button.setOutlineThickness(3);
+}
+
 Button::Button(const Button& other)
 {
     this->button = other.button ;
@@ -39,30 +45,13 @@ void Button::setTextColor(sf::Color color)
 
 void Button::setPosition(sf::Vector2f pos)
 {
-/*
-    sf::FloatRect buttonRect = button.getLocalBounds();
-    button.setOrigin(buttonRect.left + buttonRect.width/2.0f, buttonRect.top  + buttonRect.height/2.0f);
+    float btnPosX = (float) pos.x - (float) button.getLocalBounds().width / (float) 2;
 
-    sf::FloatRect textRect = text.getLocalBounds();
-    text.setOrigin(textRect.left + textRect.width/2.0f, buttonRect.top  + buttonRect.height/2.0f);
+    button.setPosition(btnPosX , pos.y);
 
-    button.setPosition(pos);*/
-
-
-
-
-    sf::FloatRect buttonRect = button.getLocalBounds();
-    button.setOrigin(buttonRect.left + buttonRect.width/2.0f, buttonRect.top  + buttonRect.height/2.0f);
-    button.setPosition(pos);
-
-    sf::FloatRect textRect = text.getLocalBounds();
-    text.setOrigin(buttonRect.left + buttonRect.width/3.82f, buttonRect.top  + buttonRect.height/2.0f);
-    text.setPosition(pos);
-
-    /*
-    sf::FloatRect textLB = text.getLocalBounds().;
-    sf::Vector2f center = {textLB.width / 2.0f, textLB.height / 2.0f} ;
-    sf::Vector2f localBounds = center + textLB.*/
+    float xPos = btnPosX + button.getLocalBounds().width / 4.94;
+    float yPos = pos.y - button.getLocalBounds().height / 12;
+    text.setPosition(xPos, yPos);
 
 }
 
