@@ -68,8 +68,35 @@ void GameSettings::init(){
     this->btnPlay = Button("PLAY", {270, 90}, 80, sf::Color::Black, sf::Color::Green);
     this->btnPlay.setPosition({window->getSize().x / 2, window->getSize().y / 1.4});
     this->btnPlay.setFont(font);
-     this->btnPlay.setBorder(sf::Color::Green);
+    this->btnPlay.setBorder(sf::Color::Green);
 
+    colorsPlayer1[0].setColor(sf::Color::Green);
+    colorsPlayer1[0].setSelected(true);
+    colorsPlayer1[0].setBorder(sf::Color::White);
+    colorsPlayer1[1].setColor(sf::Color::Blue);
+    colorsPlayer1[2].setColor(sf::Color::Red);
+    colorsPlayer1[3].setColor(sf::Color::Magenta);
+
+    int decal = 0;
+    for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
+    {
+        colorsPlayer1[i].setPosition({window->getSize().x / 7.8 + decal, window->getSize().y / 2.5});
+        decal += 80;
+    }
+
+    colorsPlayer2[0].setColor(sf::Color::Cyan);
+    colorsPlayer2[0].setSelected(true);
+    colorsPlayer2[0].setBorder(sf::Color::White);
+    colorsPlayer2[1].setColor(sf::Color::Yellow);
+    colorsPlayer2[2].setColor(sf::Color::Red);
+    colorsPlayer2[3].setColor(sf::Color::Magenta);
+
+    decal = 0;
+    for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
+    {
+        colorsPlayer2[i].setPosition({window->getSize().x / 1.57 + decal, window->getSize().y / 2.5});
+        decal += 80;
+    }
 }
 
 void GameSettings::processInput(){
@@ -105,21 +132,70 @@ void GameSettings::processInput(){
                     tbNamePlayer1.setSelected(true);
                     tbNamePlayer1.setBorder(sf::Color::Green);
                     tbNamePlayer2.setSelected(false);
-                    tbNamePlayer2.setBorder(sf::Color::White);
+                    tbNamePlayer2.setBorder(sf::Color::Transparent);
                 }
                 else if(tbNamePlayer2.isMouseOver(*window))
                 {
                     tbNamePlayer2.setSelected(true);
                     tbNamePlayer2.setBorder(sf::Color::Green);
                     tbNamePlayer1.setSelected(false);
-                    tbNamePlayer1.setBorder(sf::Color::White);
+                    tbNamePlayer1.setBorder(sf::Color::Transparent);
                 }
                 else if(btnPlay.isMouseOver(*window))
                 {
                     this->applySettingToPlayers() ;
                     this->nextState() ;
-
                 }
+                else if(colorsPlayer1[0].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer1);
+                    colorsPlayer1[0].setSelected(true);
+                    colorsPlayer1[0].setBorder(sf::Color::White);
+                }
+                else if(colorsPlayer1[1].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer1);
+                    colorsPlayer1[1].setSelected(true);
+                    colorsPlayer1[1].setBorder(sf::Color::White);
+                }
+                else if(colorsPlayer1[2].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer1);
+                    colorsPlayer1[2].setSelected(true);
+                    colorsPlayer1[2].setBorder(sf::Color::White);
+                }
+                else if(colorsPlayer1[3].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer1);
+                    colorsPlayer1[3].setSelected(true);
+                    colorsPlayer1[3].setBorder(sf::Color::White);
+                }
+
+                else if(colorsPlayer2[0].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer2);
+                    colorsPlayer2[0].setSelected(true);
+                    colorsPlayer2[0].setBorder(sf::Color::White);
+                }
+                else if(colorsPlayer2[1].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer2);
+                    colorsPlayer2[1].setSelected(true);
+                    colorsPlayer2[1].setBorder(sf::Color::White);
+                }
+                else if(colorsPlayer2[2].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer2);
+                    colorsPlayer2[2].setSelected(true);
+                    colorsPlayer2[2].setBorder(sf::Color::White);
+                }
+                else if(colorsPlayer2[3].isMouseOver(*window))
+                {
+                    unselectAll(colorsPlayer2);
+                    colorsPlayer2[3].setSelected(true);
+                    colorsPlayer2[3].setBorder(sf::Color::White);
+                }
+
                 else
                 {
                     tbNamePlayer1.setSelected(false);
@@ -142,6 +218,17 @@ void GameSettings::draw(){
 
     this->tbNamePlayer1.drawTo(*window);
     this->tbNamePlayer2.drawTo(*window);
+
+    for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
+    {
+        colorsPlayer1[i].drawTo(*window);
+    }
+
+    for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
+    {
+        colorsPlayer2[i].drawTo(*window);
+    }
+
     this->btnPlay.drawTo(*window);
 
     window->display();
@@ -176,4 +263,14 @@ void GameSettings::applySettingToPlayers(){
     p1->setGodModeColor(Color(255, 255, 0)) ;
     p2->setMainColor(Color(0, 0, 255)) ;
     p2->setGodModeColor(Color(255, 255, 0)) ;
+}
+
+void GameSettings::unselectAll(ColorTile * colorsPlayer)
+{
+    for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
+    {
+        colorsPlayer[i].setSelected(false);
+        colorsPlayer[i].setBorder(sf::Color::Transparent);
+    }
+
 }

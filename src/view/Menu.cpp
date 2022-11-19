@@ -46,7 +46,7 @@ void Menu::init(){
 
     textBtn[0].setFont(font);
     textBtn[0].setColor(sf::Color::Green);
-    textBtn[0].setString("PLAY");
+    textBtn[0].setString("START");
     textBtn[0].setCharacterSize(70);
     sf::FloatRect textRect = textBtn[0].getLocalBounds();
     textBtn[0].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);

@@ -34,7 +34,7 @@ TextBox::TextBox(int size, sf::Color color, bool sel)
 {
     textbox.setCharacterSize(size);
     textbox.setColor(color);
-    isSelected = sel;
+    selected = sel;
     if(sel)
     {
         textbox.setString("_");
@@ -56,13 +56,13 @@ TextBox::TextBox(const TextBox& other){
         this->background = other.background ;
         this->textbox = other.textbox ;
 
-        this->isSelected = other.isSelected ;
+        this->selected = other.selected ;
         this->limit = other.limit;
 }
 TextBox& TextBox::operator=(const TextBox& rhs){
         this->background = rhs.background ;
         this->textbox = rhs.textbox ;
-        this->isSelected = rhs.isSelected ;
+        this->selected = rhs.selected ;
         this->limit = rhs.limit;
 }
 
@@ -88,7 +88,7 @@ void TextBox::setLimit(int lim)
 
 void TextBox::setSelected(bool sel)
 {
-    isSelected = sel;
+    selected = sel;
     if(!sel)
     {
         std::string t = text.str();
@@ -124,7 +124,7 @@ void TextBox::drawTo(sf::RenderWindow &window)
 
 void TextBox::typedOn(sf::Event input)
 {
-    if(isSelected)
+    if(selected)
     {
         int charTyped = input.text.unicode;
         if(charTyped < 128)

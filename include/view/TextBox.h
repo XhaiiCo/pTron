@@ -15,7 +15,7 @@ class TextBox
         sf::RectangleShape background;
         sf::Text textbox;
         std::ostringstream text;
-        bool isSelected = false;
+        bool selected = false;
         int limit;
 
         void inputLogic(int charTyped);

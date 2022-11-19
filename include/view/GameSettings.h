@@ -5,7 +5,11 @@
 #include "GameContext.h"
 #include "TextBox.h"
 #include "Button.h"
+#include "ColorTile.h"
 
+#define MAX_NUMBER_OF_COLORS 4
+
+#include <iostream>
 /*
 * This view is displayed before the first game for ask settings.
 */
@@ -17,7 +21,9 @@ class GameSettings: public GameState
         sf::Font font;
         TextBox tbNamePlayer1 ;
         TextBox tbNamePlayer2;
-        Button btnPlay ;
+        ColorTile colorsPlayer1[MAX_NUMBER_OF_COLORS];
+        ColorTile colorsPlayer2[MAX_NUMBER_OF_COLORS];
+        Button btnPlay;
 
     public:
         GameSettings(GameContext* gameContext);
@@ -34,6 +40,8 @@ class GameSettings: public GameState
 
         //Apply the settings to the players
         void applySettingToPlayers() ;
+
+        void unselectAll(ColorTile * colorsPlayer);
 };
 
 #endif // GAMESETTINGS_H
