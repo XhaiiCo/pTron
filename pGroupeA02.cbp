@@ -57,6 +57,7 @@
 		<Unit filename="include/view/Menu.h" />
 		<Unit filename="include/view/StateManager.h" />
 		<Unit filename="include/view/TextBox.h" />
+		<Unit filename="include/view/ColorTile.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/model/Case.cpp" />
 		<Unit filename="src/model/Color.cpp" />
@@ -73,6 +74,7 @@
 		<Unit filename="src/view/Menu.cpp" />
 		<Unit filename="src/view/StateManager.cpp" />
 		<Unit filename="src/view/TextBox.cpp" />
+		<Unit filename="src/view/ColorTile.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
