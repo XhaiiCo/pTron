@@ -146,61 +146,20 @@ void GameSettings::processInput(){
                     this->applySettingToPlayers() ;
                     this->nextState() ;
                 }
-                else if(colorsPlayer1[0].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer1);
-                    colorsPlayer1[0].setSelected(true);
-                    colorsPlayer1[0].setBorder(sf::Color::White);
-                }
-                else if(colorsPlayer1[1].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer1);
-                    colorsPlayer1[1].setSelected(true);
-                    colorsPlayer1[1].setBorder(sf::Color::White);
-                }
-                else if(colorsPlayer1[2].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer1);
-                    colorsPlayer1[2].setSelected(true);
-                    colorsPlayer1[2].setBorder(sf::Color::White);
-                }
-                else if(colorsPlayer1[3].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer1);
-                    colorsPlayer1[3].setSelected(true);
-                    colorsPlayer1[3].setBorder(sf::Color::White);
+
+                for(int i = 0 ; i < MAX_NUMBER_OF_COLORS ; i++){
+                    if(colorsPlayer1[i].isMouseOver(*window)){
+                        unselectAll(colorsPlayer1) ;
+                        colorsPlayer1[i].setSelected(true) ;
+                        colorsPlayer1[i].setBorder(sf::Color::White) ;
+                    }
+                    else if(colorsPlayer2[i].isMouseOver(*window)){
+                        unselectAll(colorsPlayer2) ;
+                        colorsPlayer2[i].setSelected(true) ;
+                        colorsPlayer2[i].setBorder(sf::Color::White) ;
+                    }
                 }
 
-                else if(colorsPlayer2[0].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer2);
-                    colorsPlayer2[0].setSelected(true);
-                    colorsPlayer2[0].setBorder(sf::Color::White);
-                }
-                else if(colorsPlayer2[1].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer2);
-                    colorsPlayer2[1].setSelected(true);
-                    colorsPlayer2[1].setBorder(sf::Color::White);
-                }
-                else if(colorsPlayer2[2].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer2);
-                    colorsPlayer2[2].setSelected(true);
-                    colorsPlayer2[2].setBorder(sf::Color::White);
-                }
-                else if(colorsPlayer2[3].isMouseOver(*window))
-                {
-                    unselectAll(colorsPlayer2);
-                    colorsPlayer2[3].setSelected(true);
-                    colorsPlayer2[3].setBorder(sf::Color::White);
-                }
-
-                else
-                {
-                    tbNamePlayer1.setSelected(false);
-                    tbNamePlayer2.setSelected(false);
-                }
                 break ;
         }
     }
