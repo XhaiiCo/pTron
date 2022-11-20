@@ -43,6 +43,13 @@ void ColorTile::setBorder(sf::Color color)
 
 void ColorTile::drawTo(sf::RenderWindow &window)
 {
+    if(selected){
+        this->setBorder(sf::Color::White) ;
+    }
+    else{
+        this->setBorder(sf::Color::Transparent);
+    }
+
     window.draw(tile);
 }
 

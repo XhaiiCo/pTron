@@ -151,12 +151,10 @@ void GameSettings::processInput(){
                     if(colorsPlayer1[i].isMouseOver(*window)){
                         unselectAll(colorsPlayer1) ;
                         colorsPlayer1[i].setSelected(true) ;
-                        colorsPlayer1[i].setBorder(sf::Color::White) ;
                     }
                     else if(colorsPlayer2[i].isMouseOver(*window)){
                         unselectAll(colorsPlayer2) ;
                         colorsPlayer2[i].setSelected(true) ;
-                        colorsPlayer2[i].setBorder(sf::Color::White) ;
                     }
                 }
 
@@ -229,7 +227,6 @@ void GameSettings::unselectAll(ColorTile * colorsPlayer)
     for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
     {
         colorsPlayer[i].setSelected(false);
-        colorsPlayer[i].setBorder(sf::Color::Transparent);
     }
 
 }
