@@ -42,6 +42,7 @@ class GameSettings: public GameState
         void applySettingToPlayers() ;
 
         void unselectAll(ColorTile * colorsPlayer);
+        Color findSelectedColor(ColorTile * colorsPlayer) ;
 };
 
 #endif // GAMESETTINGS_H

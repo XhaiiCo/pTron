@@ -214,9 +214,9 @@ void GameSettings::applySettingToPlayers(){
 
     p1->setName(namePlayer1) ;
     p2->setName(namePlayer2) ;
-    p1->setMainColor(Color(0, 255, 0));
+    p1->setMainColor(findSelectedColor(colorsPlayer1));
     p1->setGodModeColor(Color(255, 255, 0)) ;
-    p2->setMainColor(Color(0, 0, 255)) ;
+    p2->setMainColor(findSelectedColor(colorsPlayer2)) ;
     p2->setGodModeColor(Color(255, 255, 0)) ;
 }
 
@@ -227,4 +227,12 @@ void GameSettings::unselectAll(ColorTile * colorsPlayer)
         colorsPlayer[i].setSelected(false);
     }
 
+}
+
+Color GameSettings::findSelectedColor(ColorTile * colorsPlayer){
+    for(int i = 0 ; i < MAX_NUMBER_OF_COLORS ; i++){
+        if(colorsPlayer[i].isSelected()) return colorsPlayer[i].getColor() ;
+    }
+
+    return Color(255, 0, 0) ;
 }
