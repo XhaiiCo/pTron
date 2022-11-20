@@ -167,8 +167,6 @@ void GameSettings::update(){}
 void GameSettings::draw(){
     sf::RenderWindow* window = this->gameContext->getWindow() ;
 
-
-
     window->clear();
 
     this->tbNamePlayer1.drawTo(*window);

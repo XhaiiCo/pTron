@@ -56,19 +56,50 @@ void GameOver::init(){
     //POSITION THE TITLE
     sf::FloatRect titleRect = title.getLocalBounds();
     title.setOrigin(titleRect.left + titleRect.width/2.0f, titleRect.top  + titleRect.height/2.0f);
-    title.setPosition(this->gameContext->getWindow()->getView().getCenter());
+    title.setPosition(sf::Vector2f(windowWidth / 2, windowHeight / 5));
+
 
     //SCORE PLAYER 1
     scorePlayer1.setFont(font);
     scorePlayer1.setColor(sf::Color(p1->getMainColor().getRed(), p1->getMainColor().getGreen(), p1->getMainColor().getBlue()));
     scorePlayer1.setString(std::to_string(p1->getScore()));
-    scorePlayer1.setPosition(sf::Vector2f(windowWidth / 4, windowHeight / 2));
+    scorePlayer1.setCharacterSize(70);
+    scorePlayer1.setPosition(sf::Vector2f(windowWidth / 2.4, windowHeight / 3.4));
 
     //SCORE PLAYER 2
     scorePlayer2.setFont(font);
     scorePlayer2.setColor(sf::Color(p2->getMainColor().getRed(), p2->getMainColor().getGreen(), p2->getMainColor().getBlue()));
     scorePlayer2.setString(std::to_string(p2->getScore()));
-    scorePlayer2.setPosition(sf::Vector2f((windowWidth / 4)*2, windowHeight / 2));
+    scorePlayer2.setCharacterSize(70);
+    scorePlayer2.setPosition(sf::Vector2f(windowWidth / 1.81, windowHeight / 3.4));
+
+
+    textBtn[0].setFont(font);
+    textBtn[0].setColor(sf::Color::Green);
+    textBtn[0].setString("REMATCH");
+    textBtn[0].setCharacterSize(70);
+    sf::FloatRect textRect = textBtn[0].getLocalBounds();
+    textBtn[0].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    textBtn[0].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * 2.1));
+
+    textBtn[1].setFont(font);
+    textBtn[1].setColor(sf::Color::White);
+    textBtn[1].setString("MAIN MENU");
+    textBtn[1].setCharacterSize(70);
+    textRect = textBtn[1].getLocalBounds();
+    textBtn[1].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    textBtn[1].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * 2.7));
+
+    textBtn[2].setFont(font);
+    textBtn[2].setColor(sf::Color::White);
+    textBtn[2].setString("EXIT");
+    textBtn[2].setCharacterSize(70);
+    textRect = textBtn[2].getLocalBounds();
+    textBtn[2].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    textBtn[2].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * 3.3));
+
+    selectedItemIndex = 0;
+
 }
 void GameOver::processInput(){
     sf::Event event;
@@ -78,7 +109,24 @@ void GameOver::processInput(){
         if(event.type == sf::Event::Closed) window->close() ;
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) this->nextState();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) this->MoveUp() ;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) this->MoveDown() ;
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+        int pressedItem = this->GetPressedItem();
+
+        if(pressedItem == 0)
+        {
+            this->nextState() ;
+        }
+        else if(pressedItem == 1)
+        {
+            //
+        }
+        else
+        {
+            window->close();
+        }
+    }
 }
 
 void GameOver::update(){}
@@ -90,8 +138,14 @@ void GameOver::draw(){
     window->draw(this->title) ;
     window->draw(this->scorePlayer1) ;
     window->draw(this->scorePlayer2) ;
+    for(int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
+    {
+        window->draw(textBtn[i]);
+    }
     window->display();
+
 }
+
 
 void GameOver::nextState(){
     StateManager* stateManager = this->gameContext->getStateManager() ;
@@ -104,4 +158,30 @@ void GameOver::nextState(){
 
 GameOver* GameOver::clone() {
     return new GameOver(*this) ;
+}
+
+void GameOver::MoveUp()
+{
+    if(selectedItemIndex - 1 >= 0)
+    {
+        textBtn[selectedItemIndex].setColor(sf::Color::White);
+        selectedItemIndex--;
+        textBtn[selectedItemIndex].setColor(sf::Color::Green);
+    }
+}
+
+void GameOver::MoveDown()
+{
+
+    if(selectedItemIndex + 1 < MAX_NUMBER_OF_ITEMS)
+    {
+        textBtn[selectedItemIndex].setColor(sf::Color::White);
+        selectedItemIndex++;
+        textBtn[selectedItemIndex].setColor(sf::Color::Green);
+    }
+}
+
+int GameOver::GetPressedItem() const
+{
+    return selectedItemIndex;
 }
