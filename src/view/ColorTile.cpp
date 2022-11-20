@@ -1,9 +1,10 @@
 #include "ColorTile.h"
 
-ColorTile::ColorTile(sf::Vector2f size,  sf::Color color)
+ColorTile::ColorTile(sf::Vector2f size,  Color color)
 {
     tile.setSize(size);
-    tile.setFillColor(color);
+    this->color = color ;
+    tile.setFillColor(sf::Color(color.getRed(), color.getGreen(), color.getBlue()));
 }
 
 ColorTile::~ColorTile()
@@ -14,6 +15,8 @@ ColorTile::~ColorTile()
 ColorTile::ColorTile(const ColorTile& other)
 {
     this->tile = other.tile ;
+    this->selected = other.selected ;
+    this->color = other.color ;
 }
 
 ColorTile& ColorTile::operator=(const ColorTile& rhs)
@@ -21,13 +24,16 @@ ColorTile& ColorTile::operator=(const ColorTile& rhs)
     if (this == &rhs) return *this; // handle self assignment
 
     this->tile = rhs.tile ;
+    this->selected = rhs.selected ;
+    this->color = rhs.color ;
 
     return *this;
 }
 
-void ColorTile::setColor(sf::Color color)
+void ColorTile::setColor(Color color)
 {
-    tile.setFillColor(color);
+    this->color = color ;
+    tile.setFillColor(sf::Color(color.getRed(), color.getGreen(), color.getBlue()));
 }
 
 void ColorTile::setPosition(sf::Vector2f pos)

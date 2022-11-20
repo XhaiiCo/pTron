@@ -70,12 +70,11 @@ void GameSettings::init(){
     this->btnPlay.setFont(font);
     this->btnPlay.setBorder(sf::Color::Green);
 
-    colorsPlayer1[0].setColor(sf::Color::Green);
+    colorsPlayer1[0].setColor(Color(0, 255, 0));//Green
     colorsPlayer1[0].setSelected(true);
-    colorsPlayer1[0].setBorder(sf::Color::White);
-    colorsPlayer1[1].setColor(sf::Color::Blue);
-    colorsPlayer1[2].setColor(sf::Color::Red);
-    colorsPlayer1[3].setColor(sf::Color::Magenta);
+    colorsPlayer1[1].setColor(Color(255, 0, 0));
+    colorsPlayer1[2].setColor(Color(0, 255, 0));
+    colorsPlayer1[3].setColor(Color(0, 255, 0));
 
     int decal = 0;
     for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
@@ -84,12 +83,11 @@ void GameSettings::init(){
         decal += 80;
     }
 
-    colorsPlayer2[0].setColor(sf::Color::Cyan);
+    colorsPlayer2[0].setColor(Color(0, 0, 255));//Blue
     colorsPlayer2[0].setSelected(true);
-    colorsPlayer2[0].setBorder(sf::Color::White);
-    colorsPlayer2[1].setColor(sf::Color::Yellow);
-    colorsPlayer2[2].setColor(sf::Color::Red);
-    colorsPlayer2[3].setColor(sf::Color::Magenta);
+    colorsPlayer2[1].setColor(Color(0, 255, 0));
+    colorsPlayer2[2].setColor(Color(0, 0, 255));
+    colorsPlayer2[3].setColor(Color(0, 0, 255));
 
     decal = 0;
     for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
