@@ -70,11 +70,11 @@ void GameSettings::init(){
     this->btnPlay.setFont(font);
     this->btnPlay.setBorder(sf::Color::Green);
 
-    colorsPlayer1[0].setColor(Color(0, 255, 0));//Green
+    colorsPlayer1[0].setColor(Color(29, 185, 175));//light blue
     colorsPlayer1[0].setSelected(true);
-    colorsPlayer1[1].setColor(Color(255, 0, 0));
-    colorsPlayer1[2].setColor(Color(0, 255, 0));
-    colorsPlayer1[3].setColor(Color(0, 255, 0));
+    colorsPlayer1[1].setColor(Color(209, 22, 36));//Blood red
+    colorsPlayer1[2].setColor(Color(255, 128, 0));//Orange
+    colorsPlayer1[3].setColor(Color(255, 51, 255));//Pink
 
     int decal = 0;
     for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
@@ -83,11 +83,11 @@ void GameSettings::init(){
         decal += 80;
     }
 
-    colorsPlayer2[0].setColor(Color(0, 0, 255));//Blue
+    colorsPlayer2[0].setColor(Color(25, 25, 220));//Marine blue
     colorsPlayer2[0].setSelected(true);
-    colorsPlayer2[1].setColor(Color(0, 255, 0));
-    colorsPlayer2[2].setColor(Color(0, 0, 255));
-    colorsPlayer2[3].setColor(Color(0, 0, 255));
+    colorsPlayer2[1].setColor(Color(50, 220, 50));//Apple green
+    colorsPlayer2[2].setColor(Color(150, 50, 200));//Purple
+    colorsPlayer2[3].setColor(Color(245,222,179));//Wheat
 
     decal = 0;
     for(int i = 0; i < MAX_NUMBER_OF_COLORS; i++)
