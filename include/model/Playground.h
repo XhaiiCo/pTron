@@ -39,9 +39,7 @@ class Playground
         Playground(const Playground& other);
         Playground& operator=(const Playground& other);
 
-        std::vector<std::vector<Case*>> getCases(){
-            return this->cases ;
-        } ;
+        std::vector<std::vector<Case>> getCases() ;
 
         //This method will init the playground, add the two players and create the cases
         void init(Player* player1, Player* player2) ;

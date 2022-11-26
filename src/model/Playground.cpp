@@ -113,6 +113,22 @@ std::string Playground::str() const
     return result ;
 }
 
+std::vector<std::vector<Case>> Playground::getCases(){
+    std::vector<std::vector<Case>> result ;
+
+    for(std::vector<Case*> line : this->cases)
+    {
+        std::vector<Case> newLine ;
+        for(Case* c : line)
+        {
+            newLine.push_back(*c) ;
+        }
+        result.push_back(newLine) ;
+    }
+
+    return result ;
+}
+
 bool Playground::validPlayerId(int id){
     if(id >= 0 && id < NB_PLAYERS) return true ;
 

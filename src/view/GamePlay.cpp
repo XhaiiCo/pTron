@@ -141,13 +141,13 @@ void GamePlay::draw(){
 
     window->clear() ;
 
-    std::vector<std::vector<Case*>> Cases = this->playground.getCases() ;
+    std::vector<std::vector<Case>> Cases = this->playground.getCases() ;
 
     //DRAW EACH CASE
     for(int i = 0 ; i < Cases.size() ; i++){
         for(int j = 0 ; j < Cases[i].size() ; j++){
             //GET THE PLAYER ON THE CASE
-            Player* p = Cases[i][j]->getPlayer() ;
+            Player* p = Cases[i][j].getPlayer() ;
 
             //CREATE THE CASE
             sf::RectangleShape rectangle(sf::Vector2f(CASE_WIDTH, CASE_WIDTH)) ;
