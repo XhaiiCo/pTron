@@ -62,6 +62,8 @@ class Player
         //Return the current score
         int getScore() ;
 
+        void setScore(int value) ;
+
         std::string getName(){ return this->name ;}
         void setName(std::string value){ this->name = value ;}
 

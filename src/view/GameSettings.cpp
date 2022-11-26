@@ -19,6 +19,12 @@ GameSettings::GameSettings(const GameSettings& other)
     this->tbNamePlayer1 = other.tbNamePlayer1 ;
     this->tbNamePlayer2 = other.tbNamePlayer2 ;
     this->btnPlay = other.btnPlay ;
+
+    for(int i = 0 ; i < MAX_NUMBER_OF_COLORS ; i++){
+        this->colorsPlayer1[i] = other.colorsPlayer1[i] ;
+        this->colorsPlayer1[i] = other.colorsPlayer2[i] ;
+    }
+
 }
 
 GameSettings& GameSettings::operator=(const GameSettings& rhs)
@@ -30,6 +36,11 @@ GameSettings& GameSettings::operator=(const GameSettings& rhs)
     this->tbNamePlayer1 = rhs.tbNamePlayer1 ;
     this->tbNamePlayer2 = rhs.tbNamePlayer2 ;
     this->btnPlay = rhs.btnPlay ;
+
+    for(int i = 0 ; i < MAX_NUMBER_OF_COLORS ; i++){
+        this->colorsPlayer1[i] = rhs.colorsPlayer1[i] ;
+        this->colorsPlayer1[i] = rhs.colorsPlayer2[i] ;
+    }
 
     return *this;
 }
@@ -216,6 +227,9 @@ void GameSettings::applySettingToPlayers(){
     p1->setGodModeColor(Color(255, 255, 0)) ;
     p2->setMainColor(findSelectedColor(colorsPlayer2)) ;
     p2->setGodModeColor(Color(255, 255, 0)) ;
+
+    p1->setScore(0) ;
+    p2->setScore(0) ;
 }
 
 void GameSettings::unselectAll(ColorTile * colorsPlayer)

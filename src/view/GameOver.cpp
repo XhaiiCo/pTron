@@ -1,5 +1,6 @@
 #include "GameOver.h"
 #include "GamePlay.h"
+#include "Menu.h"
 
 GameOver::GameOver(GameContext* gameContext): gameContext(gameContext){}
 
@@ -120,7 +121,12 @@ void GameOver::processInput(){
         }
         else if(pressedItem == 1)
         {
-            //
+            StateManager* stateManager = this->gameContext->getStateManager() ;
+            Menu* menu= new Menu(this->gameContext) ;
+            stateManager->setState(menu) ;
+            stateManager->getState()->init() ;
+
+            delete menu ;
         }
         else
         {

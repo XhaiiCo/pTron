@@ -63,6 +63,12 @@ int Player::getScore(){
     return this->score ;
 }
 
+void Player::setScore(int value){
+    if(value < 0) value = 0;
+
+    this->score = value ;
+}
+
 
 void Player::setX(int value){
     //The x have to be in the playground
