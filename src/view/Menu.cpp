@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "GameSettings.h"
+#include "GameRules.h"
 
 Menu::Menu(GameContext* gameContext): gameContext(gameContext){}
 
@@ -108,7 +109,13 @@ void Menu::processInput(){
         }
         else if(pressedItem == 1)
         {
-            std::cout << "Option button has been pressed" << std::endl;
+            StateManager* stateManager = this->gameContext->getStateManager() ;
+
+            GameRules* gameRules = new GameRules(this->gameContext) ;
+            stateManager->setState(gameRules) ;
+            stateManager->getState()->init() ;
+
+            delete gameRules ;
         }
         else
         {
