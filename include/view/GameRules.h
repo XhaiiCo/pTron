@@ -1,6 +1,7 @@
 #ifndef GAMERULES_H
 #define GAMERULES_H
 
+#include <iostream>
 #include <string>
 #include "GameState.h"
 #include "GameContext.h"
@@ -31,6 +32,8 @@ class GameRules: public GameState
 
         sf::Text rulesText[MAX_NUMBER_OF_LINES];
         sf::Font font;
+
+        sf::Text txtBtn;
 
     public:
         GameRules(GameContext*);

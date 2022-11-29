@@ -49,6 +49,18 @@ void GameRules::init()
         x += 0.6;
         rulesText[i].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_LINES + 3) * x));
     }
+
+
+    txtBtn.setFont(font);
+    txtBtn.setColor(sf::Color::White);
+    txtBtn.setString("Return");
+    txtBtn.setCharacterSize(28);
+    textRect = txtBtn.getLocalBounds();
+    txtBtn.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+    txtBtn.setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_LINES + 1) * 7));
+
+
+
 }
 
 void GameRules::processInput(){
@@ -58,6 +70,11 @@ void GameRules::processInput(){
 
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+    {
+        //retour au menu
     }
 }
 
@@ -73,6 +90,8 @@ void GameRules::draw()
     {
         window->draw(rulesText[i]);
     }
+    window->draw(txtBtn);
+
     window->display();
 }
 
