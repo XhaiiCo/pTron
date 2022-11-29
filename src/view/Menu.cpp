@@ -36,6 +36,7 @@ Menu& Menu::operator=(const Menu& rhs)
 }
 
 void Menu::init(){
+
     if (!font.loadFromFile(FONT_PATH))
     {
         //handle error
@@ -89,33 +90,34 @@ void Menu::processInput(){
 
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
+
+        if(event.type == sf::Event::KeyPressed){
+            if(event.key.code == sf::Keyboard::Up) this->MoveUp() ;
+            else if(event.key.code == sf::Keyboard::Down) this->MoveDown() ;
+            else if(event.key.code == sf::Keyboard::Enter){
+                int pressedItem = this->GetPressedItem();
+
+                if(pressedItem == 0)
+                {
+                    this->nextState() ;
+                }
+                else if(pressedItem == 1)
+                {
+                    StateManager* stateManager = this->gameContext->getStateManager() ;
+
+                    GameRules* gameRules = new GameRules(this->gameContext) ;
+                    stateManager->setState(gameRules) ;
+                    stateManager->getState()->init() ;
+
+                    delete gameRules ;
+                }
+                else
+                {
+                    window->close();
+                }
+            }
+        }
     }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) this->MoveUp() ;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) this->MoveDown() ;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-        int pressedItem = this->GetPressedItem();
-
-        if(pressedItem == 0)
-        {
-            this->nextState() ;
-        }
-        else if(pressedItem == 1)
-        {
-            StateManager* stateManager = this->gameContext->getStateManager() ;
-
-            GameRules* gameRules = new GameRules(this->gameContext) ;
-            stateManager->setState(gameRules) ;
-            stateManager->getState()->init() ;
-
-            delete gameRules ;
-        }
-        else
-        {
-            window->close();
-        }
-    }
-
 }
 
 void Menu::update(){};

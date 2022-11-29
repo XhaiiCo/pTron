@@ -1,5 +1,6 @@
 #include "GameRules.h"
 
+#include "Menu.h"
 GameRules::GameRules(GameContext* gameContext)
 {
     this->gameContext = gameContext ;
@@ -53,7 +54,7 @@ void GameRules::init()
 
     txtBtn.setFont(font);
     txtBtn.setColor(sf::Color::White);
-    txtBtn.setString("Return");
+    txtBtn.setString("Press enter for return");
     txtBtn.setCharacterSize(28);
     textRect = txtBtn.getLocalBounds();
     txtBtn.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
@@ -70,11 +71,11 @@ void GameRules::processInput(){
 
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
-    }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-    {
-        //retour au menu
+        if(event.type == sf::Event::KeyPressed){
+            if (event.key.code == sf::Keyboard::Escape) this->nextState() ;
+            else if(event.key.code == sf::Keyboard::Enter) this->nextState() ;
+        }
     }
 }
 
@@ -95,7 +96,14 @@ void GameRules::draw()
     window->display();
 }
 
-void GameRules::nextState(){}
+void GameRules::nextState(){
+    StateManager* stateManager = this->gameContext->getStateManager() ;
+    Menu* menu = new Menu(this->gameContext) ;
+    stateManager->setState(menu);
+    stateManager->getState()->init() ;
+
+    delete menu ;
+}
 
 GameRules* GameRules::clone(){
     return new GameRules(*this) ;

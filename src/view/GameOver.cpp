@@ -96,32 +96,33 @@ void GameOver::init(){
 void GameOver::processInput(){
     sf::Event event;
     sf::RenderWindow* window = this->gameContext->getWindow() ;
-
     while (window->pollEvent(event)){
         if(event.type == sf::Event::Closed) window->close() ;
-    }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) this->MoveUp() ;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) this->MoveDown() ;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-        int pressedItem = this->GetPressedItem();
+        if(event.type == sf::Event::KeyPressed){
+            if(event.key.code == sf::Keyboard::Up) this->MoveUp() ;
+            else if(event.key.code == sf::Keyboard::Down) this->MoveDown() ;
+            else if(event.key.code == sf::Keyboard::Enter){
+                int pressedItem = this->GetPressedItem();
 
-        if(pressedItem == 0)
-        {
-            this->nextState() ;
-        }
-        else if(pressedItem == 1)
-        {
-            StateManager* stateManager = this->gameContext->getStateManager() ;
-            Menu* menu= new Menu(this->gameContext) ;
-            stateManager->setState(menu) ;
-            stateManager->getState()->init() ;
+                if(pressedItem == 0)
+                {
+                    this->nextState() ;
+                }
+                else if(pressedItem == 1)
+                {
+                    StateManager* stateManager = this->gameContext->getStateManager() ;
+                    Menu* menu= new Menu(this->gameContext) ;
+                    stateManager->setState(menu) ;
+                    stateManager->getState()->init() ;
 
-            delete menu ;
-        }
-        else
-        {
-            window->close();
+                    delete menu ;
+                }
+                else
+                {
+                    window->close();
+                }
+            }
         }
     }
 }
