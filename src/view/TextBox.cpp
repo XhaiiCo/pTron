@@ -89,7 +89,7 @@ void TextBox::setLimit(int lim)
 void TextBox::setSelected(bool sel)
 {
     selected = sel;
-    if(!sel)
+    if(sel)
     {
         std::string t = text.str();
         std::string newT = "";
