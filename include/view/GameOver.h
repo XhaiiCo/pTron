@@ -17,7 +17,12 @@ class GameOver: public GameState
     //CONSTANT
     public:
         const inline static std::string FONT_PATH = "assets/fonts/Square-Bold.otf" ;
-
+        const std::string btnNames[MAX_NUMBER_OF_ITEMS] =
+        {
+            "REMATCH",
+            "MAIN MENU",
+            "EXIT"
+        };
 
     private:
         int selectedItemIndex;

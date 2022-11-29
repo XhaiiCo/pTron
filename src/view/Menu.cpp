@@ -45,29 +45,22 @@ void Menu::init(){
     float height = this->gameContext->getWindowHeight() ;
     this->gameContext->getWindow()->setKeyRepeatEnabled(false) ;
 
-    textBtn[0].setFont(font);
+    sf::FloatRect textRect;
+    float x = 1.5;
+
+    for(int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
+    {
+        textBtn[i].setFont(font);
+        textBtn[i].setColor(sf::Color::White);
+        textBtn[i].setString(btnNames[i]);
+        textBtn[i].setCharacterSize(70);
+        textRect = textBtn[i].getLocalBounds();
+        textBtn[i].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        x += 0.6;
+        textBtn[i].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * x));
+    }
     textBtn[0].setColor(sf::Color::Green);
-    textBtn[0].setString("START");
-    textBtn[0].setCharacterSize(70);
-    sf::FloatRect textRect = textBtn[0].getLocalBounds();
-    textBtn[0].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    textBtn[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.1));
 
-    textBtn[1].setFont(font);
-    textBtn[1].setColor(sf::Color::White);
-    textBtn[1].setString("RULES");
-    textBtn[1].setCharacterSize(70);
-    textRect = textBtn[1].getLocalBounds();
-    textBtn[1].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    textBtn[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.7));
-
-    textBtn[2].setFont(font);
-    textBtn[2].setColor(sf::Color::White);
-    textBtn[2].setString("EXIT");
-    textBtn[2].setCharacterSize(70);
-    textRect = textBtn[2].getLocalBounds();
-    textBtn[2].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    textBtn[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3.3));
 
     selectedItemIndex = 0;
 

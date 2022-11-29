@@ -17,6 +17,12 @@ class Menu: public GameState
     public:
         const inline static std::string FONT_PATH = "assets/fonts/Square-Bold.otf" ;
         const inline static std::string TITLE_FONT_PATH = "assets/fonts/joystix-monospace.ttf" ;
+        const std::string btnNames[MAX_NUMBER_OF_ITEMS] =
+        {
+            "START",
+            "RULES",
+            "EXIT"
+        };
 
     private:
         int selectedItemIndex;

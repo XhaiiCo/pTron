@@ -74,30 +74,21 @@ void GameOver::init(){
     scorePlayer2.setCharacterSize(70);
     scorePlayer2.setPosition(sf::Vector2f(windowWidth / 1.81, windowHeight / 3.4));
 
+    sf::FloatRect textRect;
+    float x = 1.5;
 
-    textBtn[0].setFont(font);
+    for(int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
+    {
+        textBtn[i].setFont(font);
+        textBtn[i].setColor(sf::Color::White);
+        textBtn[i].setString(btnNames[i]);
+        textBtn[i].setCharacterSize(70);
+        textRect = textBtn[i].getLocalBounds();
+        textBtn[i].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        x += 0.6;
+        textBtn[i].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * x));
+    }
     textBtn[0].setColor(sf::Color::Green);
-    textBtn[0].setString("REMATCH");
-    textBtn[0].setCharacterSize(70);
-    sf::FloatRect textRect = textBtn[0].getLocalBounds();
-    textBtn[0].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    textBtn[0].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * 2.1));
-
-    textBtn[1].setFont(font);
-    textBtn[1].setColor(sf::Color::White);
-    textBtn[1].setString("MAIN MENU");
-    textBtn[1].setCharacterSize(70);
-    textRect = textBtn[1].getLocalBounds();
-    textBtn[1].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    textBtn[1].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * 2.7));
-
-    textBtn[2].setFont(font);
-    textBtn[2].setColor(sf::Color::White);
-    textBtn[2].setString("EXIT");
-    textBtn[2].setCharacterSize(70);
-    textRect = textBtn[2].getLocalBounds();
-    textBtn[2].setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-    textBtn[2].setPosition(sf::Vector2f(windowWidth / 2, windowHeight / (MAX_NUMBER_OF_ITEMS + 1) * 3.3));
 
     selectedItemIndex = 0;
 
