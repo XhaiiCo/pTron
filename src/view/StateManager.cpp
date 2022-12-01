@@ -3,7 +3,6 @@
 
 StateManager::StateManager()
 {
-    this->state = nullptr ;
 }
 
 StateManager::~StateManager()
@@ -29,8 +28,7 @@ StateManager& StateManager::operator=(const StateManager& rhs)
 
 
 void StateManager::setState(GameState* state){
-    if(this->state != nullptr)
-        delete this->state ;
+    delete this->state ;
 
     this->state = state->clone() ;
 }
