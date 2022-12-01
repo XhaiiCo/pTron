@@ -67,35 +67,40 @@ void GamePlay::processInput(){
     sf::Event event;
     sf::RenderWindow* window = this->gameContext->getWindow() ;
 
-    while(window->pollEvent(event)){
-        if(event.type == sf::Event::Closed) window->close();
-    }
-
     Player* p1 = this->gameContext->getPlayer1() ;
     Player* p2 = this->gameContext->getPlayer2() ;
 
-    //PLAYER 1 KEY BINDINGS
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) p1->changeDirection(0, -1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) p1->changeDirection(0, 1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) p1->changeDirection(-1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) p1->changeDirection(1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        if(p1->triggerGodMode()){
-            this->godModePlayer1Time.restart() ;
+    while(window->pollEvent(event)){
+        if(event.type == sf::Event::Closed) window->close();
+        if(event.type == sf::Event::KeyPressed){
+
+            //PLAYER 1 KEY BINDINGS
+            if (event.key.code == sf::Keyboard::Z) p1->changeDirection(0, -1);
+            if (event.key.code == sf::Keyboard::S) p1->changeDirection(0, 1);
+            if (event.key.code == sf::Keyboard::Q) p1->changeDirection(-1, 0);
+            if (event.key.code == sf::Keyboard::D) p1->changeDirection(1, 0);
+            if (event.key.code == sf::Keyboard::A) {
+            if (p1->triggerGodMode()){
+                this->godModePlayer1Time.restart() ;
+                }
+            }
+
+            //PLAYER 2 KEY BINDINGS
+            if (event.key.code == sf::Keyboard::Up) p2->changeDirection(0, -1);
+            if (event.key.code == sf::Keyboard::Down) p2->changeDirection(0, 1);
+            if (event.key.code == sf::Keyboard::Left) p2->changeDirection(-1, 0);
+            if (event.key.code == sf::Keyboard::Right) p2->changeDirection(1, 0);
+            if (event.key.code == sf::Keyboard::RControl) {
+                if(p2->triggerGodMode()){
+                    this->godModePlayer2Time.restart() ;
+                }
+            }
         }
     }
 
 
-    //PLAYER 2 KEY BINDINGS
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) p2->changeDirection(0, -1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) p2->changeDirection(0, 1);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) p2->changeDirection(-1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) p2->changeDirection(1, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
-        if(p2->triggerGodMode()){
-            this->godModePlayer2Time.restart() ;
-        }
-    }
+
+
 }
 
 void GamePlay::update(){
