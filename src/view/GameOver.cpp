@@ -44,14 +44,21 @@ void GameOver::init(){
 
     //Set the title text
     std::string titleText = "" ;
-    if(p1->getWin()) titleText = p1->getName() + " won the game !";
-    else if(p2->getWin()) titleText = p2->getName()+ " won the game !" ;
+    Color titleColor = Color(255,255,255);
+    if(p1->getWin()) {
+        titleText = p1->getName() + " won the game !";
+        titleColor = p1->getMainColor() ;
+    }
+    else if(p2->getWin()){
+        titleText = p2->getName()+ " won the game !" ;
+        titleColor = p2->getMainColor() ;
+    }
     else titleText = "Match draw" ;
 
     //CREATE THE TITLE
     title.setFont(font);
     title.setCharacterSize(60);
-    title.setColor(sf::Color::Red);
+    title.setColor(sf::Color(titleColor.getRed(), titleColor.getGreen(), titleColor.getBlue()));
     title.setString(titleText);
 
     //POSITION THE TITLE
