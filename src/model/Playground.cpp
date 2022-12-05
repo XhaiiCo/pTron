@@ -40,6 +40,7 @@ Playground& Playground::operator=(const Playground& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
 
+
     //Delete cases
     for(std::vector<Case*> line : this->cases)
     {
